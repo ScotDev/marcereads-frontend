@@ -3,6 +3,7 @@ import styles from '../styles/Home.module.css'
 import Header from '../components/Header';
 import Featured from '../components/Featured';
 import Latest from '../components/Latest';
+import About from '../components/About';
 
 export default function Home() {
   return (
@@ -22,6 +23,7 @@ export default function Home() {
         <Featured />
 
         <Latest />
+        <About />
 
       </main>
     </div>

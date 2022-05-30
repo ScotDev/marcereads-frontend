@@ -1,0 +1,68 @@
+.footer {
+    --mr-pink:#FEE9FF;
+    --mr-green:#D8E9E4;
+    --mr-pink-accent:#FF69B4;
+    --mr-green-accent:#5CA390;
+    --mr-primary-text:#1D1D1D;
+    --mr-secondary-text:#263742;
+    --mr-light-text:#fff;
+    --mr-drop-shadow:4px 2px 10px 0px rgba(0, 0, 0, 0.15);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+    width: 100vw;
+    min-height: 408px;
+    background-color: #F6F6F6;
+
+    padding: 24px;
+
+
+}
+
+.footer ul {
+    padding: 0 0 24px 0 ;
+}
+/* This breaks my own style rule than a non-layout element should never directly influence the position of another element. This will be fixed when I am awake. */
+.footer h3 {
+    margin-bottom: 16px;
+}
+
+.footer li {
+    padding: 4px 0;
+}
+
+.footer li a {
+    font-size: 18px;
+    
+}
+
+.footer li a:hover,
+.footer li a:focus {
+    color: var(--mr-pink-accent);
+    border-bottom: 2px solid var(--mr-pink-accent);
+}
+
+.footer .btn_group{
+    display: flex;
+    flex-direction: column;
+    /* justify-content: space-between; */
+    align-items: flex-start;
+
+}
+
+.footer .btn_group button:first-child{
+    margin-bottom: 16px;
+}
+
+.footer .credits {
+    align-self: center;
+    text-align: center;
+    padding-top: 32px;
+}
+
+.footer .credits p {
+    font-size: 16px;
+}
+
+

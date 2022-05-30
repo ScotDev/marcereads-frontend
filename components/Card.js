@@ -7,7 +7,7 @@ const testImage = "https://i.imgur.com/7vJ98fU.jpg";
 export default function Card() {
     return (
         <div className={cardStyles.card}>
-            <Image src={testImage} layout="fixed" alt="Book" width={350} height={342}></Image>
+            <Image src={testImage} layout="fill" objectFit="cover" alt="Book" ></Image>
             <div className={cardStyles.card_bottom}>
                 <div className={cardStyles.top_row}>
                     <h5>Review</h5>

@@ -1,0 +1,35 @@
+
+.button {
+    --mr-pink:#FEE9FF;
+    --mr-green:#D8E9E4;
+    --mr-pink-accent:#FF69B4;
+    --mr-green-accent:#5CA390;
+    --mr-primary-text:#1D1D1D;
+    --mr-secondary-text:#263742;
+    --mr-light-text:#fff;
+    --mr-drop-shadow:4px 2px 10px 0px rgba(0, 0, 0, 0.15);
+
+    all: unset;
+}
+
+/* I understand that the common properties should be in the above button class. Repeating these properties was quicker and easier than figuring out how to conditional add mutliple classes with css modules in the button component */
+.primary {
+    background-color: var(--mr-pink-accent);
+    box-shadow: var(--mr-drop-shadow);
+    padding: 8px;
+    border-radius: 10px;
+    font-weight: 700;
+    font-size: 18px;
+    color: var(--mr-light-text);
+    border: 0;
+}
+.secondary {
+    background-color: var(--mr-green-accent);
+    box-shadow: var(--mr-drop-shadow);
+    padding: 8px;
+    border-radius: 10px;
+    font-weight: 700;
+    font-size: 18px;
+    color: var(--mr-light-text);
+    border: 0;
+}

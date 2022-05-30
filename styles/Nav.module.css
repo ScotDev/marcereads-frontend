@@ -17,17 +17,24 @@
     --mr-drop-shadow:4px 2px 10px 0px rgba(0, 0, 0, 0.15);
 
     width: 100vw;
-    padding: 0;
-    margin: 0;
+    /* Fixed height only for testing */
+    height: 52px;
     box-shadow: var(--mr-drop-shadow);
-
 }
 
+.nav .brand {
+    display: none;
+}
+.nav ul {
+    display: none;
+}
 
 /* Anything ABOVE 768px will take these styles */
 @media (min-width: 768px) {
     .nav .desktop {
-        padding: 24px 386px;
+        padding: 16px 0;
+        margin: 0 auto;
+        max-width: 1024px;
         display: flex;
         justify-content: space-between;
         align-items: center;
@@ -36,7 +43,6 @@
         font-weight: 800;
         font-size: 28px;
         font-family: 'Nunito', sans-serif;
-        margin: 0;
     }
     .nav .desktop ul {
         padding: 0;
@@ -47,6 +53,9 @@
     
     .nav .desktop ul li {
         padding: 0px 16px;
+    }
+    .nav .desktop ul li:last-of-type {
+        padding: 0 0 0 16px;
     }
     
     .nav .desktop ul li a {
