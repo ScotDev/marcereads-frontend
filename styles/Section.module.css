@@ -1,0 +1,7 @@
+.section {
+padding: 16px 0;
+}
+
+.section .title {
+    padding: 0 8px 20px 0;
+}

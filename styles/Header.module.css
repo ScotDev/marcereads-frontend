@@ -4,7 +4,9 @@
     --mr-pink-accent:#FF69B4;
     --mr-green-accent:#5CA390;
     --mr-primary-text:#1D1D1D;
-    --mr-secondary-text:#fff;
+    --mr-secondary-text:#263742;
+    --mr-light-text:#fff;
+    --mr-drop-shadow:4px 2px 10px 0px rgba(0, 0, 0, 0.15);
 
     /* width: 100vw; */
     padding: 0;
@@ -19,7 +21,7 @@
 
 .header h1 {
     text-align: center;
-    width: 294px;
+    width: 320px;
     padding: 48px 0;
 }
 
