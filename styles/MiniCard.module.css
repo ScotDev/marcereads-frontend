@@ -10,7 +10,7 @@
     position: relative;
     /* width: 350px; */
     height: 150px;
-    margin: 0 auto 16px auto;
+    margin: 0 auto 20px auto;
 
     
     display: flex;
@@ -28,7 +28,6 @@
 .card span {
     border-radius: 10px;
     box-shadow: var(--mr-drop-shadow);
-    
 }
 
 .card .text_content {
