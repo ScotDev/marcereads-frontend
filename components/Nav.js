@@ -1,8 +1,9 @@
 import navStyles from '../styles/Nav.module.css';
-
+import Link from "next/link";
 // https://youtu.be/mTz0GXj8NN0?t=1313
 
-import Link from "next/link";
+import { FaInstagram } from 'react-icons/fa';
+
 
 export const Nav = () => {
     return (
@@ -11,52 +12,25 @@ export const Nav = () => {
                 <p className={navStyles.brand}>Marcereads</p>
                 <ul>
                     <li>
-                        <Link href="/">Home</Link>
+                        <Link href="/"><a>Home</a></Link>
                     </li>
                     <li>
-                        <Link href="/">Browse</Link>
+                        <Link href="/"><a>Browse</a></Link>
                     </li>
                     <li>
-                        <Link href="/">Reviews</Link>
+                        <Link href="/"><a>Reviews</a></Link>
                     </li>
                     <li>
-                        <Link href="/">Guides</Link>
+                        <Link href="/"><a>Guides</a></Link>
                     </li>
                     <li>
-                        <Link href="/">About</Link>
+                        <Link href="/"><a>About</a></Link>
                     </li>
                     <li>
-                        <Link href="/">Insta logo</Link>
+                        <Link href="/"><FaInstagram /></Link>
                     </li>
                 </ul>
             </div>
-            {/* <div className={navStyles.hamburger}>
-                <input type='checkbox'></input>
-                <div></div>
-                <div></div>
-                <div></div>
-
-                <ul>
-                    <li>
-                        <Link href="/">Home</Link>
-                    </li>
-                    <li>
-                        <Link href="/">Browse</Link>
-                    </li>
-                    <li>
-                        <Link href="/">Reviews</Link>
-                    </li>
-                    <li>
-                        <Link href="/">Guides</Link>
-                    </li>
-                    <li>
-                        <Link href="/">About</Link>
-                    </li>
-                    <li>
-                        <Link href="/">Insta logo</Link>
-                    </li>
-                </ul>
-            </div> */}
         </nav>
     )
 }

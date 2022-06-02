@@ -10,6 +10,7 @@
     position: relative;
     /* width: 350px; */
     width: 100%;
+    max-width: 450px;
     /* height: 475px; */
     min-height: 475px;
     margin: 0 auto;

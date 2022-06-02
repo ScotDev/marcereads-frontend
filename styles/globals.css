@@ -98,6 +98,11 @@ ul {
   min-height: 100vh;
 }
 
+/* Aligns react-icons without the need for passing classnames as context */
+a svg {
+  vertical-align: middle;
+}
+
 /* Desktop rules */
 @media (min-width:768px) {
   .container {

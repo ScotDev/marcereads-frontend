@@ -29,6 +29,14 @@
     display: none;
 }
 
+.nav ul li svg {
+    vertical-align: middle;
+    font-size: 24px;
+    color: var(--mr-pink-accent);
+    cursor: pointer;
+    transition: transform 0.2s ease;
+}
+
 /* Anything ABOVE 768px will take these styles */
 @media (min-width: 768px) {
     .nav .desktop {
@@ -67,6 +75,11 @@
     .nav .desktop ul li a:focus {
         color: var(--mr-pink-accent);
         border-bottom: 2px solid var(--mr-pink-accent);
+    }
+    .nav .desktop ul li svg:hover,
+    .nav .desktop ul li svg:focus {
+        border-bottom: none;
+        transform: translateY(-3px);
     }
 }
 

@@ -9,11 +9,13 @@
     --mr-light-text:#fff;
     --mr-drop-shadow:4px 2px 10px 0px rgba(0, 0, 0, 0.15);
 
-    all: unset;
+
 }
+
 
 /* I understand that the common properties should be in the above button class. Repeating these properties was quicker and easier than figuring out how to conditional add mutliple classes with css modules in the button component */
 .primary {
+    cursor: pointer;
     background-color: var(--mr-pink-accent);
     box-shadow: var(--mr-drop-shadow);
     padding: 8px;
@@ -22,8 +24,10 @@
     font-size: 18px;
     color: var(--mr-light-text);
     border: 0;
+    transition: transform 0.2s ease;
 }
 .secondary {
+    cursor: pointer;
     background-color: var(--mr-green-accent);
     box-shadow: var(--mr-drop-shadow);
     padding: 8px;
@@ -32,4 +36,23 @@
     font-size: 18px;
     color: var(--mr-light-text);
     border: 0;
+    transition: transform 0.2s ease;
+}
+
+.primary:hover,
+.primary:focus {
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    transform: translateY(-3px);
+}
+.secondary:hover,
+.secondary:focus {
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    transform: translateY(-3px);
+}
+
+.primary svg,
+.secondary svg {
+    vertical-align: middle;
+    margin: 0 6px 0 0;
+    font-size: 24px;
 }
