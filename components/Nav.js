@@ -33,7 +33,7 @@ export const Nav = () => {
                         <Link href="/"><a>Guides</a></Link>
                     </li>
                     <li>
-                        <Link href="/"><a>About</a></Link>
+                        <Link href="/about"><a>About</a></Link>
                     </li>
                     <li>
                         <a href='https://www.instagram.com/marcereads/?hl=en' target="_blank" rel='noreferrer'><FaInstagram /></a>
@@ -64,7 +64,7 @@ export const Nav = () => {
                         <Link href="/"><a>Guides</a></Link>
                     </li>
                     <li>
-                        <Link href="/"><a>About</a></Link>
+                        <Link href="/about"><a>About</a></Link>
                     </li>
                     <li>
                         <Button text="@marcereads" href="https://www.instagram.com/marcereads/?hl=en" icon={<FaInstagram />} />
