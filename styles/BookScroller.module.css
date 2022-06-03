@@ -13,12 +13,11 @@
 
 .scroller {
     max-width: var(--mr-scroller-max-width);
-    padding: 10px;
+    padding: 8px 8px 8px 0;
     display: grid;
     grid-auto-flow: column;
     column-gap: 16px;
     overflow-x: auto;
-    /* border: 1px solid red; */
   }
 
 
@@ -32,6 +31,7 @@
 /* Targets next/image */
 .scroll_item span {
     border-radius: 10px;
+    box-shadow: var(--mr-drop-shadow);
 }
 
 .controls {

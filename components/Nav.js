@@ -5,10 +5,15 @@ import Link from "next/link";
 import Button from './Button';
 
 import { FaInstagram } from 'react-icons/fa';
+import { useEffect } from "react";
 
 
 export const Nav = () => {
 
+    useEffect(() => {
+        const pageHeight = document.documentElement.getBoundingClientRect().height;
+        document.getElementById("mobile-nav").style.height = pageHeight + "px";
+    }, []);
 
     return (
         <nav className={navStyles.nav}>
@@ -45,7 +50,7 @@ export const Nav = () => {
                     <div></div>
                 </div>
 
-                <ul>
+                <ul id="mobile-nav">
                     <li>
                         <Link href="/"><a>Home</a></Link>
                     </li>

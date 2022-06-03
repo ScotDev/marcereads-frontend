@@ -9,10 +9,6 @@ const testImage = "https://i.imgur.com/7vJ98fU.jpg";
 
 export default function BookScroller() {
 
-    // const scrollLeft = () =>{
-
-    // };
-
     useEffect(() => {
         const scrollable = document.getElementById("scrollable");
         const leftScrollButton = document.getElementById("left-arrow");

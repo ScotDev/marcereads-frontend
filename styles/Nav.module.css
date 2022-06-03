@@ -87,6 +87,7 @@
     z-index: 5;
     opacity: 0;
     -webkit-touch-callout: none;
+    cursor: pointer;
 }
 
 .hamburger_lines div {
@@ -131,33 +132,43 @@
     display: flex;
     flex-direction: column;
     position: absolute;
-    left: -250px;
-    top: 0;
-    background-color: rgba(255, 255, 255, 1);
-    /* opacity: 0.3; */
+    overflow: hidden;
+    left: -260px;
+    top: -20px;
+    background-color: rgba(255, 255, 255, 0.9);
     transform: translate(-150%, 0);
-    height: 2000px;
+    /* Height set by js to 100% of document height */
     width: 100vw;
     margin: 0;
-    padding: 64px 0 0 24px;
+    padding: 96px 0 0 24px;
     opacity: 0;
     transform-origin: 0% 0%;
     transition: transform 0.4s cubic-bezier(0.77, 0.2, 0.05, 1),
     opacity 0.3s cubic-bezier(0.77, 0.2, 0.05, 1);
-    -webkit-font-smoothing: antialiased;
-    /* Stops flickering of text in Safari */
+      /* Stops flickering of text in Safari */
+      -webkit-font-smoothing: antialiased;
   }
+  
+  /* Backdrop-filter not supported in firefox */
+    @supports ((-webkit-backdrop-filter: none) or (backdrop-filter: none)) {
+      .hamburger ul {
+        background-color: rgba(255, 255, 255, 0.6);
+        backdrop-filter: blur(16px);
+      }
+    }
+
 
   .hamburger input[type="checkbox"]:checked ~ ul {
     transform: translateX(225px);
     opacity: 1;
+
   }
 
   .hamburger ul li {
-    padding: 0 0 8px 0;
+    padding: 0 0 10px 0;
   }
   .hamburger ul li:last-of-type {
-    padding: 8px 0 0 0;
+    padding: 16px 0 0 0;
   }
   .hamburger ul li a {
     font-size: 24px;
