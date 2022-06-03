@@ -36,13 +36,13 @@ export const Nav = () => {
     return (
         <nav className={navStyles.nav}>
             <div className={navStyles.desktop}>
-                <p className={navStyles.brand}>Marcereads</p>
+                <Link href="/"><p className={navStyles.brand}>marcereads</p></Link>
                 <ul>
                     <li>
                         <Link href="/"><a>Home</a></Link>
                     </li>
                     <li>
-                        <Link href="/"><a>Browse</a></Link>
+                        <Link href="/browse"><a>Browse</a></Link>
                     </li>
                     <li>
                         <Link href="/"><a>Reviews</a></Link>
@@ -73,7 +73,7 @@ export const Nav = () => {
                         <Link href="/"><a>Home</a></Link>
                     </li>
                     <li>
-                        <Link href="/"><a>Browse</a></Link>
+                        <Link href="/browse"><a>Browse</a></Link>
                     </li>
                     <li>
                         <Link href="/"><a>Reviews</a></Link>
@@ -89,7 +89,7 @@ export const Nav = () => {
                     </li>
                 </ul>
             </div>
-            <p className={navStyles.brand_mobile}>Marcereads</p>
+            <Link href="/"><p className={navStyles.brand_mobile}>marcereads</p></Link>
             <a className={navStyles.instagram} href='https://www.instagram.com/marcereads/?hl=en' target="_blank" rel='noreferrer'><FaInstagram /></a>
         </nav>
     )

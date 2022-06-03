@@ -8,7 +8,6 @@
     --mr-light-text:#fff;
     --mr-drop-shadow:4px 2px 10px 0px rgba(0, 0, 0, 0.15);
 
-    /* width: 100vw; */
     padding: 0;
     margin: 0;
     display: flex;
@@ -34,10 +33,17 @@
 }
 
 
-/* Anything ABOVE 768px will take these styles i.e desktops*/
+/* Desktop rules */
 @media (min-width: 768px) {
+    .header {
+        max-width: 724px;
+        margin: 0 auto;
+    }
     .header h1 {
         text-align: left;
+    }
+    .header .page_title {
+        font-size: 40px;
     }
     
 }

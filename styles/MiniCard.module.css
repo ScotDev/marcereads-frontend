@@ -40,7 +40,14 @@
 }
 
 .card .text_content h5 {
+    /* color: var(--mr-pink-accent); */
+    text-transform: capitalize;
+}
+.card .text_content h5.review {
     color: var(--mr-pink-accent);
+}
+.card .text_content h5.guide {
+    color: var(--mr-green-accent);
 }
 .card .text_content p {
     font-size: 16px;
