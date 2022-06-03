@@ -14,7 +14,7 @@
     justify-content: space-between;
 }
 
-.about .image_wrapper{
+.about .profile_image_wrapper {
     border-radius: 50%;
     width: 200px;
     height: 200px;
@@ -23,15 +23,31 @@
     box-shadow: var(--mr-drop-shadow);
 }
 
-.about span {
+.about .profile_image_wrapper span {
     border-radius: 50%;
     width: 100%;
     height: 100%;
+    box-shadow: var(--mr-drop-shadow);
 }
 
 .about article {
-    padding: 24px 0;
+    padding: 32px 0 48px 0;
 }
 .about article h3 {
     padding: 32px 0 16px 0;
+}
+
+.about article .image_wrapper {
+    position: relative;
+    margin: 0 auto;
+    width: 100%;
+    height: 300px;
+    margin: 24px 0;
+}
+
+/* Targets next/image */
+.about article .image_wrapper span {
+    width: 100%;
+    height: 100%;
+    border-radius: 10px;
 }

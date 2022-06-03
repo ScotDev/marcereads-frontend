@@ -1,14 +1,32 @@
 import navStyles from '../styles/Nav.module.css';
 import Link from "next/link";
+import { useRouter } from 'next/router';
 // https://youtu.be/mTz0GXj8NN0?t=1313
 
 import Button from './Button';
 
 import { FaInstagram } from 'react-icons/fa';
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 
 
 export const Nav = () => {
+
+    const router = useRouter()
+    const [checked, setchecked] = useState(false);
+
+    const onCheck = () => {
+        setchecked(!checked)
+    }
+
+    useEffect(() => {
+        const handleRouteChange = () => {
+            setchecked(false)
+        }
+        router.events.on('routeChangeStart', handleRouteChange)
+        return () => {
+            router.events.off('routeChangeStart', handleRouteChange)
+        }
+    }, [router.events])
 
     useEffect(() => {
         const pageHeight = document.documentElement.getBoundingClientRect().height;
@@ -43,7 +61,7 @@ export const Nav = () => {
 
             <div className={navStyles.hamburger}>
 
-                <input type='checkbox'></input>
+                <input type='checkbox' checked={checked} onChange={() => { onCheck() }}></input>
                 <div className={navStyles.hamburger_lines}>
                     <div></div>
                     <div></div>
