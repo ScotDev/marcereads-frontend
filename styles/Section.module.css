@@ -35,3 +35,9 @@
      color: var(--mr-pink-accent);
     border-bottom: 2px solid var(--mr-pink-accent);
 }
+
+/* Overrides global h2 styling. Only for the to be read section as gap between section title and content too great due to slider controls */
+.section h2#tbr_title {
+    line-height: 28px;
+    padding: 0 8px 0 0;
+}

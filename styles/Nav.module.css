@@ -28,14 +28,9 @@
     grid-template-columns: repeat(3, 1fr); */
 }
 
-.nav .desktop {
-    display: none;
-}
-
-.nav .brand {
-    display: none;
-}
-.nav ul {
+.nav .desktop,
+.nav .brand,
+.nav ul  {
     display: none;
 }
 
@@ -198,6 +193,11 @@
         font-weight: 800;
         font-size: 28px;
         font-family: 'Nunito', sans-serif;
+    }
+
+    .nav .brand_mobile,
+    .nav .instagram {
+      display: none;
     }
     .nav .desktop ul {
         padding: 0;

@@ -4,6 +4,7 @@ import Header from '../components/Header';
 import Featured from '../components/Featured';
 import Latest from '../components/Latest';
 import About from '../components/About';
+import BookScroller from '../components/BookScroller';
 
 export default function Home() {
   return (
@@ -22,6 +23,7 @@ export default function Home() {
         <Header />
 
         <Featured />
+        <BookScroller />
 
         <Latest />
         <About />
