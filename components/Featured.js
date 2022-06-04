@@ -5,7 +5,7 @@ export default function Featured() {
     return (
         <section className={sectionStyles.section}>
             <h2 className={sectionStyles.title}>Featured</h2>
-            <Card />
+            <Card url="/article" />
         </section>
     )
 }

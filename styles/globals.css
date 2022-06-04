@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@500;600;700&family=Poppins:wght@300;400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@500;600;700;800&family=Poppins:wght@300;400;500;600;700&display=swap');
 
 :root{
   --mr-pink:#FEE9FF;
@@ -135,7 +135,6 @@ a svg {
     line-height: 24px;
   }
   h5 {
-    font-weight: 400;
     font-size: 16px;
     line-height: 24px;
   }

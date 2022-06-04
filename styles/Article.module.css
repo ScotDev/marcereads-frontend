@@ -1,0 +1,136 @@
+.article {
+    --mr-pink:#FEE9FF;
+    --mr-green:#D8E9E4;
+    --mr-pink-accent:#FF69B4;
+    --mr-green-accent:#5CA390;
+    --mr-primary-text:#1D1D1D;
+    --mr-secondary-text:#263742;
+    --mr-light-text:#fff;
+    --mr-drop-shadow:4px 2px 10px 0px rgba(0, 0, 0, 0.15);
+    padding: 8px 0;
+    max-width: 724px;
+}
+
+.article header {
+    padding: 24px 0 16px 0;
+}
+.article header {
+    padding: 24px 0;
+}
+
+.article header h1 {
+    font-size: 32px;
+    font-weight: 800;
+}
+.article header h2 {
+    font-size: 28px;
+    padding: 24px 0 0 0;
+}
+.article header h4 {
+    font-size: 16px;
+}
+.article header h5 {
+    background-color: var(--mr-pink);
+    color: var(--mr-primary-text);
+    padding: 2px 24px;
+    border-radius: 50px;
+    text-transform: capitalize;
+    font-weight: 600;
+}
+
+.article header h6 {
+    font-size: 16px;
+    font-weight: 500;
+    color: var(--mr-green-accent);
+}
+
+.article header .top_row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    max-width: 400px;
+    padding: 16px 0;
+}
+
+.article header .bottom_row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    max-width: 300px;
+    padding: 8px 0;
+}
+
+.article article {
+    padding: 0 0 48px 0;
+}
+
+.article .image_wrapper {
+    position: relative;
+    width: 100%;
+    height: 300px;
+    margin: 24px 0;
+    border-radius: 10px;
+}
+.article .image_wrapper span {
+    width: 100%;
+    height: 100%;
+    border-radius: 10px;
+}
+
+.article article h3 {
+    padding: 32px 0 16px 0;
+}
+
+/* Desktop rules */
+@media (min-width:768px) {
+    .article {
+        margin: 0 auto;
+    }
+    .article header {
+        padding: 24px 0 0 0;
+    }
+    .article header h1 {
+        font-size: 40px;
+    }
+    .article header h2 {
+        font-size: 24px;
+        padding: 18px 0 0 0;
+    }
+    .article header h4 {
+       padding: 0 0 12px 0;
+    }
+
+    .article header .bottom_row {
+        flex-direction: column-reverse;
+        align-items: center;
+        justify-content: space-between;
+        align-items: flex-start;
+        /* max-width: 400px; */
+        padding: 8px 0;
+    }
+    .article article .image_wrapper {
+        margin: 24px auto;
+        max-width: 310px;
+        height: 400px;
+    }
+    .article article .image_wrapper::before {
+        content: '';
+        position: absolute;
+        display: block;
+        /* Feels hacky, but works well */
+        left: -50%;
+        margin-left: -55px;
+        width: 724px;
+        /* border: 1px solid red; */
+        height: 400px;
+        background-color: rgba(255, 255, 255, 0.8);
+        backdrop-filter: blur(20px);
+        border-radius: 10px;
+    }
+    
+    /* Targets next/image */
+    .article article .image_wrapper span {
+        /* max-width: 310px; */
+        height: 100%;
+    }
+  }

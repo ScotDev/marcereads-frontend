@@ -21,6 +21,7 @@
     align-items: center;
     /* border: 1px solid red; */
     box-shadow: var(--mr-drop-shadow);
+    cursor: pointer;
 }
 
 .card span {
