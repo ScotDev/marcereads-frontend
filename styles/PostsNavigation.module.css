@@ -10,7 +10,6 @@
 
     width: 100%;
     display: flex;
-    
 }
 
 .container ul {
@@ -36,22 +35,21 @@
     border-bottom: 2px solid transparent;
 }
 
-/* .container ul li a:active {
-    font-weight: 700;
-    border-bottom: 2px solid #A8A8A8;
-} */
-
-/* These should apply dynamically if route is active. Next's implementation of activeLink is overcomplicated for a v1 release */
-.container ul li.browse a {
+.container ul li a.active {
     font-weight: 700;
     border-bottom: 2px solid #A8A8A8;
 }
-.container ul li.reviews a {
+
+.container ul li a.browse {
+    font-weight: 700;
+    border-bottom: 2px solid #A8A8A8;
+}
+.container ul li a.reviews {
     font-weight: 700;
     border-bottom: 2px solid #A8A8A8;
     color: var(--mr-pink-accent);
 }
-.container ul li.guides a {
+.container ul li a.guides {
     font-weight: 700;
     border-bottom: 2px solid #A8A8A8;
     color: var(--mr-green-accent);

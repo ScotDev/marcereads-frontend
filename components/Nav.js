@@ -28,10 +28,11 @@ export const Nav = () => {
         }
     }, [router.events])
 
-    useEffect(() => {
-        const pageHeight = document.documentElement.getBoundingClientRect().height;
-        document.getElementById("mobile-nav").style.height = pageHeight + "px";
-    }, []);
+    // 
+    // useEffect(() => {
+    //     const pageHeight = document.documentElement.getBoundingClientRect().height;
+    //     document.getElementById("mobile-nav").style.height = pageHeight + "px";
+    // }, []);
 
     return (
         <nav className={navStyles.nav}>

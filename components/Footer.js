@@ -13,7 +13,7 @@ export default function Footer() {
         <footer className={footerStyles.footer}>
             <ul className={footerStyles.nav_links}>
                 <li>
-                    <h3>Marcereads</h3>
+                    <h3>marcereads</h3>
                 </li>
                 <li>
                     <Link href="/">Home</Link>
@@ -41,7 +41,7 @@ export default function Footer() {
             <div className={footerStyles.credits}>
                 {/* Add js to calc current year */}
                 <p>Copyright © 2022 Marcereads</p>
-                <p>Created by <Link href="https://www.callumgiles.dev"><a target="_blank" rel="noreferrer">ScotDev</a></Link></p>
+                <p>Created by <Link href="https://www.callumgiles.dev"><a target="_blank" rel="noreferrer">callumgiles.dev</a></Link></p>
             </div>
 
 

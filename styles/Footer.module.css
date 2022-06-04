@@ -14,10 +14,7 @@
     width: 100vw;
     min-height: 408px;
     background-color: #F6F6F6;
-
     padding: 24px;
-
-
 }
 
 .footer ul {
@@ -33,8 +30,7 @@
 }
 
 .footer li a {
-    font-size: 18px;
-    
+    font-size: 18px;   
 }
 
 .footer li a:hover,
@@ -46,9 +42,7 @@
 .footer .btn_group{
     display: flex;
     flex-direction: column;
-    /* justify-content: space-between; */
     align-items: flex-start;
-
 }
 
 .footer .btn_group button:first-child{
@@ -74,3 +68,31 @@
 }
 
 
+/* Anything ABOVE 768px will take these styles i.e desktops */
+@media (min-width: 768px) {
+    .footer {
+        min-height: 300px;
+    }
+    .footer ul {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    .footer h3 {
+        margin-bottom: 0;
+    }
+    .footer li {
+        padding: 0 16px;
+    }
+    .footer .btn_group{
+        display: flex;
+        flex-direction: row;
+        justify-content: center;   
+    }
+    .footer .btn_group button:first-child{
+        margin: 0 16px 0 0;
+    }
+    .footer .credits {
+        padding: 0 0 16px 0;
+    }
+}

@@ -1,33 +1,17 @@
 import Link from "next/link";
+import ActiveLink from './ActiveLink';
 
 import postsNavigationStyles from '../styles/PostsNavigation.module.css';
 
 
-export default function PostsNavigation({ pageName }) {
-    let liClassName;
-    let isCurrentPage = false;
-    switch (pageName) {
-        case "browse":
-            liClassName = postsNavigationStyles.browse;
-            isCurrentPage = true;
-            break;
-        case "review":
-            liClassName = postsNavigationStyles.reviews;
-            isCurrentPage = true;
-            break;
-        case "guide":
-            liClassName = postsNavigationStyles.guides;
-            isCurrentPage = true;
-            break;
-        default:
-            liClassName = null;
-    }
+export default function PostsNavigation({ }) {
+
     return (
         <div className={postsNavigationStyles.container}>
             <ul>
-                <li className={isCurrentPage ? liClassName : null}><Link href="/browse">All</Link></li>
-                <li className={isCurrentPage ? liClassName : null}><Link href="/reviews">Reviews</Link></li>
-                <li className={isCurrentPage ? liClassName : null}><Link href="/guides">Guides</Link></li>
+                <li><ActiveLink activeClassName={postsNavigationStyles.browse} href="/browse"><a >All</a></ActiveLink></li>
+                <li><ActiveLink activeClassName={postsNavigationStyles.reviews} href="/reviews"><a>Reviews</a></ActiveLink></li>
+                <li><ActiveLink activeClassName={postsNavigationStyles.guides} href="/reviews"><a>Guides</a></ActiveLink></li>
             </ul>
         </div>
     )
