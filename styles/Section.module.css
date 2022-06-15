@@ -58,5 +58,5 @@
 }
 
 .section .pagination a[disabled]  {
-    opacity: 0.6;
+    opacity: 0.55;
 }

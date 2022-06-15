@@ -9,6 +9,8 @@ const boyPartsImg = "https://i.imgur.com/LEjUl46.jpg";
 
 import { CgChevronLeft, CgChevronRight, CgPushChevronLeft, CgPushChevronRight } from 'react-icons/cg';
 
+// Will map out list of MiniCards from API data. Filter based on props (type=all/review/guide)
+
 export default function Latest() {
     return (
         <section className={sectionStyles.section}>

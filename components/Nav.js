@@ -46,10 +46,10 @@ export const Nav = () => {
                         <Link href="/browse"><a>Browse</a></Link>
                     </li>
                     <li>
-                        <Link href="/"><a>Reviews</a></Link>
+                        <Link href="/reviews"><a>Reviews</a></Link>
                     </li>
                     <li>
-                        <Link href="/"><a>Guides</a></Link>
+                        <Link href="/guides"><a>Guides</a></Link>
                     </li>
                     <li>
                         <Link href="/about"><a>About</a></Link>
@@ -77,10 +77,10 @@ export const Nav = () => {
                         <Link href="/browse"><a>Browse</a></Link>
                     </li>
                     <li>
-                        <Link href="/"><a>Reviews</a></Link>
+                        <Link href="/reviews"><a>Reviews</a></Link>
                     </li>
                     <li>
-                        <Link href="/"><a>Guides</a></Link>
+                        <Link href="/guides"><a>Guides</a></Link>
                     </li>
                     <li>
                         <Link href="/about"><a>About</a></Link>
