@@ -58,6 +58,16 @@ export default function BookScroller() {
                             <Image src={testImage} layout="fill" objectFit="cover" alt="Preview image of book to be read" />
                         </Link>
                     </div>
+                    <div className={bookScrollerStyles.scroll_item}>
+                        <Link href="/" target="_blank">
+                            <Image src={testImage} layout="fill" objectFit="cover" alt="Preview image of book to be read" />
+                        </Link>
+                    </div>
+                    <div className={bookScrollerStyles.scroll_item}>
+                        <Link href="/" target="_blank">
+                            <Image src={testImage} layout="fill" objectFit="cover" alt="Preview image of book to be read" />
+                        </Link>
+                    </div>
                 </div>
             </div>
         </section>

@@ -22,21 +22,21 @@ export default function Footer() {
                     <Link href="/browse">Browse</Link>
                 </li>
                 <li>
-                    <Link href="/">Reviews</Link>
+                    <Link href="/reviews">Reviews</Link>
                 </li>
                 <li>
-                    <Link href="/">Guides</Link>
+                    <Link href="/guides">Guides</Link>
                 </li>
                 <li>
                     <Link href="/about">About</Link>
                 </li>
-                <li>
+                {/* <li>
                     <Link href="/">Collaborate</Link>
-                </li>
+                </li> */}
             </ul>
             <div className={footerStyles.btn_group}>
-                <Button text="@marcereads" href="https://www.instagram.com/marcereads/?hl=en" icon={<FaInstagram />} />
-                <Button text={"hello@marcereads.com"} href="mailto:hello@marcereads.com" isSecondary={true} icon={<HiOutlineMail />} />
+                <Button text="@marcereads" href="https://www.instagram.com/marcereads/?hl=en" type="primary" icon={<FaInstagram />} />
+                <Button text={"hello@marcereads.com"} href="mailto:hello@marcereads.com" type="secondary" icon={<HiOutlineMail />} />
             </div>
             <div className={footerStyles.credits}>
                 {/* Add js to calc current year */}

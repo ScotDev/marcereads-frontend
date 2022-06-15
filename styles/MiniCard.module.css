@@ -25,6 +25,7 @@
     margin-bottom: 24px;
 }
 
+/* Targets next/image element */
 .card span {
     border-radius: 10px;
     box-shadow: var(--mr-drop-shadow);

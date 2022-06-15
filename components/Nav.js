@@ -86,7 +86,7 @@ export const Nav = () => {
                         <Link href="/about"><a>About</a></Link>
                     </li>
                     <li>
-                        <Button text="@marcereads" href="https://www.instagram.com/marcereads/?hl=en" icon={<FaInstagram />} />
+                        <Button text="@marcereads" href="https://www.instagram.com/marcereads/?hl=en" type="primary" icon={<FaInstagram />} />
                     </li>
                 </ul>
             </div>
