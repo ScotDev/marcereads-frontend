@@ -62,8 +62,11 @@
 }
 
 @media (min-width:768px) {
-    .grid {
-        display: grid;
-        grid-template-columns: repeat(3, 1fr);
-    }
+.section {
+    padding: 24px 0;
+}
+/* 
+.section a.view_more {
+    margin: 16px 0;
+} */
 }

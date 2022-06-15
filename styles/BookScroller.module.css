@@ -18,6 +18,7 @@
     grid-auto-flow: column;
     column-gap: 16px;
     overflow-x: auto;
+    scroll-behavior: smooth;
   }
 
 

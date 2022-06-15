@@ -50,19 +50,20 @@
 
     .header div:first-of-type {
         margin: 0;
+        max-width: 525px;
     }
     
     .header h1 {
         text-align: left;
         justify-self: unset;
         align-self: unset;
-        width: 525px;
+        width: 100%;
         padding: 32px 0 0 0;
     }
 
     .header p {
         display: block;
-        max-width: 525px;
+        width: 100%;
         padding: 32px 0;
     }
     .header .btn_group {
@@ -81,7 +82,7 @@
         height: 350px;
         position: relative;
         box-shadow: var(--mr-drop-shadow);
-        outline: 6px solid var(--mr-pink);
+        outline: 4px solid var(--mr-pink);
         outline-offset: 20px;
     }
     

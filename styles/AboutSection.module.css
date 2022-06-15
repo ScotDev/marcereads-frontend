@@ -24,7 +24,7 @@
     position: relative;
     margin-top: 40px;
     box-shadow: var(--mr-drop-shadow);
-    outline: 6px solid var(--mr-pink);
+    outline: 4px solid var(--mr-pink);
     outline-offset: 20px;
 }
 

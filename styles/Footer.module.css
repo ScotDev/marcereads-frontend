@@ -72,6 +72,7 @@
 @media (min-width: 768px) {
     .footer {
         min-height: 300px;
+        margin: 64px 0 0 0;
     }
     .footer ul {
         display: flex;

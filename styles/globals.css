@@ -85,11 +85,7 @@ ul {
 }
 
 /* The container wrap all content apart from navbar and footer */
-/* THIS NEEDS FINE TUNING */
 .container {
-  /* display: flex;
-  flex-direction: column;
-  align-items: center; */
   width: 95vw;
   margin: 0 auto;
   padding: 0 16px;
@@ -117,18 +113,18 @@ a svg {
     max-width: 1024px;
   }
   h1 {
-    font-weight: 700;
+    font-weight: 800;
     font-size: 52px;
     line-height: 72px;
   }
   h2 {
     font-weight: 700;
-    font-size: 40px;
+    font-size: 32px;
     line-height: 48px;
   }
   h3 {
     font-weight: 700;
-    font-size: 24px;
+    font-size: 20px;
     line-height: 32px;
   }
   h4 {
