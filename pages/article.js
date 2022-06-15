@@ -6,6 +6,8 @@ import miniCardStyles from '../styles/MiniCard.module.css'
 
 const testImage = "https://i.imgur.com/7vJ98fU.jpg";
 
+// use :empty to handle empty tags filled by cms
+
 
 export default function about({ title, author, type, length, date }) {
 

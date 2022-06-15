@@ -41,3 +41,27 @@
     line-height: 28px;
     padding: 0 8px 0 0;
 }
+
+.section .pagination {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    max-width: 230px;
+    padding: 32px 0 0 0;
+    margin: 0 auto;
+}
+
+.section .pagination a {
+    border-bottom: none;
+}
+
+.section .pagination a#page_number{
+    padding: 8px 16px;
+    border-radius: 10px;
+    background-color: #97C4B8;
+    color: #fff;
+}
+
+.section .pagination a[disabled]  {
+    opacity: 0.6;
+}

@@ -21,6 +21,8 @@ body {
   color:var(--mr-primary-text);
   background-color: #fff;
   vertical-align: baseline;
+  scroll-behavior: smooth;
+  scroll-padding-top: 32px;
 }
 
 a {
