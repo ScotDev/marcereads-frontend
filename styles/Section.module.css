@@ -60,3 +60,10 @@
 .section .pagination a[disabled]  {
     opacity: 0.55;
 }
+
+@media (min-width:768px) {
+    .grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+    }
+}

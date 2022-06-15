@@ -4,8 +4,11 @@ import sectionStyles from '../styles/Section.module.css';
 export default function Featured() {
     return (
         <section className={sectionStyles.section}>
+
             <h2 className={sectionStyles.title}>Featured</h2>
-            <Card url="/article" />
+            <div className={sectionStyles.grid}>
+                <Card featured url="/article" />
+            </div>
         </section>
     )
 }

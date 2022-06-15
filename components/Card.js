@@ -5,10 +5,10 @@ import cardStyles from '../styles/Card.module.css'
 
 const testImage = "https://i.imgur.com/7vJ98fU.jpg";
 
-export default function Card({ url }) {
+export default function Card({ featured, url }) {
     return (
         <Link href={url}>
-            <div className={cardStyles.card}>
+            <div className={cardStyles.card} type={featured ? "featured" : null}>
                 <Image src={testImage} layout="fill" objectFit="cover" alt="Book" ></Image>
                 <div className={cardStyles.card_bottom}>
                     <div className={cardStyles.top_row}>

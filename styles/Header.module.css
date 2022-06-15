@@ -45,7 +45,11 @@
         margin: 0 auto;
         flex-direction: row;
         justify-content: space-between;
-        padding: 32px 0;
+        padding: 40px 0;
+    }
+
+    .header div:first-of-type {
+        margin: 0;
     }
     
     .header h1 {
@@ -71,6 +75,7 @@
 
     .header .image_wrapper {
         display: block;
+        margin: 16px 0 0 0;
         border-radius: 50%;
         width: 350px;
         height: 350px;
