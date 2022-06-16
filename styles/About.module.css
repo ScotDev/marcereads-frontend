@@ -71,7 +71,6 @@
         left: -50%;
         margin-left: -55px;
         width: 724px;
-        /* border: 1px solid red; */
         height: 400px;
         background-color: rgba(255, 255, 255, 0.8);
         backdrop-filter: blur(20px);
@@ -80,7 +79,6 @@
     
     /* Targets next/image */
     .about article .image_wrapper span {
-        /* max-width: 310px; */
         height: 100%;
     }
   }
