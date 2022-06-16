@@ -84,15 +84,24 @@ ul {
   list-style-type: none;
 }
 
+.bg {
+  min-height: 100%;
+  max-width: 100%;
+  z-index: -99;
+  background-image: url("../public/bg_svgs_homepage.svg");
+  /* background-size: 1300px; */
+  background-position: center 0;
+  /* background-position: center 50px; */
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
 /* The container wrap all content apart from navbar and footer */
 .container {
   width: 95vw;
   margin: 0 auto;
   padding: 0 16px;
   max-width: 1024px;
-}
-
-.main {
   min-height: 100vh;
 }
 
@@ -103,13 +112,20 @@ a svg {
 
 /* Desktop rules */
 @media (min-width:768px) {
+  .bg {
+    min-height: 100%;
+    max-width: 100%;
+    z-index: -99;
+    background-image: url("../public/bg_svgs_homepage_desktop.svg");
+    background-size: 1300px;
+    background-position: 50% 75px;
+    /* background-size: contain; */
+    background-repeat: no-repeat;
+  }
+
   .container {
-    /* display: flex;
-    flex-direction: column;
-    align-items: center; */
     width: 100%;
     margin: 0 auto;
-    /* padding: 0 16px; */
     max-width: 1024px;
   }
   h1 {

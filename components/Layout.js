@@ -8,8 +8,11 @@ export const Layout = ({ children }) => {
     return (
         <>
             <Nav />
-            <div className="container">
-                <main>{children}</main>
+            <div className="bg">
+                <div className="container">
+
+                    <main>{children}</main>
+                </div>
             </div>
             <Footer />
         </>
