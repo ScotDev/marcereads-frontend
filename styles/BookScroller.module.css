@@ -27,6 +27,13 @@
     width: 110px;
     height: 160px;
     cursor: pointer;
+    transition: all 0.1s ease-in-out;
+}
+
+
+.scroll_item:hover,
+.scroll_item:focus {
+    opacity: 0.8;
 }
 
 /* Targets next/image */

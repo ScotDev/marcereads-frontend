@@ -19,6 +19,12 @@
     /* border: 1px solid red; */
     box-shadow: var(--mr-drop-shadow);
     cursor: pointer;
+    transition: all 0.1s ease-in-out;
+}
+
+.card:hover,
+.card:focus {
+    opacity: 0.8;
 }
 
 .card span {

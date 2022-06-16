@@ -1,28 +1,13 @@
-import React, { useState, useEffect } from 'react';
 import Head from 'next/head';
 import styles from '../styles/Home.module.css';
 import Header from '../components/Header';
 import Featured from '../components/Featured';
+import AllPosts from '../components/AllPosts';
 import Latest from '../components/Latest';
 import About from '../components/About';
 import BookScroller from '../components/BookScroller';
 
-export default function Home() {
-
-  // Window width detection should be moved up to high level 
-
-  const [width, setWindowWidth] = useState(0);
-
-  useEffect(() => {
-    updateDimensions();
-    window.addEventListener("resize", updateDimensions);
-    return () => window.removeEventListener("resize", updateDimensions);
-  }, [])
-
-  const updateDimensions = () => {
-    const width = window.innerWidth;
-    setWindowWidth(width);
-  };
+export default function Home({ width }) {
 
   return (
     <div className={styles.container}>
@@ -35,8 +20,8 @@ export default function Home() {
 
       <main className={styles.main}>
         <Header />
+        {width > 768 ? <AllPosts /> : <Featured />}
 
-        <Featured />
         <BookScroller />
         {width > 768 ? null : <Latest />}
         {width > 768 ? null : <About />}

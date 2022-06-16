@@ -4,7 +4,7 @@ import AllPosts from '../components/AllPosts'
 import About from '../components/About'
 import headerStyles from '../styles/Header.module.css'
 
-export default function browse() {
+export default function browse({ width }) {
     return (
         <>
             <header className={headerStyles.header}>

@@ -30,7 +30,9 @@
 }
 
 .footer li a {
-    font-size: 18px;   
+    font-size: 18px;
+    transition: all 0.15s ease-in-out;
+    border-bottom: 2px solid transparent;
 }
 
 .footer li a:hover,
