@@ -9,7 +9,10 @@ export default function Card({ featured, url }) {
     return (
         <Link href={url}>
             <div className={cardStyles.card} type={featured ? "featured" : null}>
-                <Image src={testImage} layout="fill" objectFit="cover" alt="Book" ></Image>
+                <div>
+                    <h5 id={cardStyles.featured_tag}>Featured</h5>
+                    <Image src={testImage} layout="fill" objectFit="cover" alt="Book"></Image>
+                </div>
                 <div className={cardStyles.card_bottom}>
                     <div className={cardStyles.top_row}>
                         <h5>Review</h5>

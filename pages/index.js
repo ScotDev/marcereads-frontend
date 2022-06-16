@@ -9,6 +9,7 @@ import BookScroller from '../components/BookScroller';
 
 export default function Home({ width }) {
 
+
   return (
     <div className={styles.container}>
       <Head>
@@ -20,7 +21,7 @@ export default function Home({ width }) {
 
       <main className={styles.main}>
         <Header />
-        {width > 768 ? <AllPosts /> : <Featured />}
+        {width > 768 ? <AllPosts width={width} showViewMore /> : <Featured />}
 
         <BookScroller />
         {width > 768 ? null : <Latest />}

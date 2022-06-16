@@ -11,8 +11,8 @@ export default function browse({ width }) {
                 <h1 className={headerStyles.page_title}>Posts</h1>
             </header>
             <PostsNavigation />
-            <Featured />
-            <AllPosts />
+            {width > 768 ? null : <Featured />}
+            <AllPosts width={width} />
             <About />
         </>
     )

@@ -13,12 +13,19 @@ import { CgChevronLeft, CgChevronRight, CgPushChevronLeft, CgPushChevronRight } 
 
 // Will map out list of MiniCards from API data. Filter based on props (type=all/review/guide)
 
-export default function Latest({ width }) {
+export default function Latest({ width, showViewMore }) {
     return (
 
         <section className={sectionStyles.section}>
             {/* Refactor when API available */}
-            {width > 768 ? <CardGrid /> :
+            {width > 768 ? <><CardGrid showViewMore={showViewMore} /> <div className={sectionStyles.pagination}>
+                <Link href="/"><a disabled aria-disabled><CgPushChevronLeft /></a></Link>
+                <Link href="/"><a disabled aria-disabled><CgChevronLeft /></a></Link>
+                <Link href="/"><a id={sectionStyles.page_number}>1</a></Link>
+                <Link href="/"><a><CgChevronRight /></a></Link>
+                <Link href="/"><a><CgPushChevronRight /></a></Link>
+            </div></>
+                :
                 <div>
                     <MiniCard type="review" title="The Seven Husbands of Evelyn Hugo" author="Taylor Jenkins Reid" date="12th April 2022" />
                     <MiniCard type="review" title="The Year of Magical Thinking" author="Joan Didion" date="12th April 2022" imgURL={magicalYearImg} />

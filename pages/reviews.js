@@ -3,14 +3,14 @@ import AllPosts from '../components/AllPosts'
 import About from '../components/About'
 import headerStyles from '../styles/Header.module.css'
 
-export default function reviews() {
+export default function reviews({ width }) {
     return (
         <>
             <header className={headerStyles.header}>
                 <h1 className={headerStyles.page_title}>Reviews</h1>
             </header>
             <PostsNavigation />
-            <AllPosts />
+            <AllPosts width={width} />
             <About />
         </>
     )

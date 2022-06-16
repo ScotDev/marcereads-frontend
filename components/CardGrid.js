@@ -7,7 +7,7 @@ import Card from './Card';
 
 import { HiArrowNarrowRight } from "react-icons/hi";
 
-export default function CardGrid() {
+export default function CardGrid({ showViewMore }) {
     return (
         <section className={sectionStyles.section}>
             <div className={cardGridStyles.grid}>
@@ -19,7 +19,8 @@ export default function CardGrid() {
                 <Card url="/article" />
 
             </div>
-            <Link href="/browse"><a className={sectionStyles.view_more}>View more <HiArrowNarrowRight /></a></Link>
+            {showViewMore ? <Link href="/browse"><a className={sectionStyles.view_more}>View more <HiArrowNarrowRight /></a></Link> : null}
+
         </section>
     )
 }

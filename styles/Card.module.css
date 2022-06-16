@@ -27,6 +27,11 @@
     opacity: 0.8;
 }
 
+/* hidden by default */
+.card #featured_tag {
+    display: none;
+}
+
 .card span {
     border-top-left-radius: 10px;
     border-top-right-radius: 10px;
@@ -91,6 +96,17 @@
     }
     .card[type="featured"] {
         outline: 16px solid var(--mr-pink);
+    }
+    .card[type="featured"] #featured_tag {
+        display: block;
+        position: absolute;
+        z-index: 99;
+        background-color: var(--mr-green-accent);
+        color: #fff;
+        padding: 2px 24px;
+        border-radius: 50px;
+        left: 16px;
+        top: 16px;
     }
 
     .card .card_bottom .top_row h5 {

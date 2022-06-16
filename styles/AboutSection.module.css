@@ -12,6 +12,7 @@
     flex-direction: column;
     align-items: center;
     justify-content: space-between;
+    /* max-width: 724px; */
 }
 
 .about h2 {
@@ -44,6 +45,6 @@
     }
     .about p {
         margin: 0 auto;
-        max-width: 540px;
+        max-width: 724px;
     }
 }
