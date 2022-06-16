@@ -84,19 +84,24 @@ ul {
   list-style-type: none;
 }
 
+.bg {
+  min-height: 100%;
+  max-width: 100%;
+  z-index: -99;
+  background-image: url("/bg_svgs.svg");
+  /* background-size: 1300px; */
+  background-position: center 0;
+  /* background-position: center 50px; */
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
 /* The container wrap all content apart from navbar and footer */
-/* THIS NEEDS FINE TUNING */
 .container {
-  /* display: flex;
-  flex-direction: column;
-  align-items: center; */
   width: 95vw;
   margin: 0 auto;
   padding: 0 16px;
   max-width: 1024px;
-}
-
-.main {
   min-height: 100vh;
 }
 
@@ -107,28 +112,35 @@ a svg {
 
 /* Desktop rules */
 @media (min-width:768px) {
+  .bg {
+    min-height: 100%;
+    max-width: 100%;
+    z-index: -99;
+    background-image: url("/bg_svgs_desktop.svg");
+    background-size: 1300px;
+    background-position: 57.5% 65%;
+    /* background-size: contain; */
+    background-repeat: no-repeat;
+  }
+
   .container {
-    /* display: flex;
-    flex-direction: column;
-    align-items: center; */
     width: 100%;
     margin: 0 auto;
-    /* padding: 0 16px; */
     max-width: 1024px;
   }
   h1 {
-    font-weight: 700;
+    font-weight: 800;
     font-size: 52px;
     line-height: 72px;
   }
   h2 {
     font-weight: 700;
-    font-size: 40px;
+    font-size: 32px;
     line-height: 48px;
   }
   h3 {
     font-weight: 700;
-    font-size: 24px;
+    font-size: 20px;
     line-height: 32px;
   }
   h4 {

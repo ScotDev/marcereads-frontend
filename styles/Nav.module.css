@@ -31,6 +31,7 @@
     display: none;
 }
 
+
 .brand_mobile {
     margin: -12px auto 0 auto;
     font-weight: 600;
@@ -46,7 +47,7 @@
     vertical-align: middle;
     font-size: 32px;
     cursor: pointer;
-    transition: transform 0.2s ease;
+    transition: all 0.15s ease-in-out;
     margin: 0 16px 0 0;
 }
 
@@ -237,6 +238,8 @@
         font-size: 18px;
         font-weight: 500;
         line-height: 28px;
+        border-bottom: 2px solid transparent;
+        transition: all 0.15s ease-in-out;
     }
     .nav .desktop ul li svg {
         color: var(--mr-pink-accent);

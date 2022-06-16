@@ -1,18 +1,15 @@
-import Featured from '../components/Featured';
 import PostsNavigation from '../components/PostsNavigation';
 import AllPosts from '../components/AllPosts'
 import About from '../components/About'
 import headerStyles from '../styles/Header.module.css'
 
-export default function browse({ width }) {
+export default function guides({ width }) {
     return (
         <>
             <header className={headerStyles.header}>
-                <h1 className={headerStyles.page_title}>Posts</h1>
+                <h1 className={headerStyles.page_title}>Guides</h1>
             </header>
-
             <PostsNavigation />
-            {width > 768 ? null : <Featured />}
             <AllPosts width={width} />
             <About />
         </>

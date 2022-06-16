@@ -1,7 +1,30 @@
-import headerStyles from '../styles/Header.module.css'
+// Next module imports
+import Image from "next/image";
+
+// CSS imports
+import headerStyles from '../styles/Header.module.css';
+// Local component imports
+import Button from './Button';
+
+// Other package imports
+import { FaInstagram } from 'react-icons/fa';
+
+const TestAuthorjpeg = "https://i.imgur.com/fW0P7Wm.jpg";
 
 export default function Header() {
     return (
-        <header className={headerStyles.header}><h1>Hey! Welcome to the Marcereads blog!</h1></header>
+        <header className={headerStyles.header}>
+            <div>
+                <h1>Hey! Welcome to the Marcereads blog!</h1>
+                <p>Augue dui leo enim nascetur. Egestas eget sit feugiat suspendisse tristique tempus nullam dui diam. Bibendum id sed sed eu odio enim tincidunt.</p>
+                <div className={headerStyles.btn_group}>
+                    <Button text="Browse posts" href="/browse" noNewTab type="primary"></Button>
+                    <Button text="@marcereads" href="https://www.instagram.com/marcereads/?hl=en" type="primary-outline" icon={<FaInstagram />}></Button>
+                </div>
+            </div>
+            <div className={headerStyles.image_wrapper}>
+                <Image src={TestAuthorjpeg} objectFit="cover" alt="Portait of site's author" layout="fill" ></Image>
+            </div>
+        </header>
     )
 }

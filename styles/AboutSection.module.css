@@ -12,6 +12,7 @@
     flex-direction: column;
     align-items: center;
     justify-content: space-between;
+    /* max-width: 724px; */
 }
 
 .about h2 {
@@ -24,24 +25,11 @@
     position: relative;
     margin-top: 40px;
     box-shadow: var(--mr-drop-shadow);
+    outline: 4px solid var(--mr-pink);
+    outline-offset: 20px;
 }
 
-.about .image_wrapper::before{
-    position: absolute;
-    /* transform: translate(-12%, -12%); */
-    border-radius: 50%;
-    content: '';
-    display: block;
-    left: 48%;
-    top: 48%;
-    margin-top: -125px;
-    margin-left: -125px;
-    border: 5px solid var(--mr-pink);
-    width: 250px;
-    height: 250px;
-
-}
-/* Image */
+/* Targets next/image */
 .about span {
     border-radius: 50%;
     width: 100%;
@@ -57,6 +45,6 @@
     }
     .about p {
         margin: 0 auto;
-        max-width: 540px;
+        max-width: 724px;
     }
 }

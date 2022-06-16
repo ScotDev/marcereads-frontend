@@ -7,6 +7,9 @@ import { useEffect } from "react";
 
 const testImage = "https://i.imgur.com/7vJ98fU.jpg";
 
+
+// Will map out list of items from API data when CMS is live.
+
 export default function BookScroller() {
 
     useEffect(() => {
@@ -30,6 +33,16 @@ export default function BookScroller() {
                     <button id="left-arrow"><HiArrowNarrowLeft /></button>
                     <button id="right-arrow"><HiArrowNarrowRight /></button></div>
                 <div id="scrollable" className={bookScrollerStyles.scroller}>
+                    <div className={bookScrollerStyles.scroll_item}>
+                        <Link href="/" target="_blank">
+                            <Image src={testImage} layout="fill" objectFit="cover" alt="Preview image of book to be read" />
+                        </Link>
+                    </div>
+                    <div className={bookScrollerStyles.scroll_item}>
+                        <Link href="/" target="_blank">
+                            <Image src={testImage} layout="fill" objectFit="cover" alt="Preview image of book to be read" />
+                        </Link>
+                    </div>
                     <div className={bookScrollerStyles.scroll_item}>
                         <Link href="/" target="_blank">
                             <Image src={testImage} layout="fill" objectFit="cover" alt="Preview image of book to be read" />

@@ -13,11 +13,12 @@
 
 .scroller {
     max-width: var(--mr-scroller-max-width);
-    padding: 8px 8px 8px 0;
+    padding: 8px 8px 16px 0;
     display: grid;
     grid-auto-flow: column;
     column-gap: 16px;
     overflow-x: auto;
+    scroll-behavior: smooth;
   }
 
 
@@ -26,6 +27,13 @@
     width: 110px;
     height: 160px;
     cursor: pointer;
+    transition: all 0.1s ease-in-out;
+}
+
+
+.scroll_item:hover,
+.scroll_item:focus {
+    opacity: 0.8;
 }
 
 /* Targets next/image */
@@ -45,7 +53,6 @@
     all:unset;
     cursor: pointer;
 }
-
 .controls svg {
     font-size: 32px;
     color: var(--mr-secondary-text);
@@ -53,3 +60,40 @@
 .controls svg:last-of-type {
     margin: 0 0 0 4px;
 }
+.controls svg:hover, 
+.controls svg:focus {
+    color: var(--mr-green-accent);
+}
+
+@media (min-width:768px) {
+
+    .scroller_section {
+        --mr-scroller-max-width: 100%;
+    }
+
+    .scroller {
+        column-gap: 32px;
+        scrollbar-width: thin;
+        scrollbar-color: var(--mr-green) #e6e6e6;
+    }
+
+    .scroller::-webkit-scrollbar {
+        background: #e6e6e6;
+        border-radius: 10px;
+    }
+    .scroller::-webkit-scrollbar-thumb {
+        background: var(--mr-green);
+        border-radius: 10px;
+    }
+    .scroller::-webkit-scrollbar-thumb:hover {
+        background: var(--mr-green-accent);
+    }
+    /* .scroller {
+        Firefox
+        scrollbar-width: none;
+    } */
+    .scroll_item {
+        width: 200px;
+        height: 280px;
+    }
+ }

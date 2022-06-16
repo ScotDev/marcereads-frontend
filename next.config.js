@@ -6,7 +6,7 @@
 module.exports = {
   images: {
     domains: ['i.imgur.com']
-  },
+  }
 }
 
 // module.exports = nextConfig

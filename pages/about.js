@@ -11,6 +11,7 @@ export default function about() {
         <header className={headerStyles.header}>
             <h1 className={headerStyles.page_title}>About me</h1>
         </header>
+
         <section className={aboutStyles.about}>
             <div className={aboutStyles.profile_image_wrapper}>
                 <Image src={TestAuthorjpeg} objectFit="cover" alt="Portait of site's author" layout="fill" ></Image>
@@ -35,6 +36,7 @@ export default function about() {
                 </p>
             </article>
         </section>
+
     </>
     )
 }
