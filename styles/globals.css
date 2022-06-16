@@ -88,7 +88,7 @@ ul {
   min-height: 100%;
   max-width: 100%;
   z-index: -99;
-  background-image: url("/static/bg_svgs_homepage.svg");
+  background-image: url("/bg_svgs_homepage.svg");
   /* background-size: 1300px; */
   background-position: center 0;
   /* background-position: center 50px; */
