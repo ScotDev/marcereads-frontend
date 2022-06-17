@@ -55,14 +55,14 @@ export const Nav = () => {
                         <Link href="/about"><a>About</a></Link>
                     </li>
                     <li>
-                        <a href='https://www.instagram.com/marcereads/?hl=en' target="_blank" rel='noreferrer'><FaInstagram /></a>
+                        <a href='https://www.instagram.com/marcereads/?hl=en' target="_blank" rel='noreferrer' alt="Author's Instagram profile" aria-label="Author's Instagram profile"><FaInstagram /></a>
                     </li>
                 </ul>
             </div>
 
             <div className={navStyles.hamburger}>
 
-                <input type='checkbox' checked={checked} onChange={() => { onCheck() }}></input>
+                <input type='checkbox' aria-label="Hidden input to allow menu to expand" checked={checked} onChange={() => { onCheck() }}></input>
                 <div className={navStyles.hamburger_lines}>
                     <div></div>
                     <div></div>
@@ -91,7 +91,7 @@ export const Nav = () => {
                 </ul>
             </div>
             <Link href="/"><p className={navStyles.brand_mobile}>marcereads</p></Link>
-            <a className={navStyles.instagram} href='https://www.instagram.com/marcereads/?hl=en' target="_blank" rel='noreferrer'><FaInstagram /></a>
+            <a className={navStyles.instagram} href='https://www.instagram.com/marcereads/?hl=en' target="_blank" rel='noreferrer' alt="Author's Instagram profile" aria-label="Author's Instagram profile"><FaInstagram /></a>
         </nav>
     )
 }

@@ -62,6 +62,8 @@
 
 .article article {
     padding: 0 0 48px 0;
+    background-color: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(6px);
 }
 
 .article .image_wrapper {
@@ -113,6 +115,7 @@
         margin: 24px auto;
         max-width: 310px;
         height: 400px;
+        box-shadow: none;
     }
     .article article .image_wrapper::before {
         content: '';
@@ -122,16 +125,15 @@
         left: -50%;
         margin-left: -55px;
         width: 724px;
-        /* border: 1px solid red; */
         height: 400px;
-        background-color: rgba(255, 255, 255, 0.8);
-        backdrop-filter: blur(20px);
+        background-color: rgba(255, 255, 255, 0.3);
+        backdrop-filter: blur(6px);
         border-radius: 10px;
+        box-shadow: var(--mr-drop-shadow);
     }
     
     /* Targets next/image */
     .article article .image_wrapper span {
-        /* max-width: 310px; */
         height: 100%;
     }
   }

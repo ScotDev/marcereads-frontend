@@ -13,7 +13,7 @@ export default function browse({ width }) {
 
             <PostsNavigation />
             {width > 768 ? null : <Featured />}
-            <AllPosts width={width} />
+            <AllPosts width={width} showPagination />
             <About />
         </>
     )

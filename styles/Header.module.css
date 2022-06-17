@@ -82,8 +82,11 @@
         height: 350px;
         position: relative;
         box-shadow: var(--mr-drop-shadow);
-        outline: 4px solid var(--mr-pink);
-        outline-offset: 20px;
+        /* Unfortunately offsets are still squares on Safari.
+        Could use ::before to hack it together but I quite like the border style  */
+        /* outline: 4px solid var(--mr-pink);
+        outline-offset: 20px; */
+        border: 8px solid var(--mr-pink);
     }
     
     /* Targets next/image */
