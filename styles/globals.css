@@ -119,7 +119,6 @@ a svg {
     background-image: url("/bg_svgs_desktop.svg");
     background-size: 1300px;
     background-position: 57.5% 65%;
-    /* background-size: contain; */
     background-repeat: no-repeat;
   }
 
