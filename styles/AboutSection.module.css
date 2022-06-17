@@ -20,13 +20,16 @@
 }
 .about .image_wrapper{
     border-radius: 50%;
-    width: 200px;
-    height: 200px;
+    width: 208px;
+    height: 208px;
     position: relative;
     margin-top: 40px;
     box-shadow: var(--mr-drop-shadow);
-    outline: 4px solid var(--mr-pink);
-    outline-offset: 20px;
+    /* Unfortunately offsets are still squares on Safari.
+    Could use ::before to hack it together but I quite like the border style  */
+    /* outline: 4px solid var(--mr-pink);
+    outline-offset: 20px; */
+    border: 8px solid var(--mr-pink);
 }
 
 /* Targets next/image */
