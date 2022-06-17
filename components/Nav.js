@@ -55,7 +55,7 @@ export const Nav = () => {
                         <Link href="/about"><a>About</a></Link>
                     </li>
                     <li>
-                        <a href='https://www.instagram.com/marcereads/?hl=en' target="_blank" rel='noreferrer' alt="Author's Instagram profile"><FaInstagram /></a>
+                        <a href='https://www.instagram.com/marcereads/?hl=en' target="_blank" rel='noreferrer' alt="Author's Instagram profile" aria-label="Author's Instagram profile"><FaInstagram /></a>
                     </li>
                 </ul>
             </div>
