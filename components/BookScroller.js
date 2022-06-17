@@ -30,8 +30,8 @@ export default function BookScroller() {
             <h2 id={sectionStyles.tbr_title} className={sectionStyles.title}>To be read</h2>
             <div className={bookScrollerStyles.scroller_section} >
                 <div className={bookScrollerStyles.controls}>
-                    <button id="left-arrow"><HiArrowNarrowLeft /></button>
-                    <button id="right-arrow"><HiArrowNarrowRight /></button></div>
+                    <button id="left-arrow" alt="Scroll to left"><HiArrowNarrowLeft /></button>
+                    <button id="right-arrow" alt="Scroll to right"><HiArrowNarrowRight /></button></div>
                 <div id="scrollable" className={bookScrollerStyles.scroller}>
                     <div className={bookScrollerStyles.scroll_item}>
                         <Link href="/" target="_blank">

@@ -38,15 +38,15 @@
 
 .container ul li a.browse {
     font-weight: 700;
-    border-bottom: 3px solid #A8A8A8;
+    border-bottom: 3px solid #c2c2c2;
 }
 .container ul li a.reviews {
     font-weight: 700;
-    border-bottom: 3px solid #A8A8A8;
+    border-bottom: 3px solid #c2c2c2;
     color: var(--mr-pink-accent);
 }
 .container ul li a.guides {
     font-weight: 700;
-    border-bottom: 3px solid #A8A8A8;
+    border-bottom: 3px solid #c2c2c2;
     color: var(--mr-green-accent);
 }
