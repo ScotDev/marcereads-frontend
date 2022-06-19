@@ -43,7 +43,7 @@ export const Nav = () => {
                         <Link href="/"><a>Home</a></Link>
                     </li>
                     <li>
-                        <Link href="/browse"><a>Browse</a></Link>
+                        <Link href="/articles"><a>Browse</a></Link>
                     </li>
                     <li>
                         <Link href="/reviews"><a>Reviews</a></Link>
@@ -74,7 +74,7 @@ export const Nav = () => {
                         <Link href="/"><a>Home</a></Link>
                     </li>
                     <li>
-                        <Link href="/browse"><a>Browse</a></Link>
+                        <Link href="/articles"><a>Browse</a></Link>
                     </li>
                     <li>
                         <Link href="/reviews"><a>Reviews</a></Link>

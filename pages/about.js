@@ -9,7 +9,6 @@ const TestAuthorjpeg = "https://i.imgur.com/fW0P7Wm.jpg";
 const testImage = "https://i.imgur.com/7vJ98fU.jpg";
 
 export default function about({ data }) {
-    console.log(data.attributes.profile_image)
     return (<>
         <Head>
             <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -29,17 +28,12 @@ export default function about({ data }) {
             <article>
                 <ReactMarkdown>
                     {data.attributes.body}
-                    {/* <p> */}
-
-                    {/* <h3>Subtitle</h3> */}
 
                     {/* 
                 <div className={aboutStyles.image_wrapper}>
                     <Image src={testImage} objectFit="cover" alt="Relevant book for article" layout="fill" />
                 </div> */}
 
-
-                    {/* </p> */}
                 </ReactMarkdown>
             </article>
         </section>
@@ -54,9 +48,7 @@ export const getStaticProps = async () => {
         const CMS_ENDPOINT = process.env.CMS_ENDPOINT;
 
         const res = await fetch(`${CMS_ENDPOINT}/about?populate=*`)
-
         const data = await res.json();
-        // console.log(res)
 
         return {
             props: {
