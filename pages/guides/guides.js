@@ -1,7 +1,7 @@
 import PostsNavigation from '../../components/PostsNavigation';
 import AllPosts from '../../components/AllPosts'
 import About from '../../components/About'
-import headerStyles from '../styles/Header.module.css'
+import headerStyles from '../../styles/Header.module.css'
 
 export default function guides({ width }) {
     return (

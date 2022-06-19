@@ -15,14 +15,14 @@ export default function AllPosts({ width, showViewMore, showPagination, data }) 
 
     // console.log("allpost", data)
 
-    const MiniCards = data.map(item => {
+    const MiniCards = data.data.map(item => {
         return <MiniCard key={item.id} url={`/articles/${item.id}`} type={item.attributes.type} title={item.attributes.title} author={item.attributes.author} date={item.attributes.date} imgURL={item.attributes.main.data.attributes.formats.thumbnail.url} />
     })
 
     return (
         <section className={sectionStyles.section}>
             {/* Refactor when API available */}
-            {width > 768 ? <><CardGrid showViewMore={showViewMore} data={data} />
+            {width > 768 ? <><CardGrid showViewMore={showViewMore} data={data.data} />
                 {showPagination ? <div className={sectionStyles.pagination}>
                     <Link href="/"><a alt="Initial page of content" disabled aria-disabled><CgPushChevronLeft /></a></Link>
                     <Link href="/"><a alt="Previous page of content" disabled aria-disabled><CgChevronLeft /></a></Link>
