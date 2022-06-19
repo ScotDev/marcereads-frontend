@@ -21,7 +21,6 @@ export default function AllPosts({ width, showViewMore, showPagination, data }) 
 
     return (
         <section className={sectionStyles.section}>
-            {/* Refactor when API available */}
             {width > 768 ? <><CardGrid showViewMore={showViewMore} data={data.data} />
                 {showPagination ? <div className={sectionStyles.pagination}>
                     <Link href="/"><a alt="Initial page of content" disabled aria-disabled><CgPushChevronLeft /></a></Link>
