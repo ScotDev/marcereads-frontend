@@ -4,15 +4,16 @@ import AboutSectionStyles from '../styles/AboutSection.module.css';
 
 const TestAuthorjpeg = "https://i.imgur.com/fW0P7Wm.jpg";
 
-export default function About() {
+export default function About({ data }) {
+    // console.log("About component data:", data)
     return (
         <section className={sectionStyles.section}>
             <div className={AboutSectionStyles.about}>
                 <h2 className={sectionStyles.title}>About me</h2>
                 <div className={AboutSectionStyles.image_wrapper}>
-                    <Image src={TestAuthorjpeg} objectFit="cover" alt="Portait of site's author" layout="fill" ></Image>
+                    <Image src={data.data.attributes.profile_image.data.attributes.url} placeholder="blur" blurDataURL={data.data.attributes.profile_image.data.attributes.formats.thumbnail.url} objectFit="cover" alt="Portait of site's author" layout="fill" ></Image>
                 </div>
-                <p>Cursus habitant a netus et. Ante nunc nisl risus, porttitor pharetra tempor imperdiet eu mauris. Erat odio faucibus eget nulla non elementum etiam. Ornare diam, risus scelerisque sit donec eget. Eu, facilisis mauris pellentesque sit fermentum ipsum maecenas a sit.</p>
+                <p>{data.data.attributes.body}</p>
             </div>
         </section>
     )

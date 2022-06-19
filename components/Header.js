@@ -18,7 +18,7 @@ export default function Header() {
                 <h1>Hey! Welcome to the Marcereads blog!</h1>
                 <p>Augue dui leo enim nascetur. Egestas eget sit feugiat suspendisse tristique tempus nullam dui diam. Bibendum id sed sed eu odio enim tincidunt.</p>
                 <div className={headerStyles.btn_group}>
-                    <Button text="Browse posts" href="/browse" noNewTab type="primary"></Button>
+                    <Button text="Browse posts" href="/articles" noNewTab type="primary"></Button>
                     <Button text="@marcereads" href="https://www.instagram.com/marcereads/?hl=en" type="primary-outline" icon={<FaInstagram />}></Button>
                 </div>
             </div>

@@ -10,7 +10,8 @@ const testImage = "https://i.imgur.com/7vJ98fU.jpg";
 
 // Will map out list of items from API data when CMS is live.
 
-export default function BookScroller() {
+export default function BookScroller({ data }) {
+    // console.log("bookscroller", data.attributes.image.data)
 
     useEffect(() => {
         const scrollable = document.getElementById("scrollable");
@@ -24,6 +25,15 @@ export default function BookScroller() {
         });
     }, []);
 
+    const scrollItems = data.data.map(item => {
+        // console.log("bookscroller", item)
+        return (<div key={item.id} className={bookScrollerStyles.scroll_item}>
+            {/* <Link href={`/articles/${item.id}`} target="_blank"> */}
+            <Image src={item.attributes.image.data.attributes.url} placeholder="blur" blurDataURL={item.attributes.image.data.attributes.formats.thumbnail.url} layout="fill" objectFit="cover" alt="Preview image of book to be read" />
+            {/* </Link> */}
+        </div>)
+    })
+
 
     return (
         <section className={sectionStyles.section}>
@@ -33,8 +43,9 @@ export default function BookScroller() {
                     <button id="left-arrow" aria-label="Scroll to left"><HiArrowNarrowLeft /></button>
                     <button id="right-arrow" aria-label="Scroll to right"><HiArrowNarrowRight /></button></div>
                 <div id="scrollable" className={bookScrollerStyles.scroller}>
-                    <div className={bookScrollerStyles.scroll_item}>
-                        <Link href="/" target="_blank">
+
+                    {scrollItems}
+                    {/* <Link href="/" target="_blank">
                             <Image src={testImage} layout="fill" objectFit="cover" alt="Preview image of book to be read" />
                         </Link>
                     </div>
@@ -66,9 +77,9 @@ export default function BookScroller() {
                     <div className={bookScrollerStyles.scroll_item}>
                         <Link href="/" target="_blank">
                             <Image src={testImage} layout="fill" objectFit="cover" alt="Preview image of book to be read" />
-                        </Link>
-                    </div>
+                        </Link> */}
                 </div>
+
             </div>
         </section>
     )

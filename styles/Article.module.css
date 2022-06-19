@@ -37,6 +37,9 @@
     text-transform: capitalize;
     font-weight: 600;
 }
+.article header h5[type="guide"] {
+    background-color: var(--mr-green);
+}
 
 .article header h6 {
     font-size: 16px;
