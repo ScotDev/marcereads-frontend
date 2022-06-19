@@ -41,11 +41,13 @@ export const getStaticPaths = async () => {
 
     const res = await fetch(`${CMS_ENDPOINT}/articles?populate=*`)
     const data = await res.json();
+    // console.log("static paths", data)
 
 
     const paths = data.data.map(item => {
         return {
-            params: { id: item.id.toString() }
+            params: { id: item.id.toString() },
+
         }
     })
 

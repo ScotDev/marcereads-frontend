@@ -11,13 +11,12 @@ const boyPartsImg = "https://i.imgur.com/LEjUl46.jpg";
 
 import { CgChevronLeft, CgChevronRight, CgPushChevronLeft, CgPushChevronRight } from 'react-icons/cg';
 
-// Will map out list of MiniCards from API data. Filter based on props (type=all/review/guide)
-
 export default function AllPosts({ width, showViewMore, showPagination, data }) {
 
+    // console.log("allpost", data)
 
-    const MiniCards = data.data.map(item => {
-        return <MiniCard key={item.id} type={item.attributes.type} title={item.attributes.title} author={item.attributes.author} date={item.attributes.date} imgURL={item.attributes.main.data.attributes.formats.thumbnail.url} />
+    const MiniCards = data.map(item => {
+        return <MiniCard key={item.id} url={`/articles/${item.id}`} type={item.attributes.type} title={item.attributes.title} author={item.attributes.author} date={item.attributes.date} imgURL={item.attributes.main.data.attributes.formats.thumbnail.url} />
     })
 
     return (

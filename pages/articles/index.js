@@ -35,13 +35,20 @@ export default function browse({ data, dataAbout, width }) {
 // }
 
 
-export async function getStaticProps() {
-    const CMS_ENDPOINT = process.env.CMS_ENDPOINT;
+export const getStaticProps = async () => {
+    try {
+        const CMS_ENDPOINT = process.env.CMS_ENDPOINT;
 
-    const res = await fetch(`${CMS_ENDPOINT}/articles?populate=*`)
-    const resAbout = await fetch(`${CMS_ENDPOINT}/about-section?populate=*`)
-    const data = await res.json();
-    const dataAbout = await resAbout.json();
+        const res = await fetch(`${CMS_ENDPOINT}/articles?populate=*`)
+        const resAbout = await fetch(`${CMS_ENDPOINT}/about-section?populate=*`)
+        const data = await res.json();
+        const dataAbout = await resAbout.json();
 
-    return { props: { data: data, dataAbout: dataAbout.data } }
+        return { props: { data: data.data, dataAbout: dataAbout } }
+    } catch (error) {
+        return {
+            props: {}
+        }
+    }
+
 }

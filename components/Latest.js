@@ -8,18 +8,18 @@ const gettingStartedImg = "https://i.imgur.com/zzyHbus.jpg";
 
 const boyPartsImg = "https://i.imgur.com/LEjUl46.jpg";
 
-export default function Latest() {
+export default function Latest({ data }) {
+    // console.log("MiniCard data", data)
+
+    const MiniCards = data.map(item => {
+        return <MiniCard key={item.id} url={`/articles/${item.id}`} type={item.attributes.type} title={item.attributes.title} author={item.attributes.author} date={item.attributes.date} imgURL={item.attributes.main.data.attributes.formats.thumbnail.url} />
+    })
+
     return (
         <section className={sectionStyles.section}>
             <h2 className={sectionStyles.title}>Latest</h2>
-            <MiniCard type="review" title="The Seven Husbands of Evelyn Hugo" author="Taylor Jenkins Reid" date="12th April 2022" />
-            <MiniCard type="review" title="The Year of Magical Thinking" author="Joan Didion" date="12th April 2022" imgURL={magicalYearImg} />
-            <MiniCard type="guide" title="How to get started on Bookstagram" author="marcereads" date="12th April 2022" imgURL={gettingStartedImg} />
-            <MiniCard type="review" title="Boy Parts" author="Eliza Clark" date="12th April 2022" imgURL={boyPartsImg} />
-            <MiniCard type="review" title="The Year of Magical Thinking" author="Joan Didion" date="12th April 2022" imgURL={magicalYearImg} />
-            <MiniCard type="guide" title="How to get started on Bookstagram" author="marcereads" date="12th April 2022" imgURL={gettingStartedImg} />
-
-            <Link href="/browse"><a>View more <HiArrowNarrowRight /></a></Link>
+            {MiniCards}
+            <Link href="/articles"><a>View more <HiArrowNarrowRight /></a></Link>
         </section>
     )
 }

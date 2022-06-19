@@ -30,6 +30,18 @@
 /* hidden by default */
 .card #featured_tag {
     display: none;
+    position: absolute;
+    z-index: 99;
+    background-color: var(--mr-green-accent);
+    color: #fff;
+    padding: 2px 24px;
+    border-radius: 50px;
+    left: 16px;
+    top: 16px;
+}
+
+.card[type="featured"] #featured_tag {
+    display: block;
 }
 
 .card span {
