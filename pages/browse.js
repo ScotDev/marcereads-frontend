@@ -19,20 +19,20 @@ export default function browse({ post, width }) {
     )
 }
 
-export const getStaticPaths = async () => {
-    const CMS_ENDPOINT = process.env.CMS_ENDPOINT;
+// export const getStaticPaths = async () => {
+//     const CMS_ENDPOINT = process.env.CMS_ENDPOINT;
 
-    const res = await fetch(`${CMS_ENDPOINT}/articles?populate=*`)
+//     const res = await fetch(`${CMS_ENDPOINT}/articles?populate=*`)
 
-    const data = await res.json();
+//     const data = await res.json();
 
-    const paths = data.map((item) => ({
-        params: { id: item.id },
-    }))
+//     const paths = data.map((item) => ({
+//         params: { id: item.id },
+//     }))
 
-    return { paths, fallback: false }
+//     return { paths, fallback: false }
 
-}
+// }
 
 
 // export async function getStaticProps({ params }) {
