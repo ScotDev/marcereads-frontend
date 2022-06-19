@@ -33,7 +33,6 @@ export default function about({ data }) {
                 <div className={aboutStyles.image_wrapper}>
                     <Image src={testImage} objectFit="cover" alt="Relevant book for article" layout="fill" />
                 </div> */}
-
                 </ReactMarkdown>
             </article>
         </section>
