@@ -1,3 +1,4 @@
+import Head from 'next/head';
 const qs = require('qs');
 
 import Featured from '../../components/Featured';
@@ -9,6 +10,12 @@ import headerStyles from '../../styles/Header.module.css'
 export default function browse({ data, dataFeatured, dataAbout, width }) {
     return (
         <>
+            <Head>
+                <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+                <title>Browse</title>
+                <meta name="description" content="Marcereads blog" />
+                <link rel="icon" href="/favicon.ico" />
+            </Head>
             <header className={headerStyles.header}>
                 <h1 className={headerStyles.page_title}>Posts</h1>
             </header>

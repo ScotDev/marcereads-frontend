@@ -15,7 +15,7 @@ export default function AllPosts({ width, showViewMore, showPagination, data }) 
 
     // console.log("allpost", data)
 
-    const MiniCards = data.data.map(item => {
+    const miniCards = data.data.map(item => {
         return <MiniCard key={item.id} url={`/articles/${item.id}`} type={item.attributes.type} title={item.attributes.title} author={item.attributes.author} date={item.attributes.date} imgURL={item.attributes.main.data.attributes.formats.thumbnail.url} />
     })
 
@@ -33,7 +33,7 @@ export default function AllPosts({ width, showViewMore, showPagination, data }) 
             </>
                 :
                 <div>
-                    {MiniCards}
+                    {miniCards}
                     <div className={sectionStyles.pagination}>
                         {/* disabled state does not stop navigation */}
                         <Link href="/" ><a alt="Initial page of content" disabled aria-disabled><CgPushChevronLeft /></a></Link>

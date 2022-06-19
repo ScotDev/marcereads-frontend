@@ -10,7 +10,7 @@ import Latest from '../components/Latest';
 import About from '../components/About';
 import BookScroller from '../components/BookScroller';
 
-export default function Home({ width, data, dataAbout, dataFeatured, dataLatest }) {
+export default function Home({ width, data, dataAbout, dataFeatured, dataLatest, dataTBR }) {
 
 
   return (
@@ -26,7 +26,7 @@ export default function Home({ width, data, dataAbout, dataFeatured, dataLatest 
         <Header />
         {width > 768 ? <AllPosts width={width} data={data} showViewMore /> : <Featured data={dataFeatured} />}
 
-        <BookScroller />
+        <BookScroller data={dataTBR} />
         {width > 768 ? null : <Latest data={dataLatest} />}
         {width > 768 ? null : <About data={dataAbout} />}
       </div>
@@ -35,6 +35,8 @@ export default function Home({ width, data, dataAbout, dataFeatured, dataLatest 
 }
 
 export const getServerSideProps = async () => {
+
+  // reusable function/hook should be created for api calls
 
   try {
 
@@ -64,6 +66,7 @@ export const getServerSideProps = async () => {
     const res = await fetch(`${CMS_ENDPOINT}/articles?populate=*`)
     const resFeatured = await fetch(`${CMS_ENDPOINT}/articles?${featuredQuery}`)
     const resLatest = await fetch(`${CMS_ENDPOINT}/articles?${latestQuery}`)
+    const resTBR = await fetch(`${CMS_ENDPOINT}/tbr?populate=*`)
     const resAbout = await fetch(`${CMS_ENDPOINT}/about-section?populate=*`)
 
     const parsedResLatest = await resLatest.json()
@@ -72,8 +75,9 @@ export const getServerSideProps = async () => {
       props: {
         data: await res.json(),
         dataFeatured: await resFeatured.json(),
+        dataLatest: await parsedResLatest.data,
+        dataTBR: await resTBR.json(),
         dataAbout: await resAbout.json(),
-        dataLatest: await parsedResLatest.data
       }
     }
   } catch (error) {
