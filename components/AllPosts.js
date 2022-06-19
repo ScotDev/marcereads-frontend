@@ -13,12 +13,17 @@ import { CgChevronLeft, CgChevronRight, CgPushChevronLeft, CgPushChevronRight } 
 
 // Will map out list of MiniCards from API data. Filter based on props (type=all/review/guide)
 
-export default function AllPosts({ width, showViewMore, showPagination }) {
-    return (
+export default function AllPosts({ width, showViewMore, showPagination, data }) {
 
+
+    const MiniCards = data.data.map(item => {
+        return <MiniCard key={item.id} type={item.attributes.type} title={item.attributes.title} author={item.attributes.author} date={item.attributes.date} imgURL={item.attributes.main.data.attributes.formats.thumbnail.url} />
+    })
+
+    return (
         <section className={sectionStyles.section}>
             {/* Refactor when API available */}
-            {width > 768 ? <><CardGrid showViewMore={showViewMore} />
+            {width > 768 ? <><CardGrid showViewMore={showViewMore} data={data} />
                 {showPagination ? <div className={sectionStyles.pagination}>
                     <Link href="/"><a alt="Initial page of content" disabled aria-disabled><CgPushChevronLeft /></a></Link>
                     <Link href="/"><a alt="Previous page of content" disabled aria-disabled><CgChevronLeft /></a></Link>
@@ -30,12 +35,7 @@ export default function AllPosts({ width, showViewMore, showPagination }) {
             </>
                 :
                 <div>
-                    <MiniCard type="review" title="The Seven Husbands of Evelyn Hugo" author="Taylor Jenkins Reid" date="12th April 2022" />
-                    <MiniCard type="review" title="The Year of Magical Thinking" author="Joan Didion" date="12th April 2022" imgURL={magicalYearImg} />
-                    <MiniCard type="guide" title="How to get started on Bookstagram" author="marcereads" date="12th April 2022" imgURL={gettingStartedImg} />
-                    <MiniCard type="review" title="Boy Parts" author="Eliza Clark" date="12th April 2022" imgURL={boyPartsImg} />
-                    <MiniCard type="review" title="The Year of Magical Thinking" author="Joan Didion" date="12th April 2022" imgURL={magicalYearImg} />
-                    <MiniCard type="guide" title="How to get started on Bookstagram" author="marcereads" date="12th April 2022" imgURL={gettingStartedImg} />
+                    {MiniCards}
                     <div className={sectionStyles.pagination}>
                         <Link href="/"><a alt="Initial page of content" disabled aria-disabled><CgPushChevronLeft /></a></Link>
                         <Link href="/"><a alt="Previous page of content" disabled aria-disabled><CgChevronLeft /></a></Link>

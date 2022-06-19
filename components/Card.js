@@ -5,22 +5,23 @@ import cardStyles from '../styles/Card.module.css'
 
 const testImage = "https://i.imgur.com/7vJ98fU.jpg";
 
-export default function Card({ featured, url }) {
+export default function Card({ featured, url, type, title, author, date, imgURL }) {
+    console.log("card data", imgURL)
     return (
         <Link href={url}>
             <div className={cardStyles.card} type={featured ? "featured" : null}>
                 <div>
-                    <h5 id={cardStyles.featured_tag}>Featured</h5>
-                    <Image src={testImage} layout="fill" objectFit="cover" alt="Book"></Image>
+                    {featured ? <h5 id={cardStyles.featured_tag}>Featured</h5> : null}
+                    <Image src={imgURL.url} placeholder="blur" blurDataURL={imgURL.formats.thumbnail.url} layout="fill" objectFit="cover" alt="Book"></Image>
                 </div>
                 <div className={cardStyles.card_bottom}>
                     <div className={cardStyles.top_row}>
-                        <h5>Review</h5>
-                        <p>4th May 2022</p>
+                        <h5 type={type}>{type}</h5>
+                        <p>{date}</p>
                     </div>
                     <div className={cardStyles.bottom_rows}>
-                        <h3>The Seven Husbands of Evelyn Hugo</h3>
-                        <h4>Taylor Jenkins Reid</h4>
+                        <h3>{title}</h3>
+                        <h4>{author}</h4>
                     </div>
                 </div>
             </div>
