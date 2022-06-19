@@ -4,7 +4,7 @@ import miniCardStyles from '../styles/MiniCard.module.css'
 
 const testImage = "https://i.imgur.com/7vJ98fU.jpg";
 
-export default function MiniCard({ url, type, title, author, date, imgURL }) {
+export default function MiniCard({ url, type, title, author, date, imgURL, thumbnailURL }) {
     // console.log(url)
 
     // refactor inline with card
@@ -24,7 +24,7 @@ export default function MiniCard({ url, type, title, author, date, imgURL }) {
         <Link href={url}>
             <div className={miniCardStyles.card}>
 
-                <Image src={imgURL} placeholder="blur" blurDataURL={imgURL} layout="fixed" alt="Book" width={120} height={150}></Image>
+                <Image src={imgURL} placeholder="blur" blurDataURL={thumbnailURL} layout="fixed" alt="Book" width={120} height={150}></Image>
                 <div className={miniCardStyles.text_content}>
                     {/* refactor h5 to match main Card component */}
                     <h5 className={h5ClassName}>{type}</h5>

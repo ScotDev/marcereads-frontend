@@ -66,7 +66,7 @@ export const getServerSideProps = async () => {
     const res = await fetch(`${CMS_ENDPOINT}/articles?populate=*`)
     const resFeatured = await fetch(`${CMS_ENDPOINT}/articles?${featuredQuery}`)
     const resLatest = await fetch(`${CMS_ENDPOINT}/articles?${latestQuery}`)
-    const resTBR = await fetch(`${CMS_ENDPOINT}/tbr?populate=*`)
+    const resTBR = await fetch(`${CMS_ENDPOINT}/tbrs?populate=*`)
     const resAbout = await fetch(`${CMS_ENDPOINT}/about-section?populate=*`)
 
     const parsedResLatest = await resLatest.json()
