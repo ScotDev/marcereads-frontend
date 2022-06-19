@@ -71,8 +71,8 @@ export const getServerSideProps = async () => {
     return {
       props: {
         data: await res.json(),
-        dataAbout: await resAbout.json(),
         dataFeatured: await resFeatured.json(),
+        dataAbout: await resAbout.json(),
         dataLatest: await parsedResLatest.data
       }
     }

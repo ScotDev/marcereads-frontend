@@ -1,10 +1,12 @@
+const qs = require('qs');
+
 import Featured from '../../components/Featured';
 import PostsNavigation from '../../components/PostsNavigation';
 import AllPosts from '../../components/AllPosts'
 import About from '../../components/About'
 import headerStyles from '../../styles/Header.module.css'
 
-export default function browse({ data, dataAbout, width }) {
+export default function browse({ data, dataFeatured, dataAbout, width }) {
     return (
         <>
             <header className={headerStyles.header}>
@@ -12,7 +14,7 @@ export default function browse({ data, dataAbout, width }) {
             </header>
 
             <PostsNavigation />
-            {width > 768 ? null : <Featured />}
+            {width > 768 ? null : <Featured data={dataFeatured} />}
             <AllPosts width={width} data={data} showPagination />
             <About data={dataAbout} />
         </>
@@ -37,14 +39,33 @@ export default function browse({ data, dataAbout, width }) {
 
 export const getStaticProps = async () => {
     try {
+
+        const featuredQuery = qs.stringify({
+            populate: '*',
+            filters: {
+                isFeatured: {
+                    $eq: true
+                }
+            }
+        }, {
+            encodeValuesOnly: true,
+        });
+
         const CMS_ENDPOINT = process.env.CMS_ENDPOINT;
 
         const res = await fetch(`${CMS_ENDPOINT}/articles?populate=*`)
+        const resFeatured = await fetch(`${CMS_ENDPOINT}/articles?${featuredQuery}`)
         const resAbout = await fetch(`${CMS_ENDPOINT}/about-section?populate=*`)
-        const data = await res.json();
-        const dataAbout = await resAbout.json();
+        // const data = await res.json();
+        // const dataAbout = await resAbout.json();
 
-        return { props: { data: data.data, dataAbout: dataAbout } }
+        return {
+            props: {
+                data: await res.json(),
+                dataFeatured: await resFeatured.json(),
+                dataAbout: await resAbout.json()
+            }
+        }
     } catch (error) {
         return {
             props: {}

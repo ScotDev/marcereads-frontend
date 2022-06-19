@@ -36,11 +36,12 @@ export default function AllPosts({ width, showViewMore, showPagination, data }) 
                 <div>
                     {MiniCards}
                     <div className={sectionStyles.pagination}>
-                        <Link href="/"><a alt="Initial page of content" disabled aria-disabled><CgPushChevronLeft /></a></Link>
+                        {/* disabled state does not stop navigation */}
+                        <Link href="/" ><a alt="Initial page of content" disabled aria-disabled><CgPushChevronLeft /></a></Link>
                         <Link href="/"><a alt="Previous page of content" disabled aria-disabled><CgChevronLeft /></a></Link>
                         <p id={sectionStyles.page_number}>1</p>
-                        <Link href="/"><a alt="Next page of content"><CgChevronRight /></a></Link>
-                        <Link href="/"><a alt="Final page of content"><CgPushChevronRight /></a></Link>
+                        <Link href="/"><a alt="Next page of content" disabled aria-disabled><CgChevronRight /></a></Link>
+                        <Link href="/"><a alt="Final page of content" disabled aria-disabled><CgPushChevronRight /></a></Link>
                     </div>
                 </div>}
         </section>
