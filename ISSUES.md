@@ -13,3 +13,5 @@
 - make sure Featured card is first in order
 - higher res profile pic
 - make header desktop text and header image come from CMS
+  https://nextjs.org/docs/going-to-production
+  https://nextjs.org/docs/advanced-features/error-handling
