@@ -6,7 +6,7 @@ import cardStyles from '../styles/Card.module.css'
 const testImage = "https://i.imgur.com/7vJ98fU.jpg";
 
 export default function Card({ featured, url, type, title, author, date, imgURL, thumbnailURL }) {
-    console.log("card data", featured)
+    // console.log("card data", featured)
     return (
         <Link href={url}>
             <div className={cardStyles.card} type={featured ? "featured" : null}>

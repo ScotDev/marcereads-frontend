@@ -3,7 +3,6 @@ import sectionStyles from '../styles/Section.module.css';
 
 export default function Featured({ data }) {
 
-    console.log(data)
     const parsedData = data.data[0]
     // console.log("featured", parsedData)
     return (

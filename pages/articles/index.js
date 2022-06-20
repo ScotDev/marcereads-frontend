@@ -63,8 +63,6 @@ export const getStaticProps = async () => {
         const res = await fetch(`${CMS_ENDPOINT}/articles?populate=*`)
         const resFeatured = await fetch(`${CMS_ENDPOINT}/articles?${featuredQuery}`)
         const resAbout = await fetch(`${CMS_ENDPOINT}/about-section?populate=*`)
-        // const data = await res.json();
-        // const dataAbout = await resAbout.json();
 
         return {
             props: {

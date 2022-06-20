@@ -8,3 +8,5 @@
 - update README to describe project i.e. mini case study
 - react-markdown is difficult to use with next/image. Easier to just styling img element to match existing next/image styles
 - add analytics
+- clear any unused local assets and imgur references
+- add ratings to reviews

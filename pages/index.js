@@ -34,7 +34,7 @@ export default function Home({ width, data, dataAbout, dataFeatured, dataLatest,
   )
 }
 
-export const getServerSideProps = async () => {
+export const getStaticProps = async () => {
 
   // reusable function/hook should be created for api calls
 
@@ -81,8 +81,10 @@ export const getServerSideProps = async () => {
       }
     }
   } catch (error) {
+    console.error(error)
     return {
-      props: {}
+      props: {},
+      revalidate: 1
     }
   }
 
