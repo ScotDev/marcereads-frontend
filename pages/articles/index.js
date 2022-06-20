@@ -1,6 +1,8 @@
 import Head from 'next/head';
 const qs = require('qs');
 
+import fetchData from "../../helpers/fetchData.js";
+
 import Featured from '../../components/Featured';
 import PostsNavigation from '../../components/PostsNavigation';
 import AllPosts from '../../components/AllPosts'
@@ -28,22 +30,6 @@ export default function browse({ data, dataFeatured, dataAbout, width }) {
     )
 }
 
-
-// export const getStaticPaths = async () => {
-//     const CMS_ENDPOINT = process.env.CMS_ENDPOINT;
-
-//     const res = await fetch(`${CMS_ENDPOINT}/articles?populate=*`)
-//     const data = await res.json();
-//     console.log(data.data)
-//     const paths = data.data.map((item) => ({
-//         params: { id: item.id },
-//     }))
-
-//     return { paths, fallback: false }
-
-// }
-
-
 export const getStaticProps = async () => {
     try {
 
@@ -60,15 +46,20 @@ export const getStaticProps = async () => {
 
         const CMS_ENDPOINT = process.env.CMS_ENDPOINT;
 
-        const res = await fetch(`${CMS_ENDPOINT}/articles?populate=*`)
+        // const res = await fetch(`${CMS_ENDPOINT}/articles?populate=*`)
         const resFeatured = await fetch(`${CMS_ENDPOINT}/articles?${featuredQuery}`)
-        const resAbout = await fetch(`${CMS_ENDPOINT}/about-section?populate=*`)
+        // const resAbout = await fetch(`${CMS_ENDPOINT}/about-section?populate=*`)
+
+        const { loading: loadingAbout, data: dataAbout, error: errorAbout } = await fetchData("about-section", true)
+        // Add query handling to fetchdata
+        // const { loading: loadingFeatured, data: dataFeatured, error: errorFeatured } = await fetchData("about-section", true)
+        const { loading: loadingArticles, data: dataArticles, error: errorArticles } = await fetchData("articles", true)
 
         return {
             props: {
-                data: await res.json(),
+                data: await dataArticles,
                 dataFeatured: await resFeatured.json(),
-                dataAbout: await resAbout.json()
+                dataAbout: await dataAbout
             }
         }
     } catch (error) {

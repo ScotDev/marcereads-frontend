@@ -62,6 +62,7 @@ export const getStaticProps = async () => {
       });
 
 
+    // Change this all to use fetchData
     const CMS_ENDPOINT = process.env.CMS_ENDPOINT;
     const res = await fetch(`${CMS_ENDPOINT}/articles?populate=*`)
     const resFeatured = await fetch(`${CMS_ENDPOINT}/articles?${featuredQuery}`)

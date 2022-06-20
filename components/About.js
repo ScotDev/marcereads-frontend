@@ -5,7 +5,7 @@ import AboutSectionStyles from '../styles/AboutSection.module.css';
 const TestAuthorjpeg = "https://i.imgur.com/fW0P7Wm.jpg";
 
 export default function About({ data }) {
-    // console.log("About component data:", data)
+    console.log("About component data:", data)
     return (
         <section className={sectionStyles.section}>
             <div className={AboutSectionStyles.about}>

@@ -10,30 +10,37 @@ import miniCardStyles from '../../styles/MiniCard.module.css'
 
 export default function about({ data }) {
 
-
     const type = data.attributes.type;
     const length = "4";
 
-    return (<div className={articleStyles.article}>
-        <header className={articleStyles.header}>
-            <h1 className={articleStyles.title}>{data.attributes.title}</h1>
-            <h2 className={articleStyles.author}>{data.attributes.author}</h2>
-            <div className={articleStyles.top_row}>
-                <h5 type={type}>{type}</h5>
-            </div>
-            <div className={articleStyles.bottom_row}><h6 className={articleStyles.length}>{length + " min"}</h6>
-                <h4 className={articleStyles.date}>{data.attributes.date}</h4></div>
+    return (<>
+        <Head>
+            <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+            <title>{data.attributes.title ?? "Article"}</title>
+            <meta name="description" content={data.attributes.title ?? "Marcereads Blog"} />
+            <link rel="icon" href="/favicon.ico" />
+        </Head>
+        <div className={articleStyles.article}>
+            <header className={articleStyles.header}>
+                <h1 className={articleStyles.title}>{data.attributes.title}</h1>
+                <h2 className={articleStyles.author}>{data.attributes.author}</h2>
+                <div className={articleStyles.top_row}>
+                    <h5 type={type}>{type}</h5>
+                </div>
+                <div className={articleStyles.bottom_row}><h6 className={articleStyles.length}>{length + " min"}</h6>
+                    <h4 className={articleStyles.date}>{data.attributes.date}</h4></div>
 
-        </header>
-        <article>
-            <div className={articleStyles.image_wrapper}>
-                <Image src={data.attributes.main.data.attributes.url} placeholder="blur" blurDataURL={data.attributes.main.data.attributes.formats.thumbnail.url} objectFit="cover" alt="Relevant book for article" layout="fill" />
-            </div>
-            <ReactMarkdown>
-                {data.attributes.body}
-            </ReactMarkdown>
-        </article>
-    </div>
+            </header>
+            <article>
+                <div className={articleStyles.image_wrapper}>
+                    <Image src={data.attributes.main.data.attributes.url} placeholder="blur" blurDataURL={data.attributes.main.data.attributes.formats.thumbnail.url} objectFit="cover" alt="Relevant book for article" layout="fill" />
+                </div>
+                <ReactMarkdown>
+                    {data.attributes.body}
+                </ReactMarkdown>
+            </article>
+        </div>
+    </>
     )
 }
 
@@ -45,6 +52,7 @@ export const getStaticPaths = async () => {
     const data = await res.json();
 
     const paths = data.data.map(item => {
+        // console.log(item.attributes.slug)
         return {
             params: { id: item.id.toString() },
 

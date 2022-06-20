@@ -10,8 +10,11 @@
 - add analytics
 - clear any unused local assets and imgur references
 - add ratings to reviews
+- format date
 - make sure Featured card is first in order
 - higher res profile pic
 - make header desktop text and header image come from CMS
+- add logic to read time calc
   https://nextjs.org/docs/going-to-production
   https://nextjs.org/docs/advanced-features/error-handling
+- floramte-next has @hooks etc for imports, figure that out

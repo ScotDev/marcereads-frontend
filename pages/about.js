@@ -5,8 +5,10 @@ import ReactMarkdown from "react-markdown";
 import headerStyles from '../styles/Header.module.css'
 import aboutStyles from '../styles/About.module.css'
 
-const TestAuthorjpeg = "https://i.imgur.com/fW0P7Wm.jpg";
-const testImage = "https://i.imgur.com/7vJ98fU.jpg";
+import fetchData from "../helpers/fetchData.js";
+
+// const TestAuthorjpeg = "https://i.imgur.com/fW0P7Wm.jpg";
+// const testImage = "https://i.imgur.com/7vJ98fU.jpg";
 
 export default function about({ data }) {
     return (<>
@@ -44,14 +46,15 @@ export default function about({ data }) {
 export const getStaticProps = async () => {
 
     try {
-        const CMS_ENDPOINT = process.env.CMS_ENDPOINT;
 
-        const res = await fetch(`${CMS_ENDPOINT}/about?populate=*`)
-        const data = await res.json();
+        const { loading, data, error } = await fetchData("about", true)
+
+        // const res = await fetch(`${CMS_ENDPOINT}/about?populate=*`)
+        // const data = await res.json();
 
         return {
             props: {
-                data: data.data
+                data: data
             }
         }
     } catch (error) {
