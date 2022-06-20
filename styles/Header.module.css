@@ -81,7 +81,7 @@
         width: 350px;
         height: 350px;
         position: relative;
-        box-shadow: var(--mr-drop-shadow);
+        box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
         /* Unfortunately offsets are still squares on Safari.
         Could use ::before to hack it together but I quite like the border style  */
         /* outline: 4px solid var(--mr-pink);

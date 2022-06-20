@@ -10,3 +10,6 @@
 - add analytics
 - clear any unused local assets and imgur references
 - add ratings to reviews
+- make sure Featured card is first in order
+- higher res profile pic
+- make header desktop text and header image come from CMS

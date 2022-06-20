@@ -1,3 +1,4 @@
+import Head from 'next/head';
 import Image from "next/image";
 import ReactMarkdown from "react-markdown";
 
@@ -8,6 +9,7 @@ import miniCardStyles from '../../styles/MiniCard.module.css'
 // use :empty to handle empty tags filled by cms
 
 export default function about({ data }) {
+
 
     const type = data.attributes.type;
     const length = "4";

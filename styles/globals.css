@@ -118,7 +118,8 @@ a svg {
     z-index: -99;
     background-image: url("/bg_svgs_desktop.svg");
     background-size: 1300px;
-    background-position: 57.5% 65%;
+    /* background-position: 57.5% 65%; */
+    background-position: 57.5% 40%;
     background-repeat: no-repeat;
   }
 
