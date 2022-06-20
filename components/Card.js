@@ -5,11 +5,11 @@ import cardStyles from '../styles/Card.module.css'
 
 const testImage = "https://i.imgur.com/7vJ98fU.jpg";
 
-export default function Card({ featured, url, type, title, author, date, imgURL, thumbnailURL }) {
-    console.log("card data", featured)
+export default function Card({ featured, priority, url, type, title, author, date, imgURL, thumbnailURL }) {
+    // console.log("card data", featured)
     return (
         <Link href={url}>
-            <div className={cardStyles.card} type={featured ? "featured" : null}>
+            <div className={cardStyles.card} priority={priority ? true : null} type={featured ? "featured" : null}>
                 <div>
                     {featured ? <h5 id={cardStyles.featured_tag}>Featured</h5> : null}
                     <Image

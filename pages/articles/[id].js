@@ -1,3 +1,4 @@
+import Head from 'next/head';
 import Image from "next/image";
 import ReactMarkdown from "react-markdown";
 
@@ -8,6 +9,7 @@ import miniCardStyles from '../../styles/MiniCard.module.css'
 // use :empty to handle empty tags filled by cms
 
 export default function about({ data }) {
+
 
     const type = data.attributes.type;
     const length = "4";
@@ -41,8 +43,6 @@ export const getStaticPaths = async () => {
 
     const res = await fetch(`${CMS_ENDPOINT}/articles?populate=*`)
     const data = await res.json();
-    // console.log("static paths", data)
-
 
     const paths = data.data.map(item => {
         return {
