@@ -1,7 +1,7 @@
 import Head from 'next/head';
 const qs = require('qs');
 
-import fetchData from "../../helpers/fetchData.js";
+import fetchData from "../../utils/fetchData.js";
 
 import Featured from '../../components/Featured';
 import PostsNavigation from '../../components/PostsNavigation';
@@ -46,9 +46,7 @@ export const getStaticProps = async () => {
 
         const CMS_ENDPOINT = process.env.CMS_ENDPOINT;
 
-        // const res = await fetch(`${CMS_ENDPOINT}/articles?populate=*`)
         const resFeatured = await fetch(`${CMS_ENDPOINT}/articles?${featuredQuery}`)
-        // const resAbout = await fetch(`${CMS_ENDPOINT}/about-section?populate=*`)
 
         const { loading: loadingAbout, data: dataAbout, error: errorAbout } = await fetchData("about-section", true)
         // Add query handling to fetchdata

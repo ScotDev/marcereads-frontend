@@ -2,6 +2,8 @@ import Head from 'next/head';
 
 const qs = require('qs');
 
+import fetchData from '../utils/fetchData';
+
 import homeStyles from '../styles/Home.module.css';
 import Header from '../components/Header';
 import Featured from '../components/Featured';
@@ -62,23 +64,27 @@ export const getStaticProps = async () => {
       });
 
 
-    // Change this all to use fetchData
+
+    const { loading: loadingArticles, data: dataArticles, error: errorArticles } = await fetchData("articles", true)
+    const { loading: loadingAbout, data: dataAbout, error: errorAbout } = await fetchData("about-section", true);
+    const { loading: loadingTBR, data: dataTBR, error: errorTBR } = await fetchData("tbrs", true);
+
     const CMS_ENDPOINT = process.env.CMS_ENDPOINT;
-    const res = await fetch(`${CMS_ENDPOINT}/articles?populate=*`)
+    // const res = await fetch(`${CMS_ENDPOINT}/articles?populate=*`)
     const resFeatured = await fetch(`${CMS_ENDPOINT}/articles?${featuredQuery}`)
     const resLatest = await fetch(`${CMS_ENDPOINT}/articles?${latestQuery}`)
-    const resTBR = await fetch(`${CMS_ENDPOINT}/tbrs?populate=*`)
-    const resAbout = await fetch(`${CMS_ENDPOINT}/about-section?populate=*`)
+    // const resTBR = await fetch(`${CMS_ENDPOINT}/tbrs?populate=*`)
+    // const resAbout = await fetch(`${CMS_ENDPOINT}/about-section?populate=*`)
 
     const parsedResLatest = await resLatest.json()
 
     return {
       props: {
-        data: await res.json(),
+        data: await dataArticles,
         dataFeatured: await resFeatured.json(),
         dataLatest: await parsedResLatest.data,
-        dataTBR: await resTBR.json(),
-        dataAbout: await resAbout.json(),
+        dataTBR: await dataTBR,
+        dataAbout: await dataAbout,
       }
     }
   } catch (error) {
