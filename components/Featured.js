@@ -3,8 +3,8 @@ import sectionStyles from '../styles/Section.module.css';
 
 export default function Featured({ data }) {
 
-    const parsedData = data.data[0]
-    console.log("featured", parsedData)
+    const parsedData = data[0]
+    // console.log("featured", data[0])
     return (
         <section className={sectionStyles.section}>
             <h2 className={sectionStyles.title}>Featured</h2>

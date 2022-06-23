@@ -1,5 +1,5 @@
 import Head from 'next/head';
-const qs = require('qs');
+// const qs = require('qs');
 
 import fetchData from "../../utils/fetchData.js";
 
@@ -33,30 +33,14 @@ export default function browse({ data, dataFeatured, dataAbout, width }) {
 export const getStaticProps = async () => {
     try {
 
-        const featuredQuery = qs.stringify({
-            populate: '*',
-            filters: {
-                isFeatured: {
-                    $eq: true
-                }
-            }
-        }, {
-            encodeValuesOnly: true,
-        });
-
-        const CMS_ENDPOINT = process.env.CMS_ENDPOINT;
-
-        const resFeatured = await fetch(`${CMS_ENDPOINT}/articles?${featuredQuery}`)
-
-        const { loading: loadingAbout, data: dataAbout, error: errorAbout } = await fetchData("about-section", true)
-        // Add query handling to fetchdata
-        // const { loading: loadingFeatured, data: dataFeatured, error: errorFeatured } = await fetchData("about-section", true)
-        const { loading: loadingArticles, data: dataArticles, error: errorArticles } = await fetchData("articles", true)
+        const { loading: loadingAbout, data: dataAbout, error: errorAbout } = await fetchData("about-section")
+        const { loading: loadingFeatured, data: dataFeatured, error: errorFeatured } = await fetchData("articles", true)
+        const { loading: loadingArticles, data: dataArticles, error: errorArticles } = await fetchData("articles")
 
         return {
             props: {
                 data: await dataArticles,
-                dataFeatured: await resFeatured.json(),
+                dataFeatured: await dataFeatured,
                 dataAbout: await dataAbout
             }
         }

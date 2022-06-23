@@ -9,6 +9,7 @@ const testImage = "https://i.imgur.com/7vJ98fU.jpg";
 
 
 export default function BookScroller({ data }) {
+    // console.log("bookscroller data: ", data)
 
     useEffect(() => {
         const scrollable = document.getElementById("scrollable");
@@ -39,41 +40,7 @@ export default function BookScroller({ data }) {
                     <button id="left-arrow" aria-label="Scroll to left"><HiArrowNarrowLeft /></button>
                     <button id="right-arrow" aria-label="Scroll to right"><HiArrowNarrowRight /></button></div>
                 <div id="scrollable" className={bookScrollerStyles.scroller}>
-
                     {scrollItems}
-                    {/* <Link href="/" target="_blank">
-                            <Image src={testImage} layout="fill" objectFit="cover" alt="Preview image of book to be read" />
-                        </Link>
-                    </div>
-                    <div className={bookScrollerStyles.scroll_item}>
-                        <Link href="/" target="_blank">
-                            <Image src={testImage} layout="fill" objectFit="cover" alt="Preview image of book to be read" />
-                        </Link>
-                    </div>
-                    <div className={bookScrollerStyles.scroll_item}>
-                        <Link href="/" target="_blank">
-                            <Image src={testImage} layout="fill" objectFit="cover" alt="Preview image of book to be read" />
-                        </Link>
-                    </div>
-                    <div className={bookScrollerStyles.scroll_item}>
-                        <Link href="/" target="_blank">
-                            <Image src={testImage} layout="fill" objectFit="cover" alt="Preview image of book to be read" />
-                        </Link>
-                    </div>
-                    <div className={bookScrollerStyles.scroll_item}>
-                        <Link href="/" target="_blank">
-                            <Image src={testImage} layout="fill" objectFit="cover" alt="Preview image of book to be read" />
-                        </Link>
-                    </div>
-                    <div className={bookScrollerStyles.scroll_item}>
-                        <Link href="/" target="_blank">
-                            <Image src={testImage} layout="fill" objectFit="cover" alt="Preview image of book to be read" />
-                        </Link>
-                    </div>
-                    <div className={bookScrollerStyles.scroll_item}>
-                        <Link href="/" target="_blank">
-                            <Image src={testImage} layout="fill" objectFit="cover" alt="Preview image of book to be read" />
-                        </Link> */}
                 </div>
 
             </div>

@@ -5,12 +5,10 @@ import ReactMarkdown from "react-markdown";
 import headerStyles from '../styles/Header.module.css'
 import aboutStyles from '../styles/About.module.css'
 
-import fetchData from "../helpers/fetchData.js";
-
-// const TestAuthorjpeg = "https://i.imgur.com/fW0P7Wm.jpg";
-// const testImage = "https://i.imgur.com/7vJ98fU.jpg";
+import fetchData from "../utils/fetchData.js";
 
 export default function about({ data }) {
+    console.log("About page", data)
     return (<>
         <Head>
             <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -25,7 +23,6 @@ export default function about({ data }) {
         <section className={aboutStyles.about}>
             <div className={aboutStyles.profile_image_wrapper}>
                 <Image src={data.attributes.profile_image.data.attributes.url} placeholder="blur" blurDataURL={data.attributes.profile_image.data.attributes.formats.thumbnail.url} objectFit="cover" alt="Portait of site's author" layout="fill" ></Image>
-                {/* <Image src={TestAuthorjpeg} objectFit="cover" alt="Portait of site's author" layout="fill" ></Image> */}
             </div>
             <article>
                 <ReactMarkdown>
@@ -46,11 +43,7 @@ export default function about({ data }) {
 export const getStaticProps = async () => {
 
     try {
-
-        const { loading, data, error } = await fetchData("about", true)
-
-        // const res = await fetch(`${CMS_ENDPOINT}/about?populate=*`)
-        // const data = await res.json();
+        const { loading, data, error } = await fetchData("about")
 
         return {
             props: {

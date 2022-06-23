@@ -37,52 +37,44 @@ export default function Home({ width, data, dataAbout, dataFeatured, dataLatest,
 }
 
 export const getStaticProps = async () => {
-
-  // reusable function/hook should be created for api calls
-
   try {
 
-    const featuredQuery = qs.stringify({
-      populate: '*',
-      filters: {
-        isFeatured: {
-          $eq: true
-        }
-      }
-    }, {
-      encodeValuesOnly: true,
-    });
+    // const featuredQuery = qs.stringify({
+    //   populate: '*',
+    //   filters: {
+    //     isFeatured: {
+    //       $eq: true
+    //     }
+    //   }
+    // }, {
+    //   encodeValuesOnly: true,
+    // });
 
-    // Add limit of 6 items
-    const latestQuery = qs.stringify({
-      populate: '*',
-      sort: ['createdAt:desc']
-    },
+    // // Add limit of 6 items
+    // const latestQuery = qs.stringify({
+    //   populate: '*',
+    //   sort: ['createdAt:desc']
+    // },
 
-      {
-        encodeValuesOnly: true,
-      });
+    //   {
+    //     encodeValuesOnly: true,
+    //   });
 
 
 
-    const { loading: loadingArticles, data: dataArticles, error: errorArticles } = await fetchData("articles", true)
-    const { loading: loadingAbout, data: dataAbout, error: errorAbout } = await fetchData("about-section", true);
-    const { loading: loadingTBR, data: dataTBR, error: errorTBR } = await fetchData("tbrs", true);
+    const { loading: loadingArticles, data: dataArticles, error: errorArticles } = await fetchData("articles")
+    const { loading: loadingAbout, data: dataAbout, error: errorAbout } = await fetchData("about-section");
+    const { loading: loadingFeatured, data: dataFeatured, error: errorFeatured } = await fetchData("articles", true);
+    const { loading: loadingLatest, data: dataLatest, error: errorLatest } = await fetchData("articles");
+    const { loading: loadingTBR, data: dataTBR, error: errorTBR } = await fetchData("tbrs");
 
-    const CMS_ENDPOINT = process.env.CMS_ENDPOINT;
-    // const res = await fetch(`${CMS_ENDPOINT}/articles?populate=*`)
-    const resFeatured = await fetch(`${CMS_ENDPOINT}/articles?${featuredQuery}`)
-    const resLatest = await fetch(`${CMS_ENDPOINT}/articles?${latestQuery}`)
-    // const resTBR = await fetch(`${CMS_ENDPOINT}/tbrs?populate=*`)
-    // const resAbout = await fetch(`${CMS_ENDPOINT}/about-section?populate=*`)
-
-    const parsedResLatest = await resLatest.json()
+    console.log(dataTBR)
 
     return {
       props: {
         data: await dataArticles,
-        dataFeatured: await resFeatured.json(),
-        dataLatest: await parsedResLatest.data,
+        dataFeatured: await dataFeatured,
+        dataLatest: await dataLatest,
         dataTBR: await dataTBR,
         dataAbout: await dataAbout,
       }
