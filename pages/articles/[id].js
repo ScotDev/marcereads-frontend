@@ -70,7 +70,7 @@ export const getStaticProps = async ({ params }) => {
     const { loading: loadingArticlesWithID, data: dataArticlesWithID, error: errorArticlesWithID } = await fetchData(`articles/${params.id}`)
 
     const getReadTime = async () => {
-        const res = await fetch("http://localhost:3000/api/readtime", { method: "POST", body: dataArticlesWithID.attributes.body })
+        const res = await fetch(`process.env.CMS_ENDPOINT/api/readtime`, { method: "POST", body: dataArticlesWithID.attributes.body })
         return await res.json()
     }
 
