@@ -3,10 +3,11 @@ import Link from "next/link";
 import cardStyles from '../styles/Card.module.css'
 
 
-const testImage = "https://i.imgur.com/7vJ98fU.jpg";
-
 export default function Card({ featured, priority, url, type, title, author, date, imgURL, thumbnailURL }) {
-    // console.log("card data", featured)
+    const dayjs = require('dayjs')
+    var advancedFormat = require('dayjs/plugin/advancedFormat')
+    dayjs.extend(advancedFormat)
+
     return (
         <Link href={url}>
             <div className={cardStyles.card} priority={priority ? true : null} type={featured ? "featured" : null}>
@@ -20,7 +21,7 @@ export default function Card({ featured, priority, url, type, title, author, dat
                 <div className={cardStyles.card_bottom}>
                     <div className={cardStyles.top_row}>
                         <h5 type={type}>{type}</h5>
-                        <p>{date}</p>
+                        <p>{dayjs(date).format("Do MMM YYYY")}</p>
                     </div>
                     <div className={cardStyles.bottom_rows}>
                         <h3>{title}</h3>

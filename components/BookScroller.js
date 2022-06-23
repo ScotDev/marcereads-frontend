@@ -5,11 +5,8 @@ import sectionStyles from '../styles/Section.module.css';
 import { HiArrowNarrowLeft, HiArrowNarrowRight } from "react-icons/hi";
 import { useEffect } from "react";
 
-const testImage = "https://i.imgur.com/7vJ98fU.jpg";
-
 
 export default function BookScroller({ data }) {
-    // console.log("bookscroller", data.attributes.image.data)
 
     useEffect(() => {
         const scrollable = document.getElementById("scrollable");
@@ -23,8 +20,7 @@ export default function BookScroller({ data }) {
         });
     }, []);
 
-    const scrollItems = data.data.map(item => {
-        // console.log("bookscroller", item)
+    const scrollItems = data.map(item => {
         return (<div key={item.id} className={bookScrollerStyles.scroll_item}>
             {/* <Link href={`/articles/${item.id}`} target="_blank"> */}
             <Image src={item.attributes.image.data.attributes.url} placeholder="blur" blurDataURL={item.attributes.image.data.attributes.formats.thumbnail.url} layout="fill" objectFit="cover" alt="Preview image of book to be read" />
@@ -41,41 +37,7 @@ export default function BookScroller({ data }) {
                     <button id="left-arrow" aria-label="Scroll to left"><HiArrowNarrowLeft /></button>
                     <button id="right-arrow" aria-label="Scroll to right"><HiArrowNarrowRight /></button></div>
                 <div id="scrollable" className={bookScrollerStyles.scroller}>
-
                     {scrollItems}
-                    {/* <Link href="/" target="_blank">
-                            <Image src={testImage} layout="fill" objectFit="cover" alt="Preview image of book to be read" />
-                        </Link>
-                    </div>
-                    <div className={bookScrollerStyles.scroll_item}>
-                        <Link href="/" target="_blank">
-                            <Image src={testImage} layout="fill" objectFit="cover" alt="Preview image of book to be read" />
-                        </Link>
-                    </div>
-                    <div className={bookScrollerStyles.scroll_item}>
-                        <Link href="/" target="_blank">
-                            <Image src={testImage} layout="fill" objectFit="cover" alt="Preview image of book to be read" />
-                        </Link>
-                    </div>
-                    <div className={bookScrollerStyles.scroll_item}>
-                        <Link href="/" target="_blank">
-                            <Image src={testImage} layout="fill" objectFit="cover" alt="Preview image of book to be read" />
-                        </Link>
-                    </div>
-                    <div className={bookScrollerStyles.scroll_item}>
-                        <Link href="/" target="_blank">
-                            <Image src={testImage} layout="fill" objectFit="cover" alt="Preview image of book to be read" />
-                        </Link>
-                    </div>
-                    <div className={bookScrollerStyles.scroll_item}>
-                        <Link href="/" target="_blank">
-                            <Image src={testImage} layout="fill" objectFit="cover" alt="Preview image of book to be read" />
-                        </Link>
-                    </div>
-                    <div className={bookScrollerStyles.scroll_item}>
-                        <Link href="/" target="_blank">
-                            <Image src={testImage} layout="fill" objectFit="cover" alt="Preview image of book to be read" />
-                        </Link> */}
                 </div>
 
             </div>

@@ -1,46 +1,38 @@
 import Head from 'next/head';
-// const qs = require('qs');
-
 import fetchData from "../../utils/fetchData.js";
 
-import Featured from '../../components/Featured';
 import PostsNavigation from '../../components/PostsNavigation';
 import AllPosts from '../../components/AllPosts'
 import About from '../../components/About'
 import headerStyles from '../../styles/Header.module.css'
 
-export default function browse({ data, dataFeatured, dataAbout, width }) {
+export default function reviews({ width, data, dataAbout }) {
     return (
         <>
             <Head>
                 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-                <title>Browse</title>
-                <meta name="description" content="Marcereads blog" />
+                <title>Reviews</title>
+                <meta name="description" content="Marcereads Blog - Reviews" />
                 <link rel="icon" href="/favicon.ico" />
             </Head>
             <header className={headerStyles.header}>
-                <h1 className={headerStyles.page_title}>Posts</h1>
+                <h1 className={headerStyles.page_title}>Reviews</h1>
             </header>
-
             <PostsNavigation />
-            {width > 768 ? null : <Featured data={dataFeatured} />}
             <AllPosts width={width} data={data} showPagination />
             <About data={dataAbout} />
         </>
     )
 }
-
 export const getStaticProps = async () => {
     try {
 
         const { loading: loadingAbout, data: dataAbout, error: errorAbout } = await fetchData("about-section")
-        const { loading: loadingFeatured, data: dataFeatured, error: errorFeatured } = await fetchData("articles", true)
-        const { loading: loadingArticles, data: dataArticles, error: errorArticles } = await fetchData("articles")
+        const { loading: loadingReviews, data: dataReviews, error: errorReviews } = await fetchData("articles", false, true)
 
         return {
             props: {
-                data: await dataArticles,
-                dataFeatured: await dataFeatured,
+                data: await dataReviews,
                 dataAbout: await dataAbout
             }
         }
