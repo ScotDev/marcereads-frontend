@@ -8,7 +8,6 @@ import aboutStyles from '../styles/About.module.css'
 import fetchData from "../utils/fetchData.js";
 
 export default function about({ data }) {
-    console.log("About page", data)
     return (<>
         <Head>
             <meta name="viewport" content="width=device-width, initial-scale=1.0" />
