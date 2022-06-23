@@ -5,20 +5,9 @@ import miniCardStyles from '../styles/MiniCard.module.css'
 const testImage = "https://i.imgur.com/7vJ98fU.jpg";
 
 export default function MiniCard({ url, type, title, author, date, imgURL, thumbnailURL }) {
-    // console.log(url)
-
-    // refactor inline with card
-    let h5ClassName;
-    switch (type) {
-        case "review":
-            h5ClassName = miniCardStyles.review;
-            break;
-        case "guide":
-            h5ClassName = miniCardStyles.guide;
-            break;
-        default:
-            h5ClassName = miniCardStyles.review;
-    }
+    const dayjs = require('dayjs')
+    var advancedFormat = require('dayjs/plugin/advancedFormat')
+    dayjs.extend(advancedFormat)
 
     return (
         <Link href={url}>
@@ -26,11 +15,10 @@ export default function MiniCard({ url, type, title, author, date, imgURL, thumb
 
                 <Image src={imgURL} placeholder="blur" blurDataURL={thumbnailURL} layout="fixed" alt="Book" width={120} height={150}></Image>
                 <div className={miniCardStyles.text_content}>
-                    {/* refactor h5 to match main Card component */}
-                    <h5 className={h5ClassName}>{type}</h5>
+                    <h5 type={type}>{type}</h5>
                     <h3>{title}</h3>
                     <h4>{author}</h4>
-                    <p>{date}</p>
+                    <p>{dayjs(date).format("Do MMM YYYY")}</p>
                 </div>
 
             </div>

@@ -14,7 +14,6 @@ import BookScroller from '../components/BookScroller';
 
 export default function Home({ width, data, dataAbout, dataFeatured, dataLatest, dataTBR }) {
 
-
   return (
     <>
       <Head>
@@ -67,8 +66,6 @@ export const getStaticProps = async () => {
     const { loading: loadingFeatured, data: dataFeatured, error: errorFeatured } = await fetchData("articles", true);
     const { loading: loadingLatest, data: dataLatest, error: errorLatest } = await fetchData("articles");
     const { loading: loadingTBR, data: dataTBR, error: errorTBR } = await fetchData("tbrs");
-
-    console.log(dataTBR)
 
     return {
       props: {

@@ -5,11 +5,8 @@ import sectionStyles from '../styles/Section.module.css';
 import { HiArrowNarrowLeft, HiArrowNarrowRight } from "react-icons/hi";
 import { useEffect } from "react";
 
-const testImage = "https://i.imgur.com/7vJ98fU.jpg";
-
 
 export default function BookScroller({ data }) {
-    // console.log("bookscroller data: ", data)
 
     useEffect(() => {
         const scrollable = document.getElementById("scrollable");

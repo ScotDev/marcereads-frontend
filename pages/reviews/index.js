@@ -1,3 +1,4 @@
+import Head from 'next/head';
 import fetchData from "../../utils/fetchData.js";
 
 import PostsNavigation from '../../components/PostsNavigation';
@@ -8,6 +9,12 @@ import headerStyles from '../../styles/Header.module.css'
 export default function reviews({ width, data, dataAbout }) {
     return (
         <>
+            <Head>
+                <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+                <title>Reviews</title>
+                <meta name="description" content="Marcereads Blog - Reviews" />
+                <link rel="icon" href="/favicon.ico" />
+            </Head>
             <header className={headerStyles.header}>
                 <h1 className={headerStyles.page_title}>Reviews</h1>
             </header>
