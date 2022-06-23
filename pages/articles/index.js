@@ -1,5 +1,4 @@
 import Head from 'next/head';
-// const qs = require('qs');
 
 import fetchData from "../../utils/fetchData.js";
 

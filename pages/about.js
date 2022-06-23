@@ -27,7 +27,7 @@ export default function about({ data }) {
                 <ReactMarkdown>
                     {data.attributes.body}
 
-                    {/* 
+                    {/*                     
                 <div className={aboutStyles.image_wrapper}>
                     <Image src={testImage} objectFit="cover" alt="Relevant book for article" layout="fill" />
                 </div> */}
