@@ -8,7 +8,7 @@ import articleStyles from '../../styles/Article.module.css'
 
 // use :empty to handle empty tags filled by cms
 
-export default function about({ data }) {
+export default function about({ data, readTimeEstimate }) {
     const dayjs = require('dayjs')
     var advancedFormat = require('dayjs/plugin/advancedFormat')
     dayjs.extend(advancedFormat)
@@ -30,7 +30,7 @@ export default function about({ data }) {
                 <div className={articleStyles.top_row}>
                     <h5 type={type}>{type}</h5>
                 </div>
-                <div className={articleStyles.bottom_row}><h6 className={articleStyles.length}>{length + " min"}</h6>
+                <div className={articleStyles.bottom_row}><h6 className={articleStyles.length}>{readTimeEstimate.estimate + " min"}</h6>
                     <h4 className={articleStyles.date}>{dayjs(data.attributes.date).format("Do MMM YYYY")}</h4></div>
 
             </header>
@@ -69,10 +69,18 @@ export const getStaticProps = async ({ params }) => {
 
     const { loading: loadingArticlesWithID, data: dataArticlesWithID, error: errorArticlesWithID } = await fetchData(`articles/${params.id}`)
 
+    const getReadTime = async () => {
+        const res = await fetch("http://localhost:3000/api/readtime", { method: "POST", body: dataArticlesWithID.attributes.body })
+        return await res.json()
+    }
+
     // const res = await fetch(`${CMS_ENDPOINT}/articles/${params.id}?populate=*`);
     // const data = await res.json();
 
     return {
-        props: { data: await dataArticlesWithID }
+        props: {
+            data: await dataArticlesWithID,
+            readTimeEstimate: await getReadTime()
+        }
     }
 }
