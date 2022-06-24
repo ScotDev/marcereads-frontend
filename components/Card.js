@@ -10,7 +10,7 @@ export default function Card({ featured, priority, url, type, title, author, dat
 
     return (
         <Link href={url}>
-            <div className={cardStyles.card} priority={priority ? true : null} type={featured ? "featured" : null}>
+            <div className={cardStyles.card} priority={priority ? "true" : "false"} type={featured ? "featured" : null}>
                 <div>
                     {featured ? <h5 id={cardStyles.featured_tag}>Featured</h5> : null}
                     <Image

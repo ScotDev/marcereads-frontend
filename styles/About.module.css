@@ -43,6 +43,7 @@
     padding: 32px 0 16px 0;
 }
 
+/* Image wrapper hotfix */
 .about article h6 {
     position: relative;
     padding: 0;
@@ -50,7 +51,6 @@
     height: 300px;
     margin: 24px 0;
     border-radius: 10px;
-
 }
 
 .about article img {

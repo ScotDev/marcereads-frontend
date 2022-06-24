@@ -29,6 +29,12 @@ const getWordCount = async (articleBody) => {
 
 export default async function handler(req, res) {
     const estimate = await getWordCount(req.body)
-    await res.status(200).json({ estimate: estimate })
+    await res.status(200).json({ estimate: estimate || "2" })
+
+    try {
+        await res.status(200).json({ estimate: estimate || "2" })
+    } catch (error) {
+        await res.status(400).json({ error })
+    }
 }
 
