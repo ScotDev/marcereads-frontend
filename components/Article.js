@@ -9,7 +9,7 @@ import Loading from './Loading';
 export default function Article({ data, readTimeEstimate }) {
     const router = useRouter()
 
-    if (router.isFallback) {
+    if (router.isFallback || !data) {
         return <Loading />
     }
 

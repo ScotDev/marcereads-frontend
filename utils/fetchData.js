@@ -32,7 +32,7 @@ const fetchData = async (endpoint, ...args) => {
     });
 
     const reviewsQuery = qs.stringify({
-        sort: ['createdAt:desc'],
+        sort: ['createdAt:desc', 'isFeatured:desc'],
         filters: {
             type: {
                 $eq: 'review'
