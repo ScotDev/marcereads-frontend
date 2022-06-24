@@ -28,6 +28,7 @@ const getWordCount = async (articleBody) => {
 
 
 export default async function handler(req, res) {
+    // console.log(req.method)
     if (req.method === "POST") {
         const value = req.body.value
 
