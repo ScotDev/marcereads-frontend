@@ -45,7 +45,8 @@ export const getStaticProps = async () => {
         }
     } catch (error) {
         return {
-            props: {}
+            props: {},
+            revalidate: 1
         }
     }
 

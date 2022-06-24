@@ -102,7 +102,8 @@ export const getStaticProps = async ({ params }) => {
     return {
         props: {
             data: await dataArticlesWithID,
-            readTimeEstimate: estimate || { estimate: "25" }
+            readTimeEstimate: estimate || { estimate: "25" },
+            revalidate: 1
         }
     }
 }
