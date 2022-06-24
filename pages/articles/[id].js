@@ -5,47 +5,15 @@ import ReactMarkdown from "react-markdown";
 import fetchData from "../../utils/fetchData.js";
 
 import articleStyles from '../../styles/Article.module.css'
+import Article from '../../components/Article.js';
 
 // use :empty to handle empty tags filled by cms
 
-export default function about({ data, readTimeEstimate }) {
-    // console.log(readTimeEstimate)
-    // const readTimeEstimate = "5"
-    const dayjs = require('dayjs')
-    var advancedFormat = require('dayjs/plugin/advancedFormat')
-    dayjs.extend(advancedFormat)
+export default function article({ data, readTimeEstimate }) {
 
-    const type = data.attributes.type;
-    const length = "4";
+    return (
+        <Article data={data} readTimeEstimate={readTimeEstimate} />
 
-    return (<>
-        <Head>
-            <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-            <title>{data.attributes.title ?? "Article"}</title>
-            <meta name="description" content={data.attributes.title ?? "Marcereads Blog"} />
-            <link rel="icon" href="/favicon.ico" />
-        </Head>
-        <div className={articleStyles.article}>
-            <header className={articleStyles.header}>
-                <h1 className={articleStyles.title}>{data.attributes.title}</h1>
-                <h2 className={articleStyles.author}>{data.attributes.author}</h2>
-                <div className={articleStyles.top_row}>
-                    <h5 type={type}>{type}</h5>
-                </div>
-                <div className={articleStyles.bottom_row}><h5 className={articleStyles.length}>{readTimeEstimate.estimate + " mins"}</h5>
-                    <h4 className={articleStyles.date}>{dayjs(data.attributes.date).format("Do MMM YYYY")}</h4></div>
-
-            </header>
-            <article>
-                <div className={articleStyles.image_wrapper}>
-                    <Image src={data.attributes.main.data.attributes.url} placeholder="blur" blurDataURL={data.attributes.main.data.attributes.formats.thumbnail.url} objectFit="cover" alt="Relevant book for article" layout="fill" />
-                </div>
-                <ReactMarkdown>
-                    {data.attributes.body}
-                </ReactMarkdown>
-            </article>
-        </div>
-    </>
     )
 }
 
@@ -63,7 +31,8 @@ export const getStaticPaths = async () => {
 
     return {
         paths,
-        fallback: false
+        fallback: true,
+
     }
 }
 
