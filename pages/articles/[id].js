@@ -32,7 +32,7 @@ export default function about({ data, readTimeEstimate }) {
                 <div className={articleStyles.top_row}>
                     <h5 type={type}>{type}</h5>
                 </div>
-                <div className={articleStyles.bottom_row}><h5 className={articleStyles.length}>{readTimeEstimate.estimate + " min"}</h5>
+                <div className={articleStyles.bottom_row}><h5 className={articleStyles.length}>{readTimeEstimate.estimate + " mins"}</h5>
                     <h4 className={articleStyles.date}>{dayjs(data.attributes.date).format("Do MMM YYYY")}</h4></div>
 
             </header>
