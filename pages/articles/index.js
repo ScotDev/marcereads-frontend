@@ -40,12 +40,14 @@ export const getStaticProps = async () => {
             props: {
                 data: await dataArticles,
                 dataFeatured: await dataFeatured,
-                dataAbout: await dataAbout
-            }
+                dataAbout: await dataAbout,
+            },
+            revalidate: 1
         }
     } catch (error) {
         return {
-            props: {}
+            props: {},
+            revalidate: 1
         }
     }
 

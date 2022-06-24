@@ -34,11 +34,13 @@ export const getStaticProps = async () => {
             props: {
                 data: await dataReviews,
                 dataAbout: await dataAbout
-            }
+            },
+            revalidate: 1
         }
     } catch (error) {
         return {
-            props: {}
+            props: {},
+            revalidate: 1
         }
     }
 
