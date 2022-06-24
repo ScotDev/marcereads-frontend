@@ -28,13 +28,22 @@ const getWordCount = async (articleBody) => {
 
 
 export default async function handler(req, res) {
-    const estimate = await getWordCount(req.body)
-    await res.status(200).json({ estimate: estimate || "2" })
+    if (req.method === "POST") {
+        const value = req.body.value
 
-    try {
-        await res.status(200).json({ estimate: estimate || "2" })
-    } catch (error) {
-        await res.status(400).json({ error })
+        try {
+            const estimate = await getWordCount(value)
+            await res.status(200).json({ estimate: estimate })
+        } catch (err) {
+            console.log(err)
+            await res.json({ error: "Failed to calculate read time" })
+        }
+    } else {
+        await res.status(400).json({ error: `Invalid request method: ${req.method}` })
     }
+    // console.log("req", req.body.value)
+    // const estimate = await getWordCount(req.body)
+    // await res.status(200).json({ estimate: estimate || "2" })
+
 }
 

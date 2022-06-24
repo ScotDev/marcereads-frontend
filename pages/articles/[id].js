@@ -8,9 +8,9 @@ import articleStyles from '../../styles/Article.module.css'
 
 // use :empty to handle empty tags filled by cms
 
-export default function about({ data }) {
+export default function about({ data, readTimeEstimate }) {
     // console.log(readTimeEstimate)
-    const readTimeEstimate = "5"
+    // const readTimeEstimate = "5"
     const dayjs = require('dayjs')
     var advancedFormat = require('dayjs/plugin/advancedFormat')
     dayjs.extend(advancedFormat)
@@ -70,21 +70,38 @@ export const getStaticPaths = async () => {
 export const getStaticProps = async ({ params }) => {
 
     const { loading: loadingArticlesWithID, data: dataArticlesWithID, error: errorArticlesWithID } = await fetchData(`articles/${params.id}`)
-
-    // const getReadTime = async () => {
-    //     // console.log(dataArticlesWithID.attributes.body)
-    //     const res = await fetch(`${process.env.LOCAL_API_ENDPOINT}/readtime`, { method: "POST", body: dataArticlesWithID.attributes.body })
-    //     console.log(await res.json())
-    //     return await res.json()
-    // }
-
     // const res = await fetch(`${CMS_ENDPOINT}/articles/${params.id}?populate=*`);
     // const data = await res.json();
+
+    const getReadTime = async () => {
+        // console.log(dataArticlesWithID.attributes.body)
+        // const res = await fetch(`${process.env.LOCAL_API_ENDPOINT}/readtime`, { method: "POST", body: dataArticlesWithID.attributes.body })
+        // console.log(await res.json())
+
+
+        try {
+            const res = await fetch(`${process.env.LOCAL_API_ENDPOINT}/readtime`, {
+                method: "POST", body: JSON.stringify({ value: dataArticlesWithID.attributes.body }),
+                headers: {
+                    "Content-Type": "application/json"
+                }
+            })
+            // console.log("Res here", res)
+            return await res.json()
+            // console.log("returned value: ", await res.json())
+        } catch (error) {
+            console.error("error here: ", error)
+        }
+    }
+
+
+
+    const estimate = await getReadTime();
 
     return {
         props: {
             data: await dataArticlesWithID,
-            // readTimeEstimate: await getReadTime()
+            readTimeEstimate: estimate || { estimate: "25" }
         }
     }
 }
