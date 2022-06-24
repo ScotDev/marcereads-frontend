@@ -10,10 +10,11 @@ export default function Card({ featured, priority, url, type, title, author, dat
 
     return (
         <Link href={url}>
-            <div className={cardStyles.card} priority={priority ? true : null} type={featured ? "featured" : null}>
+            <div className={cardStyles.card} type={featured ? "featured" : null}>
                 <div>
                     {featured ? <h5 id={cardStyles.featured_tag}>Featured</h5> : null}
                     <Image
+                        priority={priority ? "true" : "false"}
                         src={imgURL}
                         placeholder="blur" blurDataURL={thumbnailURL}
                         layout="fill" objectFit="cover" alt="Book"></Image>
