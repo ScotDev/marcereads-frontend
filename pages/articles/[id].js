@@ -80,7 +80,7 @@ export const getStaticProps = async ({ params }) => {
 
 
         try {
-            const res = await fetch(`${process.env.LOCAL_API_ENDPOINT_DEV}/readtime`, {
+            const res = await fetch(`${process.env.LOCAL_API_ENDPOINT}/readtime`, {
                 method: 'POST',
                 headers: {
                     "Content-Type": "application/json"
