@@ -31,7 +31,7 @@ export default function Article({ data, readTimeEstimate }) {
                 <div className={articleStyles.top_row}>
                     <h5 type={data.attributes.type}>{data.attributes.type}</h5>
                 </div>
-                <div className={articleStyles.bottom_row}><h5 className={articleStyles.length}>{readTimeEstimate.estimate + " mins"}</h5>
+                <div className={articleStyles.bottom_row}><h5 className={articleStyles.length}>{readTimeEstimate ? readTimeEstimate.estimate + " min" : "3 min"}</h5>
                     <h4 className={articleStyles.date}>{dayjs(data.attributes.date).format("Do MMM YYYY")}</h4></div>
 
             </header>

@@ -24,7 +24,7 @@ export default function Home({ width, data, dataAbout, dataFeatured, dataLatest,
       </Head>
 
       <div className={homeStyles.home}>
-        <Header />
+        {/* <Header data={dataAbout} /> */}
         {width > 768 ? <AllPosts width={width} data={data} showViewMore /> : <Featured data={dataFeatured} />}
 
         <BookScroller data={dataTBR} />
@@ -38,35 +38,15 @@ export default function Home({ width, data, dataAbout, dataFeatured, dataLatest,
 export const getStaticProps = async () => {
   try {
 
-    // const featuredQuery = qs.stringify({
-    //   populate: '*',
-    //   filters: {
-    //     isFeatured: {
-    //       $eq: true
-    //     }
-    //   }
-    // }, {
-    //   encodeValuesOnly: true,
-    // });
-
-    // // Add limit of 6 items
-    // const latestQuery = qs.stringify({
-    //   populate: '*',
-    //   sort: ['createdAt:desc']
-    // },
-
-    //   {
-    //     encodeValuesOnly: true,
-    //   });
-
-
+    // refactor this block, loading "state does nothing"
 
     const { loading: loadingArticles, data: dataArticles, error: errorArticles } = await fetchData("articles")
-    const { loading: loadingAbout, data: dataAbout, error: errorAbout } = await fetchData("about-section");
+    const { data: dataAbout, error: errorAbout } = await fetchData("about-section");
     const { loading: loadingFeatured, data: dataFeatured, error: errorFeatured } = await fetchData("articles", true);
     const { loading: loadingLatest, data: dataLatest, error: errorLatest } = await fetchData("articles");
     const { loading: loadingTBR, data: dataTBR, error: errorTBR } = await fetchData("tbrs");
-
+    const aboutRes = await fetchData("about-section");
+    console.log(aboutRes)
     return {
       props: {
         data: await dataArticles,
@@ -74,7 +54,8 @@ export const getStaticProps = async () => {
         dataLatest: await dataLatest,
         dataTBR: await dataTBR,
         dataAbout: await dataAbout,
-      }
+      },
+      revalidate: 1
     }
   } catch (error) {
     console.error(error)

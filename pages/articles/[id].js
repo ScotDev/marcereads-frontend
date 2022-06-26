@@ -56,9 +56,9 @@ export const getStaticProps = async ({ params }) => {
                 },
                 body: JSON.stringify({ value: dataArticlesWithID.attributes.body })
             })
-            // console.log("Res here", res)
-            return await res.json()
+
             // console.log("returned value: ", await res.json())
+            return await res.json()
         } catch (error) {
             console.error("error here: ", error)
         }
@@ -71,7 +71,7 @@ export const getStaticProps = async ({ params }) => {
     return {
         props: {
             data: await dataArticlesWithID,
-            readTimeEstimate: estimate || { estimate: "25" }
+            readTimeEstimate: estimate
         },
         revalidate: 1
     }

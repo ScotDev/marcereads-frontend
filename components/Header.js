@@ -11,19 +11,21 @@ import { FaInstagram } from 'react-icons/fa';
 
 const TestAuthorjpeg = "https://i.imgur.com/fW0P7Wm.jpg";
 
-export default function Header() {
+export default function Header({ data }) {
     return (
         <header className={headerStyles.header}>
             <div>
                 <h1>Hey! Welcome to the Marcereads blog!</h1>
-                <p>Augue dui leo enim nascetur. Egestas eget sit feugiat suspendisse tristique tempus nullam dui diam. Bibendum id sed sed eu odio enim tincidunt.</p>
+                <p>{data.attributes.body}</p>
+                {/* <p>Augue dui leo enim nascetur. Egestas eget sit feugiat suspendisse tristique tempus nullam dui diam. Bibendum id sed sed eu odio enim tincidunt.</p> */}
                 <div className={headerStyles.btn_group}>
                     <Button text="Browse posts" href="/articles" noNewTab type="primary"></Button>
                     <Button text="@marcereads" href="https://www.instagram.com/marcereads/?hl=en" type="primary-outline" icon={<FaInstagram />}></Button>
                 </div>
             </div>
             <div className={headerStyles.image_wrapper}>
-                <Image src={TestAuthorjpeg} objectFit="cover" alt="Portait of site's author" layout="fill" ></Image>
+                {/* <Image src={TestAuthorjpeg} objectFit="cover" alt="Portait of site's author" layout="fill" ></Image> */}
+                <Image src={data.attributes.profile_image.data.attributes.url} placeholder="blur" blurDataURL={data.attributes.profile_image.data.attributes.formats.thumbnail.url} objectFit="cover" alt="Portait of site's author" layout="fill" ></Image>
             </div>
         </header>
     )
