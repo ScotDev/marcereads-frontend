@@ -3,6 +3,7 @@ import Image from "next/image";
 import ReactMarkdown from "react-markdown";
 
 import fetchData from "../../utils/fetchData.js";
+import getWordCount from "../../utils/readTime.js";
 
 import articleStyles from '../../styles/Article.module.css'
 import Article from '../../components/Article.js';
@@ -11,6 +12,7 @@ import Article from '../../components/Article.js';
 
 export default function article({ data, readTimeEstimate }) {
 
+    console.log(readTimeEstimate)
     return (
         <Article data={data} readTimeEstimate={readTimeEstimate} />
 
@@ -42,37 +44,40 @@ export const getStaticProps = async ({ params }) => {
     // const res = await fetch(`${CMS_ENDPOINT}/articles/${params.id}?populate=*`);
     // const data = await res.json();
 
-    const getReadTime = async () => {
-        // console.log(dataArticlesWithID.attributes.body)
-        // const res = await fetch(`${process.env.LOCAL_API_ENDPOINT}/readtime`, { method: "POST", body: dataArticlesWithID.attributes.body })
-        // console.log(await res.json())
+    // const getReadTime = async () => {
+    //     // console.log(dataArticlesWithID.attributes.body)
+    //     // const res = await fetch(`${process.env.LOCAL_API_ENDPOINT}/readtime`, { method: "POST", body: dataArticlesWithID.attributes.body })
+    //     // console.log(await res.json())
 
 
-        try {
-            const res = await fetch(`${process.env.LOCAL_API_ENDPOINT}/readtime`, {
-                method: 'POST',
-                headers: {
-                    "Content-Type": "application/json"
-                },
-                body: JSON.stringify({ value: dataArticlesWithID.attributes.body })
-            })
+    //     try {
 
-            // console.log("returned value: ", await res.json())
-            return await res.json()
-        } catch (error) {
-            console.error("error here: ", error)
-        }
-    }
+    const readTimeEstimate = await getWordCount(dataArticlesWithID.attributes.body)
+    // const res = await fetch(`${process.env.LOCAL_API_ENDPOINT}/readtime`, {
+    //     method: 'POST',
+    //     headers: {
+    //         "Content-Type": "application/json"
+    //     },
+    //     body: JSON.stringify({ value: dataArticlesWithID.attributes.body })
+    // })
+
+    // console.log("returned value: ", await res.json())
+    // return await readTimeEstimate;
+    // } catch (error) {
+    //     console.error("error here: ", error)
+    // }
+    // console.log(readTimeEstimate)
 
 
 
-    const estimate = await getReadTime();
+    // const estimate = await getReadTime();
 
     return {
         props: {
             data: await dataArticlesWithID,
-            readTimeEstimate: estimate
+            readTimeEstimate: readTimeEstimate
         },
         revalidate: 1
     }
+
 }
