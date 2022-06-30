@@ -3,17 +3,18 @@ import Image from "next/image";
 import ReactMarkdown from "react-markdown";
 
 import fetchData from "../../utils/fetchData.js";
-import getWordCount from "../../utils/readTime.js";
+// import getWordCount from "../../utils/readTime.js";
 
 import articleStyles from '../../styles/Article.module.css'
 import Article from '../../components/Article.js';
 
 // use :empty to handle empty tags filled by cms
 
-export default function article({ data, readTimeEstimate }) {
+export default function article({ data }) {
 
     return (
-        <Article data={data} readTimeEstimate={readTimeEstimate} />
+        // <Article data={data} readTimeEstimate={readTimeEstimate} />
+        <Article data={data} />
 
     )
 }
@@ -51,7 +52,7 @@ export const getStaticProps = async ({ params }) => {
 
     //     try {
 
-    const readTimeEstimate = await getWordCount(dataArticlesWithID.attributes.body)
+    // const readTimeEstimate = await getWordCount(dataArticlesWithID.attributes.body)
     // const res = await fetch(`${process.env.LOCAL_API_ENDPOINT}/readtime`, {
     //     method: 'POST',
     //     headers: {
@@ -74,7 +75,7 @@ export const getStaticProps = async ({ params }) => {
     return {
         props: {
             data: await dataArticlesWithID,
-            readTimeEstimate: readTimeEstimate
+            // readTimeEstimate: readTimeEstimate
         },
         revalidate: 1
     }
