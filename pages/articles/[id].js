@@ -12,7 +12,6 @@ import Article from '../../components/Article.js';
 
 export default function article({ data, readTimeEstimate }) {
 
-    console.log(readTimeEstimate)
     return (
         <Article data={data} readTimeEstimate={readTimeEstimate} />
 
