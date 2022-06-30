@@ -3,7 +3,7 @@ import Image from "next/image";
 import { useRouter } from 'next/router'
 import ReactMarkdown from "react-markdown";
 
-import getWordCount from '../utils/readTime';
+import getWordCount from '../utils/readTime.js';
 
 import articleStyles from '../styles/Article.module.css'
 import Loading from './Loading';
