@@ -3,7 +3,7 @@ import Image from "next/image";
 import ReactMarkdown from "react-markdown";
 
 import fetchData from "../../utils/fetchData.js";
-// import getWordCount from "../../utils/readTime.js";
+
 
 import articleStyles from '../../styles/Article.module.css'
 import Article from '../../components/Article.js';
@@ -13,7 +13,6 @@ import Article from '../../components/Article.js';
 export default function article({ data }) {
 
     return (
-        // <Article data={data} readTimeEstimate={readTimeEstimate} />
         <Article data={data} />
 
     )
@@ -70,12 +69,10 @@ export const getStaticProps = async ({ params }) => {
 
 
 
-    // const estimate = await getReadTime();
 
     return {
         props: {
-            data: await dataArticlesWithID,
-            // readTimeEstimate: readTimeEstimate
+            data: await dataArticlesWithID
         },
         revalidate: 1
     }

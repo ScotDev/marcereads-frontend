@@ -38,15 +38,15 @@ export default function Home({ width, data, dataAbout, dataFeatured, dataLatest,
 export const getStaticProps = async () => {
   try {
 
-    // refactor this block, loading "state does nothing"
+    // refactor this block, loading state does nothing
 
     const { loading: loadingArticles, data: dataArticles, error: errorArticles } = await fetchData("articles")
     const { data: dataAbout, error: errorAbout } = await fetchData("about-section");
     const { loading: loadingFeatured, data: dataFeatured, error: errorFeatured } = await fetchData("articles", true);
     const { loading: loadingLatest, data: dataLatest, error: errorLatest } = await fetchData("articles");
     const { loading: loadingTBR, data: dataTBR, error: errorTBR } = await fetchData("tbrs");
-    const aboutRes = await fetchData("about-section");
-    console.log(aboutRes)
+    // const aboutRes = await fetchData("about-section");
+
     return {
       props: {
         data: await dataArticles,

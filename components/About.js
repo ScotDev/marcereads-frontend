@@ -10,7 +10,6 @@ import 'react-loading-skeleton/dist/skeleton.css'
 const TestAuthorjpeg = "https://i.imgur.com/fW0P7Wm.jpg";
 
 export default function About({ data }) {
-    // console.log("About", data)
     if (!data) {
         return (
             <section className={sectionStyles.section}>

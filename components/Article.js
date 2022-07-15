@@ -1,6 +1,7 @@
 import Head from 'next/head';
 import Image from "next/image";
 import { useRouter } from 'next/router'
+import { useEffect, useState } from 'react';
 import ReactMarkdown from "react-markdown";
 
 import getWordCount from '../utils/readTime.js';
@@ -12,13 +13,19 @@ import Loading from './Loading';
 
 export default function Article({ data }) {
     const router = useRouter()
-    let readTimeEstimate
+    const [readTimeEstimate, setReadTimeEstimate] = useState("3 min")
+
+    useEffect(() => {
+
+
+        getWordCount(data.attributes.body).then(res => setReadTimeEstimate(res + " min"))
+    }, [])
+
 
     if (router.isFallback || !data) {
         return <Loading />
     }
 
-    getWordCount(data.attributes.body).then(res => readTimeEstimate = res);
 
     const dayjs = require('dayjs')
     var advancedFormat = require('dayjs/plugin/advancedFormat')
@@ -39,7 +46,7 @@ export default function Article({ data }) {
                     <div className={articleStyles.top_row}>
                         <h5 type={data.attributes.type}>{data.attributes.type}</h5>
                     </div>
-                    <div className={articleStyles.bottom_row}><h5 className={articleStyles.length}>{readTimeEstimate ? readTimeEstimate + " min" : "3 min"}</h5>
+                    <div className={articleStyles.bottom_row}><h5 className={articleStyles.length}>{readTimeEstimate}</h5>
                         <h4 className={articleStyles.date}>{dayjs(data.attributes.date).format("Do MMM YYYY")}</h4></div>
 
                 </header>
