@@ -4,6 +4,8 @@ import { useRouter } from 'next/router'
 import { useEffect, useState } from 'react';
 import ReactMarkdown from "react-markdown";
 
+import StarRatings from './StarRatings.js';
+
 import getWordCount from '../utils/readTime.js';
 
 import articleStyles from '../styles/Article.module.css'
@@ -46,8 +48,13 @@ export default function Article({ data }) {
                     <div className={articleStyles.top_row}>
                         <h5 type={data.attributes.type}>{data.attributes.type}</h5>
                     </div>
-                    <div className={articleStyles.bottom_row}><h5 className={articleStyles.length}>{readTimeEstimate}</h5>
-                        <h4 className={articleStyles.date}>{dayjs(data.attributes.date).format("Do MMM YYYY")}</h4></div>
+                    <div className={articleStyles.bottom_row}>
+
+                        <h5 className={articleStyles.length}>{readTimeEstimate}</h5>
+                        <h4 className={articleStyles.date}>{dayjs(data.attributes.date).format("Do MMM YYYY")}</h4>
+
+                    </div>
+                    <StarRatings />
 
                 </header>
                 <article>

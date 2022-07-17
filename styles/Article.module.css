@@ -72,6 +72,22 @@
     padding: 8px 0;
 }
 
+.article .starRatingsContainer {
+    display: flex;
+    align-items: center;
+    padding: 16px 0 0 0;
+}
+.article .starRatingsContainer p {
+    font-size: 16px;
+    line-height: 16px;
+    padding: 0 0 0 8px;
+}
+.article .starRatingsContainer svg {
+    color:  var(--mr-green-accent);
+    opacity: 0.8;
+    font-size: 22px;
+}
+
 .article article {
     padding: 0 0 48px 0;
     background-color: rgba(255, 255, 255, 0.1);
@@ -143,6 +159,16 @@
         align-items: flex-start;
         /* max-width: 400px; */
         padding: 8px 0;
+    }
+    .article .starRatingsContainer {
+        padding: 8px 0 0 0;
+        display: flex;
+        align-items: center;
+    }
+    .article .starRatingsContainer p {
+        font-size: 16px;
+        line-height: 16px;
+        padding: 0 0 0 8px;
     }
     .article h6 {
         margin: 24px auto;
