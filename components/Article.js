@@ -21,7 +21,7 @@ export default function Article({ data }) {
 
 
         getWordCount(data.attributes.body).then(res => setReadTimeEstimate(res + " min"))
-    }, [data.attributes.bodu])
+    }, [data.attributes.body])
 
 
     if (router.isFallback || !data) {
