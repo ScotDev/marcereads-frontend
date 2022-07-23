@@ -6,11 +6,8 @@ import ReactMarkdown from "react-markdown";
 
 import StarRatings from './StarRatings.js';
 
-// import getWordCount from '../utils/readTime.js';
-
 import articleStyles from '../styles/Article.module.css'
 import Loading from './Loading';
-
 
 
 export default function Article({ data }) {
@@ -18,7 +15,6 @@ export default function Article({ data }) {
     const [readTimeEstimate, setReadTimeEstimate] = useState("3 min")
 
     useEffect(() => {
-
         const avgWordsPerMinute = 265;
         let readTimeEstimate;
         const words = data.attributes.body.split(" ");
@@ -47,7 +43,8 @@ export default function Article({ data }) {
 
 
         // getWordCount(data.attributes.body).then(res => setReadTimeEstimate(res + " min"))
-    }, [data.attributes.body])
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [])
 
 
     if (router.isFallback || !data) {
