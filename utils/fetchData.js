@@ -4,7 +4,7 @@ const CMS_ENDPOINT = process.env.CMS_ENDPOINT;
 
 const fetchData = async (endpoint, ...args) => {
 
-    let loading = false;
+    let loading = true;
     let data = null;
     let error = null;
     let query;
@@ -17,7 +17,7 @@ const fetchData = async (endpoint, ...args) => {
     const featuredQuery = qs.stringify({
         // populate: '*',
         // Default sort for all content is by creation date. If we implement client-side user filtering then this can be modified
-        sort: ['createdAt:desc'],
+        sort: ['createdAt:desc', 'isFeatured:desc'],
         filters: {
             isFeatured: {
                 $eq: true
@@ -47,7 +47,7 @@ const fetchData = async (endpoint, ...args) => {
     });
 
     const guidesQuery = qs.stringify({
-        sort: ['createdAt:desc'],
+        sort: ['createdAt:desc', 'isFeatured:desc'],
         filters: {
             type: {
                 $eq: 'guide'
@@ -60,14 +60,19 @@ const fetchData = async (endpoint, ...args) => {
     }, {
         encodeValuesOnly: true,
     });
+    // const standardQuery = qs.stringify({
+    //     sort: ['createdAt:desc', 'isFeatured:desc'],
+    // }, {
+    //     encodeValuesOnly: true,
+    // });
 
 
     if (args.length == 0 || typeof args[0] == undefined) {
+        // query = `&?${standardQuery}`;
         query = "";
     } else if (args.length == 1 && args[0] == true) {
         query = `&?${featuredQuery}`;
         // I will need to add pagination before release
-
     } else if (args.length == 2 && args[1] == true) {
         query = `&?${reviewsQuery}`;
 
@@ -76,20 +81,21 @@ const fetchData = async (endpoint, ...args) => {
     }
 
     // console.log(query)
+
+    // loading "state" does nothing here.
+
     try {
-
-        try {
-            loading = true;
-            const response = await fetch(`${CMS_ENDPOINT}/${endpoint}?populate=*${query}`);
-            let rawData = await response.json()
-            data = rawData.data;
-        } catch (err) {
-            error = err;
-        }
-
+        loading = true;
+        const response = await fetch(`${CMS_ENDPOINT}/${endpoint}?populate=*${query}`);
+        let rawData = await response.json()
+        data = rawData.data;
+    } catch (err) {
+        error = err;
     } finally {
+
         loading = false;
     }
+
     // console.log(endpoint, data)
 
     return { loading, data, error }

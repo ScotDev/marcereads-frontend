@@ -20,6 +20,9 @@ export default function BookScroller({ data }) {
         });
     }, []);
 
+
+
+
     const scrollItems = data.map(item => {
         return (<div key={item.id} className={bookScrollerStyles.scroll_item}>
             {/* <Link href={`/articles/${item.id}`} target="_blank"> */}
