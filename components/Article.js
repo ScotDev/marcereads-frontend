@@ -6,7 +6,7 @@ import ReactMarkdown from "react-markdown";
 
 import StarRatings from './StarRatings.js';
 
-import getWordCount from '../utils/readTime.js';
+// import getWordCount from '../utils/readTime.js';
 
 import articleStyles from '../styles/Article.module.css'
 import Loading from './Loading';
@@ -19,8 +19,34 @@ export default function Article({ data }) {
 
     useEffect(() => {
 
+        const avgWordsPerMinute = 265;
+        let readTimeEstimate;
+        const words = data.attributes.body.split(" ");
+        let totalWordCount = words.length;
 
-        getWordCount(data.attributes.body).then(res => setReadTimeEstimate(res + " min"))
+        let minutes;
+
+        if (!data.attributes.body) {
+            minutes = 0
+        } else if (totalWordCount <= avgWordsPerMinute) {
+            minutes = 2;
+        } else {
+            minutes = totalWordCount / avgWordsPerMinute;
+        }
+
+        const formattedMinutes = minutes.toFixed(0)
+
+        if (minutes < 2) {
+            readTimeEstimate = 2;
+        } else {
+            readTimeEstimate = formattedMinutes.toString()
+        }
+
+        setReadTimeEstimate(readTimeEstimate + " min");
+
+
+
+        // getWordCount(data.attributes.body).then(res => setReadTimeEstimate(res + " min"))
     }, [data.attributes.body])
 
 

@@ -10,20 +10,20 @@ export default function StarRatings() {
     return (
         <div className={articleStyles.starRatingsContainer}> {[...new Array(totalStars)].map((arr, index) => {
 
-            const activeState = activeStar;
+            {/* const activeState = activeStar; */ }
             /*
                 we only need to render empty icon layout when active state 
                 is not set i.e -1  in our case or active state state is 
                 less than index i.e show only when its 
                 index is greater that active state
               */
-            const showEmptyIcon = activeState === -1 || activeState < index + 1;
+            {/* const showEmptyIcon = activeState === -1 || activeState < index + 1;
 
             const isActiveRating = activeState !== 1;
             const isRatingWithPrecision = activeState % 1 !== 0;
             const isRatingEqualToIndex = Math.ceil(activeState) === index + 1;
             const showRatingWithPrecision =
-                isActiveRating && isRatingWithPrecision && isRatingEqualToIndex;
+                isActiveRating && isRatingWithPrecision && isRatingEqualToIndex; */}
 
 
 
