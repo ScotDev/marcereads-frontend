@@ -77,8 +77,7 @@ export default function Article({ data }) {
                         <h4 className={articleStyles.date}>{dayjs(data.attributes.date).format("Do MMM YYYY")}</h4>
 
                     </div>
-                    <StarRatings rating={data.attributes.rating} />
-
+                    {data.attributes.type === "review" ? <StarRatings rating={data.attributes.rating} /> : null}
                 </header>
                 <article>
                     <div className={articleStyles.image_wrapper}>
