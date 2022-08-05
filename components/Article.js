@@ -77,7 +77,7 @@ export default function Article({ data }) {
                         <h4 className={articleStyles.date}>{dayjs(data.attributes.date).format("Do MMM YYYY")}</h4>
 
                     </div>
-                    <StarRatings />
+                    <StarRatings rating={data.attributes.rating} />
 
                 </header>
                 <article>

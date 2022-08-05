@@ -77,10 +77,11 @@
     align-items: center;
     padding: 16px 0 0 0;
 }
+
 .article .starRatingsContainer p {
     font-size: 16px;
     line-height: 16px;
-    padding: 0 0 0 8px;
+    padding: 0 8px 0 0;
 }
 .article .starRatingsContainer svg {
     color:  var(--mr-green-accent);
@@ -168,7 +169,7 @@
     .article .starRatingsContainer p {
         font-size: 16px;
         line-height: 16px;
-        padding: 0 0 0 8px;
+        padding: 0 8px 0 0;
     }
     .article h6 {
         margin: 24px auto;
