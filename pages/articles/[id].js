@@ -39,7 +39,7 @@ export const getStaticPaths = async () => {
 
 export const getStaticProps = async ({ params }) => {
 
-    const { loading: loadingArticlesWithID, data: dataArticlesWithID, error: errorArticlesWithID } = await fetchData(`articles/${params.id}`)
+    const { ata: dataArticlesWithID, error: errorArticlesWithID } = await fetchData(`articles/${params.id}`)
     // const res = await fetch(`${CMS_ENDPOINT}/articles/${params.id}?populate=*`);
     // const data = await res.json();
 

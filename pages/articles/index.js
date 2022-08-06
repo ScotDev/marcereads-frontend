@@ -2,13 +2,13 @@ import Head from 'next/head';
 
 import fetchData from "../../utils/fetchData.js";
 
-import Featured from '../../components/Featured';
 import PostsNavigation from '../../components/PostsNavigation';
 import AllPosts from '../../components/AllPosts'
 import About from '../../components/About'
 import headerStyles from '../../styles/Header.module.css'
 
-export default function browse({ data, dataFeatured, dataAbout, width }) {
+export default function browse({ data, totalArticlesCount, currentPage, dataAbout, width }) {
+
     return (
         <>
             <Head>
@@ -22,8 +22,7 @@ export default function browse({ data, dataFeatured, dataAbout, width }) {
             </header>
 
             <PostsNavigation />
-            {width > 768 ? null : <Featured data={dataFeatured} />}
-            <AllPosts width={width} data={data} showPagination />
+            <AllPosts width={width} data={data} totalArticlesCount={totalArticlesCount} currentPage={currentPage} showPagination />
             <About data={dataAbout} />
         </>
     )
@@ -32,14 +31,14 @@ export default function browse({ data, dataFeatured, dataAbout, width }) {
 export const getStaticProps = async () => {
     try {
 
-        const { loading: loadingAbout, data: dataAbout, error: errorAbout } = await fetchData("about-section")
-        const { loading: loadingFeatured, data: dataFeatured, error: errorFeatured } = await fetchData("articles", true)
-        const { loading: loadingArticles, data: dataArticles, error: errorArticles } = await fetchData("articles")
+        const { data: dataAbout, error: errorAbout } = await fetchData("about-section")
+        const { itemCount, currentPage, data: dataArticles, error: errorArticles } = await fetchData("articles")
 
         return {
             props: {
                 data: await dataArticles,
-                dataFeatured: await dataFeatured,
+                totalArticlesCount: itemCount,
+                currentPage: currentPage,
                 dataAbout: await dataAbout,
             },
             revalidate: 1

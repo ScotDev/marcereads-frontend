@@ -1,18 +1,16 @@
 import Head from 'next/head';
 
-const qs = require('qs');
-
 import fetchData from '../utils/fetchData';
 
 import homeStyles from '../styles/Home.module.css';
 import Header from '../components/Header';
-import Featured from '../components/Featured';
 import AllPosts from '../components/AllPosts';
 import Latest from '../components/Latest';
 import About from '../components/About';
 import BookScroller from '../components/BookScroller';
 
-export default function Home({ width, data, dataAbout, dataFeatured, dataLatest, dataTBR }) {
+export default function Home({ width, data, totalArticlesCount, currentPage, dataAbout, dataLatest, dataTBR }) {
+
 
   return (
     <>
@@ -24,8 +22,8 @@ export default function Home({ width, data, dataAbout, dataFeatured, dataLatest,
       </Head>
 
       <div className={homeStyles.home}>
-        {/* <Header data={dataAbout} /> */}
-        {width > 768 ? <AllPosts width={width} data={data} showViewMore /> : <Featured data={dataFeatured} />}
+        <Header data={dataAbout} />
+        <AllPosts width={width} data={data} totalArticlesCount={totalArticlesCount} currentPage={currentPage} showViewMore />
 
         <BookScroller data={dataTBR} />
         {width > 768 ? null : <Latest data={dataLatest} />}
@@ -38,19 +36,19 @@ export default function Home({ width, data, dataAbout, dataFeatured, dataLatest,
 export const getStaticProps = async () => {
   try {
 
-    // refactor this block, loading state does nothing
+    // refactor this block, error state does nothing
 
-    const { loading: loadingArticles, data: dataArticles, error: errorArticles } = await fetchData("articles")
+    const { data: dataArticles, itemCount } = await fetchData("articles")
     const { data: dataAbout, error: errorAbout } = await fetchData("about-section");
-    const { loading: loadingFeatured, data: dataFeatured, error: errorFeatured } = await fetchData("articles", true);
-    const { loading: loadingLatest, data: dataLatest, error: errorLatest } = await fetchData("articles");
-    const { loading: loadingTBR, data: dataTBR, error: errorTBR } = await fetchData("tbrs");
+    const { data: dataLatest, error: errorLatest } = await fetchData("articles");
+    const { data: dataTBR, error: errorTBR } = await fetchData("tbrs");
     // const aboutRes = await fetchData("about-section");
+    console.log("itemcount", itemCount)
 
     return {
       props: {
         data: await dataArticles,
-        dataFeatured: await dataFeatured,
+        totalArticlesCount: itemCount,
         dataLatest: await dataLatest,
         dataTBR: await dataTBR,
         dataAbout: await dataAbout,

@@ -1,17 +1,18 @@
 import Link from 'next/link';
+import { useRouter } from 'next/router'
 
 import sectionStyles from '../styles/Section.module.css';
 
 import MiniCard from './MiniCard'
 import CardGrid from './CardGrid';
 
-const magicalYearImg = "https://i.imgur.com/Lhzyvjh.jpg";
-const gettingStartedImg = "https://i.imgur.com/zzyHbus.jpg";
-const boyPartsImg = "https://i.imgur.com/LEjUl46.jpg";
-
 import { CgChevronLeft, CgChevronRight, CgPushChevronLeft, CgPushChevronRight } from 'react-icons/cg';
 
-export default function AllPosts({ width, showViewMore, showPagination, data }) {
+export default function AllPosts({ width, showViewMore, showPagination, totalArticlesCount, currentPage, data }) {
+    const router = useRouter()
+
+    console.log(totalArticlesCount)
+    const lastPage = Math.ceil(totalArticlesCount / 10)
 
     const miniCards = data.map(item => {
         return <MiniCard key={item.id} url={`/articles/${item.id}`} type={item.attributes.type} title={item.attributes.title} author={item.attributes.author} date={item.attributes.date} imgURL={item.attributes.main.data.attributes.url} thumbnailURL={item.attributes.main.data.attributes.formats.thumbnail.url} />
@@ -19,28 +20,28 @@ export default function AllPosts({ width, showViewMore, showPagination, data }) 
 
     return (
         <section className={sectionStyles.section}>
-            {width > 768 ? <><CardGrid showViewMore={showViewMore} data={data} />
+            <><CardGrid showViewMore={showViewMore} data={data} width={width} />
+
                 {showPagination ? <div className={sectionStyles.pagination}>
-                    <Link href="/"><a alt="Initial page of content" disabled aria-disabled><CgPushChevronLeft /></a></Link>
-                    <Link href="/"><a alt="Previous page of content" disabled aria-disabled><CgChevronLeft /></a></Link>
+                    <button alt="Initial page of content" disabled={currentPage >= lastPage ? true : false} aria-disabled={currentPage >= lastPage ? true : false}><CgPushChevronLeft /></button>
+                    <button alt="Previous page of content" disabled={currentPage >= lastPage ? true : false} aria-disabled={currentPage >= lastPage ? true : false}><CgChevronLeft /></button>
                     <p id={sectionStyles.page_number}>1</p>
                     <Link href="/"><a alt="Next page of content"><CgChevronRight /></a></Link>
                     <Link href="/"><a alt="Final page of content"><CgPushChevronRight /></a></Link>
                 </div> : null}
 
             </>
-                :
-                <div>
-                    {miniCards}
-                    <div className={sectionStyles.pagination}>
-                        {/* disabled state does not stop navigation */}
-                        <Link href="/" ><a alt="Initial page of content" disabled aria-disabled><CgPushChevronLeft /></a></Link>
-                        <Link href="/"><a alt="Previous page of content" disabled aria-disabled><CgChevronLeft /></a></Link>
-                        <p id={sectionStyles.page_number}>1</p>
-                        <Link href="/"><a alt="Next page of content" disabled aria-disabled><CgChevronRight /></a></Link>
-                        <Link href="/"><a alt="Final page of content" disabled aria-disabled><CgPushChevronRight /></a></Link>
-                    </div>
-                </div>}
+
+            {width < 768 && router.pathname !== "/" ? <div>
+                {miniCards}
+                <div className={sectionStyles.pagination}>
+                    <button alt="Initial page of content" disabled={currentPage >= lastPage ? true : false} aria-disabled={currentPage >= lastPage ? true : false}><CgPushChevronLeft /></button>
+                    <Link href="/"><a alt="Previous page of content" disabled aria-disabled><CgChevronLeft /></a></Link>
+                    <p id={sectionStyles.page_number}>1</p>
+                    <Link href="/"><a alt="Next page of content" disabled aria-disabled><CgChevronRight /></a></Link>
+                    <Link href="/"><a alt="Final page of content" disabled aria-disabled><CgPushChevronRight /></a></Link>
+                </div>
+            </div> : null}
         </section>
     )
 }
