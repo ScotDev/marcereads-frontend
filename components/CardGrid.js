@@ -3,12 +3,13 @@ import React, { useState, useEffect } from 'react'
 
 import cardGridStyles from '../styles/CardGrid.module.css'
 import sectionStyles from '../styles/Section.module.css';
+import buttonStyles from '../styles/Button.module.css';
 
 import Card from './Card';
 
 import { HiArrowNarrowRight } from "react-icons/hi";
 
-export default function CardGrid({ showViewMore, data, width }) {
+export default function CardGrid({ showViewMore, data, width, loadMore }) {
     // console.log("data passed down", data)
 
     const [dataToRender, setdataToRender] = useState([...data])
@@ -59,7 +60,7 @@ export default function CardGrid({ showViewMore, data, width }) {
     // }
 
 
-    const Cards = dataToRender.map(item => {
+    const Cards = dataToRender?.map(item => {
         return <Card key={item.id} featured={item.attributes.isFeatured} url={`/articles/${item.id}`} type={item.attributes.type} title={item.attributes.title} author={item.attributes.author} date={item.attributes.date} imgURL={item.attributes.main.data.attributes.url} thumbnailURL={item.attributes.main.data.attributes.formats.thumbnail.url} />
 
     })
@@ -68,6 +69,7 @@ export default function CardGrid({ showViewMore, data, width }) {
         <section className={sectionStyles.section}>
             <div className={cardGridStyles.grid}>
                 {Cards}
+                <button className={buttonStyles.button} type="secondary" onClick={() => loadMore()}>Load more</button>
             </div>
             {showViewMore ? <Link href="/articles"><a className={sectionStyles.view_more}>View more <HiArrowNarrowRight /></a></Link> : null}
 

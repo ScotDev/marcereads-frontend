@@ -30,8 +30,7 @@
 }
 
 .button[type=secondary] {
-
-     background-color: var(--mr-green-accent);
+    background-color: var(--mr-green-accent);
     box-shadow: var(--mr-drop-shadow);
     color: var(--mr-light-text);
 }
