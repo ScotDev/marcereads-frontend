@@ -7,6 +7,7 @@ const fetchData = async (endpoint, ...args) => {
 
     let loading = true;
     let data = null;
+    let metaData = {};
     let error = null;
     let query;
     let startPage;
@@ -23,10 +24,6 @@ const fetchData = async (endpoint, ...args) => {
                 $eq: 'review'
             }
         },
-        pagination: {
-            start: 0,
-            limit: 6,
-        },
     }, {
         encodeValuesOnly: true,
     });
@@ -38,29 +35,25 @@ const fetchData = async (endpoint, ...args) => {
                 $eq: 'guide'
             }
         },
-        pagination: {
-            start: 0,
-            limit: 6,
-        },
     }, {
         encodeValuesOnly: true,
     });
 
     const standardQuery = qs.stringify({
         sort: ['createdAt:desc'],
-        pagination: {
-            page: startPage,
-            pageSize: 6,
-            limit: 6
-        },
+        // pagination: {
+        //     page: startPage,
+        //     pageSize: 6,
+        //     // limit: 6
+        // },
     }, {
         encodeValuesOnly: true,
     });
 
     // Find better way to parse args
     if (args.length == 0 || typeof args[0] == undefined) {
-        // query = "";
-        query = "&?pagination[page]=1&pagination[pageSize]=6"
+        query = "";
+        // query = "&?pagination[page]=1&pagination[pageSize]=6"
     } else if (args.length == 1 && typeof args[0] === "number") {
         console.log("standard")
         startPage = args[0]
@@ -81,19 +74,23 @@ const fetchData = async (endpoint, ...args) => {
         let rawData = await response.json()
 
         data = rawData.data;
-        itemCount = rawData.meta.pagination.total;
-        currentPage = rawData.meta.pagination.page;
+        // maybe return just meta.pagination as object to be parsed further down
+        metaData = rawData.meta.pagination
+        // itemCount = rawData.meta.pagination.total;
+        // currentPage = rawData.meta.pagination.page;
         // console.log(endpoint, rawData)
 
     } catch (err) {
         error = err;
         console.log(err)
     } finally {
-
         loading = false;
     }
 
-    return { loading, data, itemCount, currentPage, error }
+    return { loading, data, metaData, error }
 }
 
 export default fetchData;
+
+
+// redo queries to remove qs.

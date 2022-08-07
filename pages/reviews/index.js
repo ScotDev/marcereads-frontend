@@ -24,7 +24,7 @@ export default function reviews({ width, data, dataAbout }) {
         </>
     )
 }
-export const getStaticProps = async () => {
+export const getStaticProps = async ({ params }) => {
     try {
 
         const { loading: loadingAbout, data: dataAbout, error: errorAbout } = await fetchData("about-section")

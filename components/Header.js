@@ -11,6 +11,9 @@ import { FaInstagram } from 'react-icons/fa';
 
 export default function Header({ data }) {
 
+    if (!data) {
+        return null
+    }
 
     return (
         <header className={headerStyles.header}>

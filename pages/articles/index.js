@@ -7,7 +7,7 @@ import AllPosts from '../../components/AllPosts'
 import About from '../../components/About'
 import headerStyles from '../../styles/Header.module.css'
 
-export default function browse({ data, totalArticlesCount, currentPage, dataAbout, width }) {
+export default function browse({ data, metaData, dataAbout, width }) {
 
     return (
         <>
@@ -22,7 +22,7 @@ export default function browse({ data, totalArticlesCount, currentPage, dataAbou
             </header>
 
             <PostsNavigation />
-            <AllPosts width={width} data={data} totalArticlesCount={totalArticlesCount} currentPage={currentPage} showPagination />
+            <AllPosts width={width} data={data} metaData={metaData} showPagination />
             <About data={dataAbout} />
         </>
     )
@@ -31,14 +31,13 @@ export default function browse({ data, totalArticlesCount, currentPage, dataAbou
 export const getStaticProps = async () => {
     try {
 
-        const { data: dataAbout, error: errorAbout } = await fetchData("about-section")
-        const { itemCount, currentPage, data: dataArticles, error: errorArticles } = await fetchData("articles")
+        const { data: dataAbout } = await fetchData("about-section")
+        const { metaData, data: dataArticles } = await fetchData("articles")
 
         return {
             props: {
                 data: await dataArticles,
-                totalArticlesCount: itemCount,
-                currentPage: currentPage,
+                metaData: metaData,
                 dataAbout: await dataAbout,
             },
             revalidate: 1
@@ -51,3 +50,4 @@ export const getStaticProps = async () => {
     }
 
 }
+
