@@ -13,7 +13,7 @@ import { CgChevronLeft, CgChevronRight, CgPushChevronLeft, CgPushChevronRight } 
 
 export default function AllPosts({ width, showViewMore, data }) {
     const router = useRouter()
-    const perChunk = 6 // items per chunk
+    // const perChunk = 6 // items per chunk
     const [loading, setloading] = useState(false)
     const [dataToRender, setdataToRender] = useState([...data])
     const [currentIndex, setcurrentIndex] = useState()
@@ -33,7 +33,13 @@ export default function AllPosts({ width, showViewMore, data }) {
         const initialEndIndex = data.length >= 6 ? 6 : data.length;
         setcurrentIndex(initialEndIndex)
         currentIndexRef.current = initialEndIndex
-        setdataToRender(data.slice(0, initialEndIndex))
+        console.log(router.pathname)
+        // if (router.pathname !== "/") {
+        //     setdataToRender(data.slice(0, initialEndIndex))
+        // } else {
+        //     setdataToRender(data.slice(0, 6))
+        // }
+
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
 

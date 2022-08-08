@@ -37,11 +37,10 @@ export default function Home({ width, data, metaData, dataAbout, dataLatest, dat
 export const getStaticProps = async () => {
   try {
 
-    // refactor this block, error state does nothing
+    // refactor this block, error and loading states do nothing
 
     const { data: dataArticles, metaData } = await fetchData("articles")
     const { data: dataAbout, error: errorAbout } = await fetchData("about-section");
-    // const { data: dataLatest, error: errorLatest } = await fetchData("articles");
     const { data: dataTBR, error: errorTBR } = await fetchData("tbrs");
     // const aboutRes = await fetchData("about-section");
 

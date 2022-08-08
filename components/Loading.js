@@ -3,6 +3,8 @@ import React from 'react'
 import Skeleton from 'react-loading-skeleton'
 import 'react-loading-skeleton/dist/skeleton.css'
 
+// this should be more dynamic
+
 export default function Loading({ lineCount, }) {
   return (
     <div style={{ display: "flex", alignItems: "center" }}>
