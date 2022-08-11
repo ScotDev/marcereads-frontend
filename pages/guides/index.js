@@ -18,7 +18,7 @@ export default function guides({ width, data, dataAbout }) {
                 <h1 className={headerStyles.page_title}>Guides</h1>
             </header>
             <PostsNavigation />
-            <AllPosts width={width} data={data} showPagination />
+            <AllPosts width={width} data={data} />
             <About data={dataAbout} />
         </>
     )

@@ -19,7 +19,7 @@ export default function reviews({ width, data, dataAbout }) {
                 <h1 className={headerStyles.page_title}>Reviews</h1>
             </header>
             <PostsNavigation />
-            <AllPosts width={width} data={data} showPagination />
+            <AllPosts width={width} data={data} />
             <About data={dataAbout} />
         </>
     )

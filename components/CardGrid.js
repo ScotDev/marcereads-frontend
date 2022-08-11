@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import { useRouter } from 'next/router'
 import React, { useState, useEffect } from 'react'
 
 import cardGridStyles from '../styles/CardGrid.module.css'
@@ -11,6 +12,7 @@ import { HiArrowNarrowRight } from "react-icons/hi";
 
 export default function CardGrid({ showViewMore, data, width, loadMore }) {
     // console.log("data passed down", data)
+    const router = useRouter()
 
     const [dataToRender, setdataToRender] = useState([...data])
 
@@ -26,18 +28,24 @@ export default function CardGrid({ showViewMore, data, width, loadMore }) {
         })
 
         if (width < 768) {
+            // This shows only 1 item in total on mobile
             if (featuredData.length > 1) {
                 reorderedData = [featuredData.shift()]
                 setdataToRender(reorderedData)
             }
+        } else if (width < 768 && router.pathname === "/reviews" || router.pathname === "/guides") {
+            reorderedData.splice(featuredDataIndex, 1)
+            reorderedData.unshift(featuredData[0])
+            setdataToRender(reorderedData.slice(0, 6))
         } else {
             reorderedData.splice(featuredDataIndex, 1)
             reorderedData.unshift(featuredData[0])
-            setdataToRender(reorderedData)
+            setdataToRender(reorderedData.slice(0, 6))
         }
 
         console.log("dataToRender", dataToRender)
-    }, [data])
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [])
 
 
     // let reorderedData = [...data]
@@ -69,7 +77,7 @@ export default function CardGrid({ showViewMore, data, width, loadMore }) {
         <section className={sectionStyles.section}>
             <div className={cardGridStyles.grid}>
                 {Cards}
-                <button className={buttonStyles.button} type="secondary" onClick={() => loadMore()}>Load more</button>
+                {/* <button className={buttonStyles.button} type="secondary" onClick={() => loadMore()}>Load more</button> */}
             </div>
             {showViewMore ? <Link href="/articles"><a className={sectionStyles.view_more}>View more <HiArrowNarrowRight /></a></Link> : null}
 

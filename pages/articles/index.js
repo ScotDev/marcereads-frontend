@@ -22,7 +22,7 @@ export default function browse({ data, metaData, dataAbout, width }) {
             </header>
 
             <PostsNavigation />
-            <AllPosts width={width} data={data} metaData={metaData} showPagination />
+            <AllPosts width={width} data={data} metaData={metaData} />
             <About data={dataAbout} />
         </>
     )
