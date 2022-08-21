@@ -37,6 +37,8 @@
     padding: 0 8px 0 0;
 }
 
+
+/* remove pagination styles */
 .section .pagination {
     display: flex;
     align-items: center;
@@ -61,13 +63,10 @@
     opacity: 0.55;
 }
 
+
 @media (min-width:768px) {
 .section {
     padding: 24px 0 40px 0;
-
 }
-/* 
-.section a.view_more {
-    margin: 16px 0;
-} */
+
 }

@@ -26,6 +26,7 @@ export default function CardGrid({ showViewMore, data, width, loadMore }) {
         const featuredDataIndex = data.findIndex(item => {
             return item.attributes.isFeatured;
         })
+        console.log("featured", featuredData)
 
         if (width < 768) {
             // This shows only 1 item in total on mobile

@@ -14,13 +14,11 @@ export default function AllPosts({ width, showViewMore, data }) {
     const router = useRouter()
     const [loading, setloading] = useState(false)
     const [dataToRender, setdataToRender] = useState([...data])
-    const [currentIndex, setcurrentIndex] = useState()
     const currentIndexRef = useRef()
 
     useEffect(() => {
         // Initially show up to 6 items
         const initialEndIndex = data.length >= 6 ? 6 : data.length;
-        setcurrentIndex(initialEndIndex)
         currentIndexRef.current = initialEndIndex
         console.log(router.pathname)
         console.log("currentIndex", currentIndexRef.current)
@@ -44,7 +42,6 @@ export default function AllPosts({ width, showViewMore, data }) {
 
 
         if (currentIndexRef.current <= maxIndex) {
-            setcurrentIndex(currentIndex + 6)
             currentIndexRef.current += 6
         }
 
