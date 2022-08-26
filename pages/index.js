@@ -5,11 +5,10 @@ import fetchData from '../utils/fetchData';
 import homeStyles from '../styles/Home.module.css';
 
 import Header from '../components/Header';
-import AllPosts from '../components/AllPosts';
 import Latest from '../components/Latest';
 import About from '../components/About';
 import BookScroller from '../components/BookScroller';
-import PostsHomepage from '../components/PostsHomepage';
+import PostsHomepage from '../components/PostsHome';
 
 export default function Home({ width, dataPostsHomepage, dataAbout, dataLatest, dataTBR }) {
 
@@ -41,14 +40,11 @@ export const getStaticProps = async () => {
     const { data: dataArticles } = await fetchData("articles")
     const { data: dataAbout } = await fetchData("about-section");
     const { data: dataTBR } = await fetchData("tbrs");
-    // const aboutRes = await fetchData("about-section");
 
-
-    const dataPostsHomepage = async () => {
+    const getDataPosts = async () => {
       let reorderedData = [...dataArticles];
 
       const hasFeaturedData = await dataArticles.some(item => {
-        console.log(item.attributes.isFeatured)
         return item.attributes.isFeatured === true;
       })
 
@@ -62,13 +58,12 @@ export const getStaticProps = async () => {
 
         reorderedData.splice(featuredDataIndex, 1)
         reorderedData.unshift(featuredData[0])
-        // reorderedData.slice(0, 6)
       }
 
       return reorderedData;
     }
 
-    const reorderedData = await dataPostsHomepage()
+    const reorderedData = await getDataPosts()
 
     return {
       props: {

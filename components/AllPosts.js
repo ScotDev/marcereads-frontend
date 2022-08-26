@@ -20,8 +20,6 @@ export default function AllPosts({ width, showViewMore, data }) {
         // Initially show up to 6 items
         const initialEndIndex = data.length >= 6 ? 6 : data.length;
         currentIndexRef.current = initialEndIndex
-        console.log(router.pathname)
-        console.log("currentIndex", currentIndexRef.current)
         setdataToRender(data.slice(0, currentIndexRef.current))
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
@@ -35,10 +33,10 @@ export default function AllPosts({ width, showViewMore, data }) {
         // divide by six and round up is how many button presses/groups of items/batches of items - 3 in this case
         // do some maths to know what index to pass.
 
-        console.log("maxIndex", maxIndex)
-        console.log("number of batches", numberOfBatches)
-        console.log("how many to load next", data.length - currentIndexRef.current)
-        console.log("how many to load next", data.length)
+        // console.log("maxIndex", maxIndex)
+        // console.log("number of batches", numberOfBatches)
+        // console.log("how many to load next", data.length - currentIndexRef.current)
+        // console.log("how many to load next", data.length)
 
 
         if (currentIndexRef.current <= maxIndex) {
@@ -50,7 +48,6 @@ export default function AllPosts({ width, showViewMore, data }) {
             setdataToRender(data.slice(0, currentIndexRef.current))
             setloading(false)
         }, 1000);
-        console.log("currentIndex", currentIndexRef.current)
     }
 
     // const miniCards = dataToRender?.slice(0, currentIndexRef.current)?.map(item => {
