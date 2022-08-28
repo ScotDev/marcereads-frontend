@@ -7,6 +7,7 @@ import cardGridStyles from '../styles/CardGrid.module.css'
 
 import Card from './Card';
 import MiniCard from './MiniCard';
+import Loading from './Loading';
 
 import { HiArrowNarrowRight } from "react-icons/hi";
 
@@ -16,64 +17,69 @@ import { HiArrowNarrowRight } from "react-icons/hi";
 //  Similar load more function
 
 export default function PostsHomepage({ width, data }) {
-    console.log(data)
+    // console.log(data)
     const isDesktop = width > 768 ? true : false;
-    let finalData = data.flat()
-    console.log(finalData)
+
+
+    // console.log(finalData)
     let miniCardsData = [];
     const fullCardsData = useRef([]);
-    const containerArray = useRef([]);
+    const dataToRenderRef = useRef([]);
+    const counter = useRef(0);
+    const [dataToRender, setdataToRender] = useState([]);
     const maximum = Math.ceil(data.length / 6)
 
     const [loading, setloading] = useState(false);
 
-    // useEffect(() => {
 
-    if (!isDesktop) {
-        // fullCardsData.current = data.slice(0, 1)
-        // setminiCardsData(data.slice(1, 6))
-        miniCardsData = data.flat().slice(1, 6)
-    } else if (isDesktop) {
-        // fullCardsData.current = data.slice(0, 6)
+    useEffect(() => {
+
+        if (!isDesktop) {
+            // fullCardsData.current = data.slice(0, 1)
+            // setminiCardsData(data.slice(1, 6))
+            miniCardsData = data.flat().slice(1, 6)
+        } else if (isDesktop) {
+            // fullCardsData.current = data.slice(0, 6)
 
 
-        // on first load
-        // for (let i = 0; i < data.length; i += chunkSize) {
-        //     const chunk = data.slice(i, i + chunkSize)
-        //     containerArray.current.push(chunk)
-        //     // console.log(containerArray.current)
-        //     // console.log(`chunk ${i}`, chunk)
-        // }
-        // fullCardsData.current = containerArray.current[0]
+            setdataToRender(data[counter.current])
+            // dataToRenderRef.current = data[0]
 
-        // for (let x = 0; x < data.length; x++) {
-        //     if (x < 6) {
-        //         fullCardsData.current.push(data[x])
-        //     }
-        // }
-        // data.forEach(item, index => {
-        //     if (index <= 6) {
-        //         miniCardsData.push(item)
-        //     }
-        // })
-        console.log(isDesktop)
+
+            // on first load
+            // for (let i = 0; i < data.length; i += chunkSize) {
+            //     const chunk = data.slice(i, i + chunkSize)
+            //     containerArray.current.push(chunk)
+            //     // console.log(containerArray.current)
+            //     // console.log(`chunk ${i}`, chunk)
+            // }
+            // fullCardsData.current = containerArray.current[0]
+
+            // for (let x = 0; x < data.length; x++) {
+            //     if (x < 6) {
+            //         fullCardsData.current.push(data[x])
+            //     }
+            // }
+            // data.forEach(item, index => {
+            //     if (index <= 6) {
+            //         miniCardsData.push(item)
+            //     }
+            // })
+            console.log(isDesktop)
+
+        }
+
+    }, [])
+
+
+    const pushToArrayAndFlatten = async (val) => {
+        let tempArray = [...dataToRender];
+        tempArray.push(val);
+        return tempArray.flat();
     }
-
-    // }, [])
-
 
 
     const loadMore = async () => {
-
-        // let tempArray = data.slice(6, 12)
-        // for (let x = 0; x < tempArray.length; x++) {
-        //     if (x < 6) {
-        //         fullCardsData.current.push(tempArray[x])
-        //     }
-
-        // }
-
-        // on click just push next chunk
 
         // for (let i = 0; i < data.length; i += chunkSize) {
         //     const chunk = data.slice(i, i + chunkSize)
@@ -83,9 +89,18 @@ export default function PostsHomepage({ width, data }) {
         // }
         // console.log(fullCardsData)
 
+        // increment counter ref, add that to state
+        if (counter.current < data.length - 1) {
+            counter.current += 1
+            const nextData = await pushToArrayAndFlatten(data[`${counter.current}`])
+            setdataToRender(nextData)
+        }
 
-        // fullCardsData.current
-        fullCardsData.current = containerArray.current[1]
+
+        // console.log(nextData)
+        // console.log(counter.current)
+
+
 
         setloading(true)
         // Allow for loading animation and perceived feedback
@@ -101,8 +116,8 @@ export default function PostsHomepage({ width, data }) {
     }
 
     // const miniCards = dataToRender?.slice(0, currentIndexRef.current)?.map(item => {
-    // const Cards = fullCardsData.current?.map(item => {
-    const Cards = finalData?.map(item => {
+    const Cards = dataToRender?.map(item => {
+        // const Cards = finalData?.map(item => {
         return <Card key={item.id} featured={item.attributes.isFeatured} url={`/articles/${item.id}`} type={item.attributes.type} title={item.attributes.title} author={item.attributes.author} date={item.attributes.date} imgURL={item.attributes.main.data.attributes.url} thumbnailURL={item.attributes.main.data.attributes.formats.thumbnail.url} />
     })
 
@@ -115,7 +130,8 @@ export default function PostsHomepage({ width, data }) {
             <div className={cardGridStyles.grid}>
                 {Cards ? Cards : null}
                 {miniCards ? miniCards : null}
-                <button onClick={() => loadMore()}>More</button>
+                {loading ? <Loading /> : null}
+                {!loading ? <button onClick={() => loadMore()}>More</button> : null}
             </div>
 
         </section>
