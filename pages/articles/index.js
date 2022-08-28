@@ -4,7 +4,6 @@ import fetchData from "../../utils/fetchData.js";
 
 import PostsNavigation from '../../components/PostsNavigation';
 import PostsBrowse from '../../components/PostsBrowse';
-import AllPosts from '../../components/AllPosts'
 import About from '../../components/About'
 import headerStyles from '../../styles/Header.module.css'
 
@@ -24,7 +23,6 @@ export default function browse({ data, dataAbout, width }) {
 
             <PostsNavigation />
             <PostsBrowse width={width} data={data} />
-            {/* <AllPosts width={width} data={data} metaData={metaData} /> */}
             <About data={dataAbout} />
         </>
     )
@@ -38,6 +36,8 @@ export const getStaticProps = async () => {
 
         const getDataPosts = async () => {
             let reorderedData = [...dataArticles];
+            let chunkedData = []
+            const chunkSize = 6;
 
             const hasFeaturedData = await dataArticles.some(item => {
                 return item.attributes.isFeatured === true;
@@ -55,7 +55,12 @@ export const getStaticProps = async () => {
                 reorderedData.unshift(featuredData[0])
             }
 
-            return reorderedData;
+            for (let i = 0; i < reorderedData.length; i += chunkSize) {
+                const chunk = reorderedData.slice(i, i + chunkSize)
+                chunkedData.push(chunk)
+            }
+
+            return chunkedData;
         }
 
         const reorderedData = await getDataPosts()
