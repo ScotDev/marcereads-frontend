@@ -11,23 +11,32 @@ import Loading from './Loading';
 
 import { HiArrowNarrowRight } from "react-icons/hi";
 
-//  - For desktop, initially show 6, with featured first (alter code in articles/index.js).
-//  - For desktop, loadMore function
-//  - For mobile, initially show 6, with featured first as full size card, rest as minicards
-//  Similar load more function
 
-export default function PostsHomepage({ width, data }) {
-    const isDesktop = width > 768 ? true : false;
-
-
-    // console.log(finalData)
-    let miniCardsData = [];
-    const fullCardsData = useRef([]);
+export default function PostsBrowse({ data }) {
     const counter = useRef(0);
+
+    const [width, setWindowWidth] = useState(0);
+    const [isDesktop, setisDesktop] = useState(null);
+
     const [dataToRender, setdataToRender] = useState([]);
     const [mincardDataToRender, setminicardDataToRender] = useState([]);
     const [loading, setloading] = useState(false);
 
+    useEffect(() => {
+        updateDimensions();
+        window.addEventListener("resize", updateDimensions);
+        return () => window.removeEventListener("resize", updateDimensions);
+    }, [])
+
+    const updateDimensions = () => {
+        const width = window.innerWidth;
+        if (width > 768) {
+            setisDesktop(true)
+        } else if (width < 768) {
+            setisDesktop(false)
+        }
+        setWindowWidth(width);
+    };
 
     useEffect(() => {
 
@@ -41,8 +50,22 @@ export default function PostsHomepage({ width, data }) {
             setdataToRender(data[counter.current])
         }
 
+
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
+
+    useEffect(() => {
+
+        if (isDesktop) {
+            setdataToRender(data[0])
+            setminicardDataToRender(null)
+        } else if (!isDesktop) {
+            setdataToRender(data[0].slice(0, 1))
+            setminicardDataToRender(data[0].slice(1, 6))
+        }
+        console.log(isDesktop)
+        console.log(width)
+    }, [isDesktop])
 
 
     const pushToArrayAndFlatten = async (val) => {
