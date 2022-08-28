@@ -4,6 +4,7 @@ import React, { useState, useEffect, useRef } from 'react';
 
 import sectionStyles from '../styles/Section.module.css';
 import cardGridStyles from '../styles/CardGrid.module.css'
+import buttonStyles from '../styles/Button.module.css'
 
 import Card from './Card';
 import MiniCard from './MiniCard';
@@ -119,9 +120,9 @@ export default function PostsBrowse({ data }) {
                 {Cards ? Cards : null}
                 {miniCards ? miniCards : null}
                 {/* {loading ? <Loading /> : null} */}
-                {!loading && counter.current < data.length - 1 ? <button onClick={() => loadMore()}>More</button> : null}
-            </div>
 
+            </div>
+            {!loading && counter.current < data.length - 1 ? <button className={buttonStyles.button} type="load" onClick={() => loadMore()}>Load more</button> : null}
         </section>
     )
 }

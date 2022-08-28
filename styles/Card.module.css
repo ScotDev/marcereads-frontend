@@ -114,6 +114,7 @@
     }
     .card[type="featured"] {
         outline: 16px solid var(--mr-pink);
+        margin: 0;
     }
     .card[type="featured"] #featured_tag {
         display: block;

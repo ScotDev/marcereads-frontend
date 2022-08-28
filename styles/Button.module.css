@@ -34,10 +34,21 @@
     box-shadow: var(--mr-drop-shadow);
     color: var(--mr-light-text);
 }
+.button[type=load] {
+    background-color: #1d1d1d2a;
+    color: var(--mr-secondary-text);
+    display: block;
+}
 
 .button:hover,
 .button:focus {
     box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    transform: translateY(-3px);
+}
+
+.button[type=load]:hover,
+.button[type=load]:focus {
+    box-shadow: none;
     transform: translateY(-3px);
 }
 
