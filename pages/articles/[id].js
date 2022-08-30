@@ -39,36 +39,7 @@ export const getStaticPaths = async () => {
 
 export const getStaticProps = async ({ params }) => {
 
-    const { loading: loadingArticlesWithID, data: dataArticlesWithID, error: errorArticlesWithID } = await fetchData(`articles/${params.id}`)
-    // const res = await fetch(`${CMS_ENDPOINT}/articles/${params.id}?populate=*`);
-    // const data = await res.json();
-
-    // const getReadTime = async () => {
-    //     // console.log(dataArticlesWithID.attributes.body)
-    //     // const res = await fetch(`${process.env.LOCAL_API_ENDPOINT}/readtime`, { method: "POST", body: dataArticlesWithID.attributes.body })
-    //     // console.log(await res.json())
-
-
-    //     try {
-
-    // const readTimeEstimate = await getWordCount(dataArticlesWithID.attributes.body)
-    // const res = await fetch(`${process.env.LOCAL_API_ENDPOINT}/readtime`, {
-    //     method: 'POST',
-    //     headers: {
-    //         "Content-Type": "application/json"
-    //     },
-    //     body: JSON.stringify({ value: dataArticlesWithID.attributes.body })
-    // })
-
-    // console.log("returned value: ", await res.json())
-    // return await readTimeEstimate;
-    // } catch (error) {
-    //     console.error("error here: ", error)
-    // }
-    // console.log(readTimeEstimate)
-
-
-
+    const { data: dataArticlesWithID, error: errorArticlesWithID } = await fetchData(`articles/${params.id}`)
 
     return {
         props: {

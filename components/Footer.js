@@ -9,6 +9,7 @@ import { HiOutlineMail } from 'react-icons/hi';
 
 
 export default function Footer() {
+    const currentYear = new Date().getFullYear()
     return (
         <footer className={footerStyles.footer}>
             <ul className={footerStyles.nav_links}>
@@ -30,17 +31,13 @@ export default function Footer() {
                 <li>
                     <Link href="/about">About</Link>
                 </li>
-                {/* <li>
-                    <Link href="/">Collaborate</Link>
-                </li> */}
             </ul>
             <div className={footerStyles.btn_group}>
                 <Button text="@marcereads" href="https://www.instagram.com/marcereads/?hl=en" type="primary" icon={<FaInstagram />} />
                 <Button text={"hello@marcereads.com"} href="mailto:hello@marcereads.com" type="secondary" icon={<HiOutlineMail />} />
             </div>
             <div className={footerStyles.credits}>
-                {/* Add js to calc current year */}
-                <p>Copyright © 2022 Marcereads</p>
+                <p>Copyright © {currentYear} Marcereads</p>
                 <p>Created by <Link href="https://www.callumgiles.dev"><a target="_blank" rel="noreferrer">callumgiles.dev</a></Link></p>
             </div>
 

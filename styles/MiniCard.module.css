@@ -17,6 +17,9 @@
 }
 
 
+.card:first-of-type {
+    margin-top: 24px;
+}
 .card:last-of-type {
     margin-bottom: 24px;
 }

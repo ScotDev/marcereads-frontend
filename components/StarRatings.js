@@ -44,7 +44,6 @@ export default function StarRatings({ rating }) {
                 ratingArray.current.push("emptyStar")
             }
         }
-        console.log(ratingArray.current)
 
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])

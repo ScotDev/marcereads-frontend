@@ -2,13 +2,13 @@ import Head from 'next/head';
 
 import fetchData from "../../utils/fetchData.js";
 
-import Featured from '../../components/Featured';
 import PostsNavigation from '../../components/PostsNavigation';
-import AllPosts from '../../components/AllPosts'
+import PostsBrowse from '../../components/PostsBrowse';
 import About from '../../components/About'
 import headerStyles from '../../styles/Header.module.css'
 
-export default function browse({ data, dataFeatured, dataAbout, width }) {
+export default function browse({ data, dataAbout, width }) {
+
     return (
         <>
             <Head>
@@ -22,8 +22,7 @@ export default function browse({ data, dataFeatured, dataAbout, width }) {
             </header>
 
             <PostsNavigation />
-            {width > 768 ? null : <Featured data={dataFeatured} />}
-            <AllPosts width={width} data={data} showPagination />
+            <PostsBrowse width={width} data={data} />
             <About data={dataAbout} />
         </>
     )
@@ -32,14 +31,44 @@ export default function browse({ data, dataFeatured, dataAbout, width }) {
 export const getStaticProps = async () => {
     try {
 
-        const { loading: loadingAbout, data: dataAbout, error: errorAbout } = await fetchData("about-section")
-        const { loading: loadingFeatured, data: dataFeatured, error: errorFeatured } = await fetchData("articles", true)
-        const { loading: loadingArticles, data: dataArticles, error: errorArticles } = await fetchData("articles")
+        const { data: dataAbout } = await fetchData("about-section")
+        const { data: dataArticles } = await fetchData("articles")
+
+        const getDataPosts = async () => {
+            let reorderedData = [...dataArticles];
+            let chunkedData = []
+            const chunkSize = 6;
+
+            const hasFeaturedData = await dataArticles.some(item => {
+                return item.attributes.isFeatured === true;
+            })
+
+            if (hasFeaturedData) {
+                const featuredData = await dataArticles.filter(item => {
+                    return item.attributes.isFeatured;
+                })
+                const featuredDataIndex = await dataArticles.findIndex(item => {
+                    return item.attributes.isFeatured;
+                })
+
+                reorderedData.splice(featuredDataIndex, 1)
+                reorderedData.unshift(featuredData[0])
+            }
+
+            for (let i = 0; i < reorderedData.length; i += chunkSize) {
+                const chunk = reorderedData.slice(i, i + chunkSize)
+                chunkedData.push(chunk)
+            }
+
+            return chunkedData;
+        }
+
+        const reorderedData = await getDataPosts()
+
 
         return {
             props: {
-                data: await dataArticles,
-                dataFeatured: await dataFeatured,
+                data: reorderedData,
                 dataAbout: await dataAbout,
             },
             revalidate: 1
@@ -52,3 +81,4 @@ export const getStaticProps = async () => {
     }
 
 }
+

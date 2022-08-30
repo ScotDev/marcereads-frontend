@@ -3,33 +3,19 @@ const qs = require('qs');
 const CMS_ENDPOINT = process.env.CMS_ENDPOINT;
 
 const fetchData = async (endpoint, ...args) => {
+    console.log(args)
 
     let loading = true;
     let data = null;
+    let metaData = {};
     let error = null;
     let query;
+    let startPage;
+    let itemCount;
+    let currentPage;
 
     // paramaters/args situation is a bit crude and not explicit, this should be refactored later on
     //  for now, args[0] = isFeatured, args[1] = reviews, args[3] = guides
-
-    // console.log("params: ", args[0], endpoint)
-
-    const featuredQuery = qs.stringify({
-        // populate: '*',
-        // Default sort for all content is by creation date. If we implement client-side user filtering then this can be modified
-        sort: ['createdAt:desc', 'isFeatured:desc'],
-        filters: {
-            isFeatured: {
-                $eq: true
-            }
-        },
-        pagination: {
-            start: 0,
-            limit: 1,
-        },
-    }, {
-        encodeValuesOnly: true,
-    });
 
     const reviewsQuery = qs.stringify({
         sort: ['createdAt:desc', 'isFeatured:desc'],
@@ -37,10 +23,6 @@ const fetchData = async (endpoint, ...args) => {
             type: {
                 $eq: 'review'
             }
-        },
-        pagination: {
-            start: 0,
-            limit: 6,
         },
     }, {
         encodeValuesOnly: true,
@@ -53,29 +35,31 @@ const fetchData = async (endpoint, ...args) => {
                 $eq: 'guide'
             }
         },
-        pagination: {
-            start: 0,
-            limit: 6,
-        },
     }, {
         encodeValuesOnly: true,
     });
-    // const standardQuery = qs.stringify({
-    //     sort: ['createdAt:desc', 'isFeatured:desc'],
-    // }, {
-    //     encodeValuesOnly: true,
-    // });
 
+    const standardQuery = qs.stringify({
+        sort: ['createdAt:desc'],
+        // pagination: {
+        //     page: startPage,
+        //     pageSize: 6,
+        //     // limit: 6
+        // },
+    }, {
+        encodeValuesOnly: true,
+    });
 
+    // Find better way to parse args
     if (args.length == 0 || typeof args[0] == undefined) {
-        // query = `&?${standardQuery}`;
         query = "";
-    } else if (args.length == 1 && args[0] == true) {
-        query = `&?${featuredQuery}`;
-        // I will need to add pagination before release
+        // query = "&?pagination[page]=1&pagination[pageSize]=6"
+    } else if (args.length == 1 && typeof args[0] === "number") {
+        console.log("standard")
+        startPage = args[0]
+        query = `&?${standardQuery}`;
     } else if (args.length == 2 && args[1] == true) {
         query = `&?${reviewsQuery}`;
-
     } else if (args.length == 3 && args[2] == true) {
         query = `&?${guidesQuery}`;
     }
@@ -88,17 +72,25 @@ const fetchData = async (endpoint, ...args) => {
         loading = true;
         const response = await fetch(`${CMS_ENDPOINT}/${endpoint}?populate=*${query}`);
         let rawData = await response.json()
+
         data = rawData.data;
+        // maybe return just meta.pagination as object to be parsed further down
+        metaData = rawData.meta.pagination
+        // itemCount = rawData.meta.pagination.total;
+        // currentPage = rawData.meta.pagination.page;
+        // console.log(endpoint, rawData)
+
     } catch (err) {
         error = err;
+        console.log(err)
     } finally {
-
         loading = false;
     }
 
-    // console.log(endpoint, data)
-
-    return { loading, data, error }
+    return { loading, data, metaData, error }
 }
 
 export default fetchData;
+
+
+// redo queries to remove qs.

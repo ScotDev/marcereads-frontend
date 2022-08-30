@@ -16,10 +16,13 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    /* border: 1px solid red; */
     box-shadow: var(--mr-drop-shadow);
     cursor: pointer;
     transition: all 0.1s ease-in-out;
+}
+
+.card[type="featured"]{
+    margin-bottom: 24px;
 }
 
 .card:hover,
@@ -38,6 +41,7 @@
     border-radius: 50px;
     left: 16px;
     top: 16px;
+
 }
 
 .card[type="featured"] #featured_tag {
@@ -110,6 +114,7 @@
     }
     .card[type="featured"] {
         outline: 16px solid var(--mr-pink);
+        margin: 0;
     }
     .card[type="featured"] #featured_tag {
         display: block;
