@@ -7,8 +7,6 @@ import Loading from "./Loading";
 import Skeleton from 'react-loading-skeleton'
 import 'react-loading-skeleton/dist/skeleton.css'
 
-const TestAuthorjpeg = "https://i.imgur.com/fW0P7Wm.jpg";
-
 export default function About({ data }) {
     if (!data) {
         return (

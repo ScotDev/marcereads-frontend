@@ -1,0 +1,45 @@
+.skeleton_container {
+    display: flex;
+    align-items: center;
+  
+} 
+
+.skeleton_image {
+    border-radius: 10px;
+    display: block;
+    width: 120px;
+    height: 150px;
+    margin: 0px auto;
+}
+
+.skeleton_lines {
+    display: block;
+    width: 200px;
+    height: 20px;
+    margin: 0px 12px;
+}
+
+
+/* Desktop rules */
+@media (min-width:768px) {
+
+    .skeleton_container{
+        flex-direction: column;
+    }
+
+    .skeleton_image {
+        border-radius: 10px;
+        display: block;
+        width: 308px;
+        height: 325px;
+        margin: 0px auto;
+    }
+
+    .skeleton_lines {
+        display: block;
+        width: 308px;
+        height: 20px;
+        margin: 0px 12px;
+    }
+       
+    }

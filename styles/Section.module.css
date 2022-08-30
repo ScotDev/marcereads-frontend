@@ -27,7 +27,7 @@
 .section a:hover,
 .section a:focus
  {
-     color: var(--mr-pink-accent);
+    color: var(--mr-pink-accent);
     border-bottom: 2px solid var(--mr-pink-accent);
 }
 
@@ -36,7 +36,6 @@
     line-height: 28px;
     padding: 0 8px 0 0;
 }
-
 
 .section button {
     margin: 0 auto;
