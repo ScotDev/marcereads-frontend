@@ -12,7 +12,7 @@ function MyApp({ Component, pageProps }) {
   const [width, setWindowWidth] = useState(0);
 
   useEffect(() => {
-    TagManager.initialize({ gtmId: 'G-G6CLWVDGE1' });
+    TagManager.initialize({ gtmId: 'GTM-THL66LD' });
   }, []);
 
   useEffect(() => {
