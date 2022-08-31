@@ -96,7 +96,7 @@ export default function PostsBrowse({ data }) {
     const loadMore = async () => {
         setloading(true)
         setloadingCount(data[`${counter.current + 1}`].length)
-        // Allow for loading animation and perceived feedback
+        // Allow time for loading animation
         setTimeout(() => {
             setloading(false)
             setloadingCount(0)

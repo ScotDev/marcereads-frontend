@@ -3,7 +3,7 @@ const qs = require('qs');
 const CMS_ENDPOINT = process.env.CMS_ENDPOINT;
 
 const fetchData = async (endpoint, ...args) => {
-    console.log(args)
+    // console.log(args)
 
     let loading = true;
     let data = null;
@@ -11,8 +11,6 @@ const fetchData = async (endpoint, ...args) => {
     let error = null;
     let query;
     let startPage;
-    let itemCount;
-    let currentPage;
 
     // paramaters/args situation is a bit crude and not explicit, this should be refactored later on
     //  for now, args[0] = isFeatured, args[1] = reviews, args[3] = guides
