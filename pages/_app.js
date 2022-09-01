@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { GoogleAnalytics } from "nextjs-google-analytics";
+import GoogleAnalytics from "@bradgarropy/next-google-analytics"
 import Script from 'next/script'
 import { useRouter } from 'next/router'
 import * as gtag from '../lib/gtag'
@@ -45,9 +45,10 @@ function MyApp({ Component, pageProps }) {
         strategy="lazyOnload"
         src={`https://www.googletagmanager.com/gtag/js?id=${gtag.GA_TRACKING_ID}`}
       />
+      <GoogleAnalytics measurementId={process.env.GA_ID} />
       <Script
         id="gtag-init"
-        strategy="lazyOnload"
+        strategy="afterInteractive"
         dangerouslySetInnerHTML={{
           __html: `
             window.dataLayer = window.dataLayer || [];
@@ -59,7 +60,7 @@ function MyApp({ Component, pageProps }) {
           `,
         }}
       />
-      <Script id="google-analytics" strategy="lazyOnload">
+      {/* <Script id="google-analytics" strategy="lazyOnload">
         {`
             window.dataLayer = window.dataLayer || [];
             function gtag(){dataLayer.push(arguments);}
@@ -68,7 +69,7 @@ function MyApp({ Component, pageProps }) {
               page_path: window.location.pathname,
             });
                 `}
-      </Script>
+      </Script> */}
       <Component width={width} {...pageProps} />
     </Layout>
   )
