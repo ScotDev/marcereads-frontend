@@ -1,9 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
 
-// import Skeleton from 'react-loading-skeleton'
-// import 'react-loading-skeleton/dist/skeleton.css'
-
-
 import sectionStyles from '../styles/Section.module.css';
 import cardGridStyles from '../styles/CardGrid.module.css'
 import buttonStyles from '../styles/Button.module.css'
@@ -14,8 +10,6 @@ import Loading from './Loading';
 
 export default function PostsBrowse({ data }) {
 
-    // flatten data to count how many items total.
-    // do data.length - datatorender.length to find out how many to render
     const counter = useRef(0);
 
     const [isDesktop, setisDesktop] = useState(null);
