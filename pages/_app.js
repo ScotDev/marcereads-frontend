@@ -1,19 +1,14 @@
 import React, { useState, useEffect } from 'react';
-import TagManager from 'react-gtm-module';
+import { GoogleAnalytics } from "nextjs-google-analytics";
 
 import { Layout } from '../components/Layout'
 import '../styles/globals.css'
 
 function MyApp({ Component, pageProps }) {
 
-  // G-G6CLWVDGE1
-
-
   const [width, setWindowWidth] = useState(0);
 
-  useEffect(() => {
-    TagManager.initialize({ gtmId: 'GTM-THL66LD' });
-  }, []);
+
 
   useEffect(() => {
     updateDimensions();
@@ -30,6 +25,7 @@ function MyApp({ Component, pageProps }) {
 
   return (
     <Layout>
+      <GoogleAnalytics trackPageViews />
       <Component width={width} {...pageProps} />
     </Layout>
   )

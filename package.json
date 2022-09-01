@@ -11,10 +11,10 @@
   "dependencies": {
     "dayjs": "^1.11.3",
     "next": "12.1.6",
+    "nextjs-google-analytics": "^2.1.0",
     "qs": "^6.10.5",
     "react": "18.1.0",
     "react-dom": "18.1.0",
-    "react-gtm-module": "^2.0.11",
     "react-icons": "^4.4.0",
     "react-loading-skeleton": "^3.1.0",
     "react-markdown": "^8.0.3"
