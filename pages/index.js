@@ -16,7 +16,7 @@ export default function Home({ width, dataPostsHomepage, dataAbout, dataLatest, 
     <>
       <Head>
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>Marcereads</title>
+        <title>Marcereads - Home</title>
         <meta name="description" content="Marcereads blog" />
         <link rel="icon" href="/favicon.ico" />
       </Head>

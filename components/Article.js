@@ -10,6 +10,9 @@ import articleStyles from '../styles/Article.module.css'
 import Loading from './Loading';
 
 
+import { ShareTo } from '../utils/share';
+
+
 export default function Article({ data }) {
     const router = useRouter()
     const [readTimeEstimate, setReadTimeEstimate] = useState("3 min")
@@ -46,11 +49,22 @@ export default function Article({ data }) {
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
 
+    const sharePage = async (shareType) => {
+        const shareItem = new ShareTo(data)
+
+        if (shareType === "email") {
+            shareItem.email()
+        } else if (shareType === "copy") {
+            shareItem.copyLink()
+        } else if (shareType === "whatsapp") {
+            shareItem.whatsapp()
+        }
+
+    }
 
     if (router.isFallback || !data) {
         return <Loading />
     }
-
 
     const dayjs = require('dayjs')
     var advancedFormat = require('dayjs/plugin/advancedFormat')
@@ -86,6 +100,11 @@ export default function Article({ data }) {
                     <ReactMarkdown>
                         {data.attributes.body}
                     </ReactMarkdown>
+                    <div>
+                        <button onClick={() => sharePage("email")}>Email</button>
+                        <button onClick={() => sharePage("copy")}>Copy link</button>
+                        <button onClick={() => sharePage("whatsapp")}>WhatsApp</button>
+                    </div>
                 </article>
             </div>
         </>)
