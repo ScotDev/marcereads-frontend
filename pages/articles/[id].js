@@ -1,14 +1,5 @@
-import Head from 'next/head';
-import Image from "next/image";
-import ReactMarkdown from "react-markdown";
-
 import fetchData from "../../utils/fetchData.js";
-
-
-import articleStyles from '../../styles/Article.module.css'
 import Article from '../../components/Article.js';
-
-// use :empty to handle empty tags filled by cms
 
 export default function article({ data }) {
 

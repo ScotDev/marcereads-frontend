@@ -16,9 +16,15 @@ export default function Home({ width, dataPostsHomepage, dataAbout, dataLatest, 
     <>
       <Head>
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta name="HandheldFriendly" content="true" />
+        <meta charSet="utf-8" />
         <title>Marcereads - Home</title>
-        <meta name="description" content="Marcereads blog" />
+        <meta name="description" content="Marcereads book reviews and bookstagram guides" />
+        <meta property="og:url" content="https://www.marcereads.com" />
         <link rel="icon" href="/favicon.ico" />
+        <link
+          rel="canonical"
+          href="/"></link>
       </Head>
 
       <div className={homeStyles.home}>

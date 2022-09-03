@@ -16,6 +16,7 @@ import { ShareTo } from '../utils/share';
 export default function Article({ data }) {
     const router = useRouter()
     const [readTimeEstimate, setReadTimeEstimate] = useState("3 min")
+    let currentUrl;
 
     useEffect(() => {
         const avgWordsPerMinute = 265;
@@ -49,7 +50,7 @@ export default function Article({ data }) {
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
 
-    const sharePage = async (shareType) => {
+    const sharePage = (shareType) => {
         const shareItem = new ShareTo(data)
 
         if (shareType === "email") {
@@ -58,6 +59,8 @@ export default function Article({ data }) {
             shareItem.copyLink()
         } else if (shareType === "whatsapp") {
             shareItem.whatsapp()
+        } else if (shareType === "twitter") {
+            shareItem.twitter()
         }
 
     }
@@ -70,17 +73,25 @@ export default function Article({ data }) {
     var advancedFormat = require('dayjs/plugin/advancedFormat')
     dayjs.extend(advancedFormat)
 
+
     return (
         <>
             <Head>
                 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+                <meta property="og:title" content={data.attributes.title} />
+                <meta charSet="utf-8" />
+                <meta property="og:type" content="website" />
+                <meta property="og:url" content="https://www.marcereads.com" />
+                <meta property="og:url" content={`"https://www.marcereads.com/${router.asPath}`} />
+                <meta property="og:image" content={data.attributes.main.data.attributes.formats.thumbnail.url} />
                 <title>{data.attributes.title ?? "Article"}</title>
+                {/* https://youtu.be/-B58GgsehKQ?t=406 */}
                 <meta name="description" content={data.attributes.title ?? "Marcereads Blog"} />
                 <link rel="icon" href="/favicon.ico" />
             </Head>
             <div className={articleStyles.article}>
                 <header className={articleStyles.header}>
-                    <h1 className={articleStyles.title}>{data.attributes.title}</h1>
+                    <h1 itemProp="name headline" className={articleStyles.title}>{data.attributes.title}</h1>
                     <h2 className={articleStyles.author}>{data.attributes.author}</h2>
                     <div className={articleStyles.top_row}>
                         <h5 type={data.attributes.type}>{data.attributes.type}</h5>
@@ -93,7 +104,9 @@ export default function Article({ data }) {
                     </div>
                     {data.attributes.type === "review" ? <StarRatings rating={data.attributes.rating} /> : null}
                 </header>
-                <article>
+                <article itemScope itemType="http://schema.org/Article">
+                    <meta itemProp="datePublished" content={data.attributes.createdAt} />
+                    <meta itemProp="publisher" content="marcereads" />
                     <div className={articleStyles.image_wrapper}>
                         <Image src={data.attributes.main.data.attributes.url} placeholder="blur" blurDataURL={data.attributes.main.data.attributes.formats.thumbnail.url} objectFit="cover" alt="Relevant book for article" layout="fill" />
                     </div>
@@ -104,6 +117,7 @@ export default function Article({ data }) {
                         <button onClick={() => sharePage("email")}>Email</button>
                         <button onClick={() => sharePage("copy")}>Copy link</button>
                         <button onClick={() => sharePage("whatsapp")}>WhatsApp</button>
+                        <button onClick={() => sharePage("twitter")}>Twitter</button>
                     </div>
                 </article>
             </div>

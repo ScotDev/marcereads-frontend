@@ -10,7 +10,8 @@ export class ShareTo {
         if (!window.isSecureContext) {
             console.log("Insecure context, unable to copy")
             return
-        } else {
+        }
+        else {
             navigator.clipboard.writeText(window.location.href).then(() => {
 
                 console.log("Copied url")
@@ -22,7 +23,16 @@ export class ShareTo {
     }
 
     whatsapp() {
-        navigator.clipboard.writeText(window.location.href);
-        window.open(`whatsapp://send?text=${window.location.href}`)
+        if (!window.isSecureContext) {
+            console.log("Insecure context, unable to share to WhatsApp")
+            return
+        } else {
+            navigator.clipboard.writeText(window.location.href);
+            window.open(`whatsapp://send?text=${window.location.href}`)
+        }
+    }
+
+    twitter() {
+        window.open(`https://twitter.com/intent/tweet?url=${window.location.href}`)
     }
 }

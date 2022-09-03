@@ -19,7 +19,7 @@
     width: 100%;
     min-height: 72px;
     margin: 0;
-    box-shadow: var(--mr-drop-shadow);
+    /* box-shadow: var(--mr-drop-shadow); */
     padding: 8px 24px 0 16px;
     display: flex;
     justify-content: center;
@@ -197,7 +197,7 @@
 
     .nav {
       min-height: 72px;
-      box-shadow: var(--mr-drop-shadow);
+      /* box-shadow: var(--mr-drop-shadow); */
       padding: 0;
       display: flex;
       justify-content: center;
