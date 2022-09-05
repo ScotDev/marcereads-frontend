@@ -11,7 +11,7 @@ export default function article({ data }) {
 
 export const getStaticPaths = async () => {
 
-    const { loading: loadingArticles, data: dataArticles, error: errorArticles } = await fetchData("articles")
+    const { data: dataArticles } = await fetchData("articles")
 
     const paths = dataArticles.map(item => {
         // console.log(item.attributes.slug)
