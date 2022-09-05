@@ -18,7 +18,7 @@ export default function Article({ data }) {
 
     const router = useRouter()
     const [readTimeEstimate, setReadTimeEstimate] = useState("3 min")
-    const [copyLinkText, setcopyLinkText] = useState("Copy link")
+    // const [copyLinkText, setcopyLinkText] = useState("Copy link")
 
     useEffect(() => {
         const avgWordsPerMinute = 265;
@@ -118,7 +118,7 @@ export default function Article({ data }) {
                     </ReactMarkdown>
                     <div>
                         <button onClick={() => sharePage("email")}><HiOutlineMail /> Email</button>
-                        <button onClick={() => sharePage("copy")}><FaRegClipboard /> {copyLinkText}</button>
+                        {/* <button onClick={() => sharePage("copy")}><FaRegClipboard /> {copyLinkText}</button> */}
                         <button onClick={() => sharePage("whatsapp")}><FaWhatsapp /> WhatsApp</button>
                         <button onClick={() => sharePage("twitter")}><FaTwitter /> Twitter</button>
                     </div>

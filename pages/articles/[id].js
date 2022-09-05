@@ -5,7 +5,6 @@ export default function article({ data }) {
 
     return (
         <Article data={data} />
-
     )
 }
 
