@@ -62,7 +62,6 @@ const fetchData = async (endpoint, ...args) => {
         query = `&?${guidesQuery}`;
     }
 
-    // console.log(query)
 
     // loading "state" does nothing here.
 
