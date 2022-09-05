@@ -15,6 +15,7 @@ import { HiOutlineMail } from 'react-icons/hi'
 
 
 export default function Article({ data }) {
+
     const router = useRouter()
     const [readTimeEstimate, setReadTimeEstimate] = useState("3 min")
     const [copyLinkText, setcopyLinkText] = useState("Copy link")
