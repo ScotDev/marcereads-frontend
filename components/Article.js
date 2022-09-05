@@ -7,15 +7,17 @@ import ReactMarkdown from "react-markdown";
 import StarRatings from './StarRatings.js';
 
 import articleStyles from '../styles/Article.module.css'
-import Loading from './Loading';
-
 
 import { ShareTo } from '../utils/share';
+
+import { FaRegClipboard, FaWhatsapp, FaTwitter } from 'react-icons/fa'
+import { HiOutlineMail } from 'react-icons/hi'
 
 
 export default function Article({ data }) {
     const router = useRouter()
     const [readTimeEstimate, setReadTimeEstimate] = useState("3 min")
+    const [copyLinkText, setcopyLinkText] = useState("Copy link")
     let currentUrl;
 
     useEffect(() => {
@@ -57,6 +59,7 @@ export default function Article({ data }) {
             shareItem.email()
         } else if (shareType === "copy") {
             shareItem.copyLink()
+            setcopyLinkText("Link copied!")
         } else if (shareType === "whatsapp") {
             shareItem.whatsapp()
         } else if (shareType === "twitter") {
@@ -65,9 +68,9 @@ export default function Article({ data }) {
 
     }
 
-    if (router.isFallback || !data) {
-        return <Loading />
-    }
+    // if (router.isFallback || !data) {
+    //     return <Loading />
+    // }
 
     const dayjs = require('dayjs')
     var advancedFormat = require('dayjs/plugin/advancedFormat')
@@ -114,10 +117,10 @@ export default function Article({ data }) {
                         {data.attributes.body}
                     </ReactMarkdown>
                     <div>
-                        <button onClick={() => sharePage("email")}>Email</button>
-                        <button onClick={() => sharePage("copy")}>Copy link</button>
-                        <button onClick={() => sharePage("whatsapp")}>WhatsApp</button>
-                        <button onClick={() => sharePage("twitter")}>Twitter</button>
+                        <button onClick={() => sharePage("email")}><HiOutlineMail /> Email</button>
+                        <button onClick={() => sharePage("copy")}><FaRegClipboard /> {copyLinkText}</button>
+                        <button onClick={() => sharePage("whatsapp")}><FaWhatsapp /> WhatsApp</button>
+                        <button onClick={() => sharePage("twitter")}><FaTwitter /> Twitter</button>
                     </div>
                 </article>
             </div>

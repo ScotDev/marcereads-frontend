@@ -1,4 +1,5 @@
 export class ShareTo {
+    // What does this contructor do?
     constructor(item) { this.item = item; }
 
     email() {
