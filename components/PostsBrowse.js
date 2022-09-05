@@ -54,6 +54,7 @@ export default function PostsBrowse({ data }) {
             setdataToRender(data[0].slice(0, 1))
             setminicardDataToRender(data[0].slice(1, 6))
         }
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [isDesktop])
 
 

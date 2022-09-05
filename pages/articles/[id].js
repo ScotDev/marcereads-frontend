@@ -13,6 +13,7 @@ export const getStaticPaths = async () => {
 
     const { data: dataArticles } = await fetchData("articles")
 
+
     const paths = dataArticles.map(item => {
         // console.log(item.attributes.slug)
         return {
@@ -30,7 +31,11 @@ export const getStaticPaths = async () => {
 
 export const getStaticProps = async ({ params }) => {
 
-    const { data: dataArticlesWithID, error: errorArticlesWithID } = await fetchData(`articles/${params.id}`)
+    const { data: dataArticlesWithID } = await fetchData(`articles/${params.id}`)
+
+    if (!dataArticlesWithID || dataArticlesWithID === {}) {
+        console.log("No data", dataArticlesWithID)
+    }
 
     return {
         props: {
