@@ -1,6 +1,6 @@
 
 export default async function handler(req, res) {
-    console.log(req.body)
+    // console.log(req.body)
 
     // Check for secret to confirm this is a valid request
     // if (req.query.secret !== process.env.REVALIDATE_TOKEN) {
@@ -16,6 +16,6 @@ export default async function handler(req, res) {
         // If there was an error, Next.js will continue
         // to show the last successfully generated page
         // return res.status(500).send('Error revalidating')
-        return res.status(500).send(req.body.json())
+        return res.status(500).send(req.json())
     }
 }
