@@ -1,5 +1,6 @@
 
 export default async function handler(req, res) {
+    console.log(req.query)
 
     // Check for secret to confirm this is a valid request
     if (req.query.secret !== process.env.REVALIDATE_TOKEN) {
