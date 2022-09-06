@@ -121,6 +121,7 @@ export default function Article({ data }) {
                         <button onClick={() => sharePage("copy")}><FaRegClipboard /> {copyLinkText}</button>
                         <button onClick={() => sharePage("whatsapp")}><FaWhatsapp /> WhatsApp</button>
                         <button onClick={() => sharePage("twitter")}><FaTwitter /> Twitter</button>
+                        <button onClick={() => console.log(process.env.NODE_ENV)}>env</button>
                     </div>
                 </article>
             </div>

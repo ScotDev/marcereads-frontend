@@ -1,0 +1,9 @@
+# *
+User-agent: *
+Allow: /
+
+# Host
+Host: https://marcereads-dev.vercel.app
+
+# Sitemaps
+Sitemap: https://marcereads-dev.vercel.app/sitemap.xml
