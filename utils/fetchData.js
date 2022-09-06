@@ -67,7 +67,7 @@ const fetchData = async (endpoint, ...args) => {
 
     try {
         loading = true;
-        const response = await fetch(`${CMS_ENDPOINT}/${endpoint}?populate=*${query}`);
+        const response = await fetch(`${CMS_ENDPOINT}/${endpoint}?populate=*&sort[0]=createdAt:desc${query}`);
         let rawData = await response.json()
 
         data = rawData.data;
