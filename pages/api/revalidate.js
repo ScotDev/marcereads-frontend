@@ -1,6 +1,6 @@
 
 export default async function handler(req, res) {
-    // console.log(req.body)
+    // console.log(req)
 
     // Check for secret to confirm this is a valid request
     // if (req.query.secret !== process.env.REVALIDATE_TOKEN) {
@@ -10,12 +10,12 @@ export default async function handler(req, res) {
     try {
         // this should be the actual path not a rewritten path
         // e.g. for "/blog/[slug]" this should be "/blog/post-1"
-        await res.revalidate(`/articles`)
+        await res.revalidate("/articles/47")
         return res.json({ revalidated: true })
     } catch (err) {
         // If there was an error, Next.js will continue
         // to show the last successfully generated page
         // return res.status(500).send('Error revalidating')
-        return res.status(500).send(req.data)
+        return res.status(500).send(entry.id)
     }
 }
