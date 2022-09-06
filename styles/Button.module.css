@@ -39,6 +39,10 @@
     color: var(--mr-secondary-text);
     display: block;
 }
+.button[type=social] {
+    background-color: transparent;
+    color: var(--mr-green-accent);;
+}
 
 .button:hover,
 .button:focus {

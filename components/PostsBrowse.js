@@ -95,7 +95,6 @@ export default function PostsBrowse({ data }) {
             setloadingCount(0)
             updateUI()
         }, 1000);
-        console.log("counter", counter.current)
     }
 
     const Cards = dataToRender?.map(item => {

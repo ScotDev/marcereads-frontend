@@ -7,6 +7,7 @@ import ReactMarkdown from "react-markdown";
 import StarRatings from './StarRatings.js';
 
 import articleStyles from '../styles/Article.module.css'
+import buttonStyles from '../styles/Button.module.css'
 
 import { ShareTo } from '../utils/share';
 
@@ -67,9 +68,9 @@ export default function Article({ data }) {
 
     }
 
-    // This is vital to stop issue in build where next tries to access data from the api that isn't ready ye
-    if (router.isFallback || !data) {
-        return null
+    // This is vital to stop issue in build where next tries to access data from the api that isn't ready yet
+    if (router.isFallback || !data || data === undefined) {
+        return null;
     }
 
     const dayjs = require('dayjs')
@@ -117,10 +118,10 @@ export default function Article({ data }) {
                         {data.attributes.body}
                     </ReactMarkdown>
                     <div>
-                        <button onClick={() => sharePage("email")}><HiOutlineMail /> Email</button>
-                        <button onClick={() => sharePage("copy")}><FaRegClipboard /> {copyLinkText}</button>
-                        <button onClick={() => sharePage("whatsapp")}><FaWhatsapp /> WhatsApp</button>
-                        <button onClick={() => sharePage("twitter")}><FaTwitter /> Twitter</button>
+                        <button className={buttonStyles.button} type={"social"} onClick={() => sharePage("email")}><HiOutlineMail /></button>
+                        <button className={buttonStyles.button} type={"secondary"} onClick={() => sharePage("copy")}><FaRegClipboard /> {copyLinkText}</button>
+                        <button className={buttonStyles.button} type={"primary"} onClick={() => sharePage("whatsapp")}><FaWhatsapp /></button>
+                        <button onClick={() => sharePage("twitter")}><FaTwitter /></button>
                         <button onClick={() => console.log(process.env.NODE_ENV)}>env</button>
                     </div>
                 </article>
