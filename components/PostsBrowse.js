@@ -60,8 +60,6 @@ export default function PostsBrowse({ data }) {
 
     const pushToArrayAndFlatten = async (val) => {
         let tempArray;
-        // const flattenedVal = val.flat()
-
 
         if (!isDesktop) {
             tempArray = [...mincardDataToRender];
