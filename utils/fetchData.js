@@ -71,11 +71,9 @@ const fetchData = async (endpoint, ...args) => {
         let rawData = await response.json()
 
         data = rawData.data;
-        // maybe return just meta.pagination as object to be parsed further down
+        // remove metadata
         metaData = rawData.meta.pagination
-        // itemCount = rawData.meta.pagination.total;
-        // currentPage = rawData.meta.pagination.page;
-        // console.log(endpoint, rawData)
+
 
     } catch (err) {
         error = err;

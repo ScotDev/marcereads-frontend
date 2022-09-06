@@ -15,7 +15,6 @@ import { HiOutlineMail } from 'react-icons/hi'
 
 
 export default function Article({ data }) {
-
     const router = useRouter()
     const [readTimeEstimate, setReadTimeEstimate] = useState("3 min")
     const [copyLinkText, setcopyLinkText] = useState("Copy link")
@@ -68,9 +67,10 @@ export default function Article({ data }) {
 
     }
 
-    // if (router.isFallback || !data) {
-    //     return <Loading />
-    // }
+    // This is vital to stop issue in build where next tries to access data from the api that isn't ready ye
+    if (router.isFallback || !data) {
+        return null
+    }
 
     const dayjs = require('dayjs')
     var advancedFormat = require('dayjs/plugin/advancedFormat')
@@ -85,11 +85,11 @@ export default function Article({ data }) {
                 <meta charSet="utf-8" />
                 <meta property="og:type" content="website" />
                 <meta property="og:url" content="https://www.marcereads.com" />
-                <meta property="og:url" content={`https://www.marcereads.com/${router.asPath}`} />
+                <meta property="og:url" content={`https:/www.marcereads.com/${router.asPath}`} />
                 <meta property="og:image" content={data.attributes.main.data.attributes.formats.thumbnail.url} />
-                <title>{data.attributes.title ?? "Article"}</title>
+                <title>{data.attributes.title}</title>
                 {/* https://youtu.be/-B58GgsehKQ?t=406 */}
-                <meta name="description" content={data.attributes.title ?? "Marcereads Blog"} />
+                <meta name="description" content={data.attributes.title + " Marcereads blog"} />
                 <link rel="icon" href="/favicon.ico" />
             </Head>
             <div className={articleStyles.article}>

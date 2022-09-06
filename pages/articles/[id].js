@@ -32,9 +32,6 @@ export const getStaticProps = async ({ params }) => {
 
     const { data: dataArticlesWithID } = await fetchData(`articles/${params.id}`)
 
-    if (!dataArticlesWithID || dataArticlesWithID === {}) {
-        console.log("No data", dataArticlesWithID)
-    }
 
     return {
         props: {
