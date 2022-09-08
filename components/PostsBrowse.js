@@ -8,6 +8,8 @@ import Card from './Card';
 import MiniCard from './MiniCard';
 import Loading from './Loading';
 
+import { MdAddCircleOutline } from 'react-icons/md'
+
 export default function PostsBrowse({ data }) {
 
     const counter = useRef(0);
@@ -115,7 +117,7 @@ export default function PostsBrowse({ data }) {
                 {loading ? <Loading lineCount={isDesktop ? 3 : 4} numberOfCards={loadingCount} /> : null}
 
             </div>
-            {!loading && counter.current < data.length - 1 ? <button className={buttonStyles.button} type="load" onClick={() => loadMore()}>Load more</button> : null}
+            {!loading && counter.current < data.length - 1 ? <button className={buttonStyles.button} type="load" onClick={() => loadMore()}><MdAddCircleOutline />Load more</button> : null}
         </section>
     )
 }

@@ -5,20 +5,20 @@ import { useEffect, useState } from 'react';
 import ReactMarkdown from "react-markdown";
 
 import StarRatings from './StarRatings.js';
+import Toast from './Toast.js';
 
 import articleStyles from '../styles/Article.module.css'
 import buttonStyles from '../styles/Button.module.css'
 
 import { ShareTo } from '../utils/share';
 
-import { FaRegClipboard, FaWhatsapp, FaTwitter } from 'react-icons/fa'
-import { HiOutlineMail } from 'react-icons/hi'
+import { FaRegEnvelope, FaRegClipboard, FaWhatsapp, FaTwitter } from 'react-icons/fa'
 
 
 export default function Article({ data }) {
     const router = useRouter()
     const [readTimeEstimate, setReadTimeEstimate] = useState("3 min")
-    const [copyLinkText, setcopyLinkText] = useState("Copy link")
+    const [linkCopied, setlinkCopied] = useState("")
 
     useEffect(() => {
         const avgWordsPerMinute = 265;
@@ -59,7 +59,10 @@ export default function Article({ data }) {
             shareItem.email()
         } else if (shareType === "copy") {
             shareItem.copyLink()
-            setcopyLinkText("Link copied!")
+            setlinkCopied("Link copied!")
+            setTimeout(() => {
+                setlinkCopied("")
+            }, 3000);
         } else if (shareType === "whatsapp") {
             shareItem.whatsapp()
         } else if (shareType === "twitter") {
@@ -93,7 +96,9 @@ export default function Article({ data }) {
                 <meta name="description" content={data.attributes.title + " Marcereads blog"} />
                 <link rel="icon" href="/favicon.ico" />
             </Head>
+
             <div className={articleStyles.article}>
+                {/* <Toast /> */}
                 <header className={articleStyles.header}>
                     <h1 itemProp="name headline" className={articleStyles.title}>{data.attributes.title}</h1>
                     <h2 className={articleStyles.author}>{data.attributes.author}</h2>
@@ -117,12 +122,14 @@ export default function Article({ data }) {
                     <ReactMarkdown>
                         {data.attributes.body}
                     </ReactMarkdown>
-                    <div>
-                        <button className={buttonStyles.button} type={"social"} onClick={() => sharePage("email")}><HiOutlineMail /></button>
-                        <button className={buttonStyles.button} type={"secondary"} onClick={() => sharePage("copy")}><FaRegClipboard /> {copyLinkText}</button>
-                        <button className={buttonStyles.button} type={"primary"} onClick={() => sharePage("whatsapp")}><FaWhatsapp /></button>
-                        <button onClick={() => sharePage("twitter")}><FaTwitter /></button>
-                        <button onClick={() => console.log(process.env.NODE_ENV)}>env</button>
+                    <div className={buttonStyles.group_social_container}>
+                        <div className={buttonStyles.button_group_social}>
+                            <button className={buttonStyles.button} type={"social"} onClick={() => sharePage("email")}><FaRegEnvelope /></button>
+                            <button className={buttonStyles.button} type={"social"} onClick={() => sharePage("copy")}><FaRegClipboard /></button>
+                            <button className={buttonStyles.button} type={"social"} onClick={() => sharePage("whatsapp")}><FaWhatsapp /></button>
+                            <button className={buttonStyles.button} type={"social"} onClick={() => sharePage("twitter")}><FaTwitter /></button>
+                        </div>
+                        <p>{linkCopied}</p>
                     </div>
                 </article>
             </div>

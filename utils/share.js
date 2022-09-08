@@ -4,7 +4,8 @@ export class ShareTo {
 
     email() {
         const subject = this.item.attributes.title + " by " + this.item.attributes.author;
-        window.open(`mailto:?subject=${subject}`)
+        const body = `Hey, check out this ${this.item.attributes.type} by Marcereads: ${window.location.href}`
+        window.open(`mailto:?subject=${subject}&body=${body}`)
     }
 
     copyLink() {
