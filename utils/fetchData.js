@@ -3,7 +3,7 @@ const qs = require('qs');
 const CMS_ENDPOINT = process.env.CMS_ENDPOINT;
 
 const fetchData = async (endpoint, ...args) => {
-    console.log(args)
+    // console.log(args)
 
     let loading = true;
     let data = null;
@@ -11,8 +11,6 @@ const fetchData = async (endpoint, ...args) => {
     let error = null;
     let query;
     let startPage;
-    let itemCount;
-    let currentPage;
 
     // paramaters/args situation is a bit crude and not explicit, this should be refactored later on
     //  for now, args[0] = isFeatured, args[1] = reviews, args[3] = guides
@@ -64,21 +62,18 @@ const fetchData = async (endpoint, ...args) => {
         query = `&?${guidesQuery}`;
     }
 
-    // console.log(query)
 
     // loading "state" does nothing here.
 
     try {
         loading = true;
-        const response = await fetch(`${CMS_ENDPOINT}/${endpoint}?populate=*${query}`);
+        const response = await fetch(`${CMS_ENDPOINT}/${endpoint}?populate=*&sort[0]=createdAt:desc${query}`);
         let rawData = await response.json()
 
         data = rawData.data;
-        // maybe return just meta.pagination as object to be parsed further down
+        // remove metadata
         metaData = rawData.meta.pagination
-        // itemCount = rawData.meta.pagination.total;
-        // currentPage = rawData.meta.pagination.page;
-        // console.log(endpoint, rawData)
+
 
     } catch (err) {
         error = err;

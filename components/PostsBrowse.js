@@ -1,9 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
 
-// import Skeleton from 'react-loading-skeleton'
-// import 'react-loading-skeleton/dist/skeleton.css'
-
-
 import sectionStyles from '../styles/Section.module.css';
 import cardGridStyles from '../styles/CardGrid.module.css'
 import buttonStyles from '../styles/Button.module.css'
@@ -12,10 +8,10 @@ import Card from './Card';
 import MiniCard from './MiniCard';
 import Loading from './Loading';
 
+import { MdAddCircleOutline } from 'react-icons/md'
+
 export default function PostsBrowse({ data }) {
 
-    // flatten data to count how many items total.
-    // do data.length - datatorender.length to find out how many to render
     const counter = useRef(0);
 
     const [isDesktop, setisDesktop] = useState(null);
@@ -60,13 +56,12 @@ export default function PostsBrowse({ data }) {
             setdataToRender(data[0].slice(0, 1))
             setminicardDataToRender(data[0].slice(1, 6))
         }
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [isDesktop])
 
 
     const pushToArrayAndFlatten = async (val) => {
         let tempArray;
-        const flattenedVal = val.flat()
-
 
         if (!isDesktop) {
             tempArray = [...mincardDataToRender];
@@ -96,13 +91,12 @@ export default function PostsBrowse({ data }) {
     const loadMore = async () => {
         setloading(true)
         setloadingCount(data[`${counter.current + 1}`].length)
-        // Allow for loading animation and perceived feedback
+        // Allow time for loading animation
         setTimeout(() => {
             setloading(false)
             setloadingCount(0)
             updateUI()
         }, 1000);
-        console.log("counter", counter.current)
     }
 
     const Cards = dataToRender?.map(item => {
@@ -123,7 +117,7 @@ export default function PostsBrowse({ data }) {
                 {loading ? <Loading lineCount={isDesktop ? 3 : 4} numberOfCards={loadingCount} /> : null}
 
             </div>
-            {!loading && counter.current < data.length - 1 ? <button className={buttonStyles.button} type="load" onClick={() => loadMore()}>Load more</button> : null}
+            {!loading && counter.current < data.length - 1 ? <button className={buttonStyles.button} type="load" onClick={() => loadMore()}><MdAddCircleOutline />Load more</button> : null}
         </section>
     )
 }

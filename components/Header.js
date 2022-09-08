@@ -11,7 +11,7 @@ import { FaInstagram } from 'react-icons/fa';
 
 export default function Header({ data }) {
 
-    if (!data) {
+    if (!data || data === {}) {
         return null
     }
 

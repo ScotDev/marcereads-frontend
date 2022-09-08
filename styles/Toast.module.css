@@ -1,0 +1,15 @@
+.toast{
+    --mr-secondary-text:#263742;
+    position: -webkit-sticky;
+    position: sticky;
+     top: 20px;
+    width: 200px;
+    padding: 8px 12px;
+    background-color: #EFEFEF;
+    color: var(--mr-secondary-text);
+    font-family: 'Poppins', sans-serif;
+    font-weight: 600;
+    margin: 0 auto;
+    border-radius: 10px;
+    text-align: center;
+}
