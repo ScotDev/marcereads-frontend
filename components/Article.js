@@ -98,7 +98,10 @@ export default function Article({ data }) {
                 <meta property="og:summary_large_image" content={data.attributes.main.data.attributes.formats.small} />
                 <meta property="og:image:alt" content={metaDescription} />
 
+                <meta name="twitter:title" content={data.attributes.title} />
                 <meta name="twitter:card" content="summary"></meta>
+                <meta naem="twitter:description" content={metaDescription} />
+                <meta name="twitter:image" content={data.attributes.main.data.attributes.formats.thumbnail.url} />
 
                 <title>{data.attributes.title}</title>
                 {/* https://youtu.be/-B58GgsehKQ?t=406 */}
