@@ -102,6 +102,8 @@ export default function Article({ data }) {
                 <meta name="twitter:card" content="summary"></meta>
                 <meta naem="twitter:description" content={metaDescription} />
                 <meta name="twitter:image" content={data.attributes.main.data.attributes.formats.thumbnail.url} />
+                <meta name="twitter:summary_large_image" content={data.attributes.main.data.attributes.formats.small} />
+                <meta name="twtter:image:alt" content={metaDescription} />
 
                 <title>{data.attributes.title}</title>
                 {/* https://youtu.be/-B58GgsehKQ?t=406 */}
