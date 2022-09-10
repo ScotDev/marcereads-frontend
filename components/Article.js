@@ -80,20 +80,33 @@ export default function Article({ data }) {
     var advancedFormat = require('dayjs/plugin/advancedFormat')
     dayjs.extend(advancedFormat)
 
+    const metaDescription = data.attributes.type === "review" ? `Marcereads' ${data.attributes.type} of ${data.attributes.title} by ${data.attributes.author}` : `Marcereads' ${data.attributes.type} - ${data.attributes.title}`
+
+    const metaUrl = process.env.NODE_ENV === "development" ? `${process.env.DEV_SITE_URL}${router.asPath}` : `${process.env.PROD_SITE_URL}${router.asPath}`
+    console.log(metaUrl)
 
     return (
         <>
             <Head>
                 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
                 <meta property="og:title" content={data.attributes.title} />
+                <meta property="og:description" content={metaDescription} />
                 <meta charSet="utf-8" />
-                <meta property="og:type" content="website" />
-                <meta property="og:url" content="https://www.marcereads.com" />
-                <meta property="og:url" content={`https:/www.marcereads.com/${router.asPath}`} />
+                <meta property="og:type" content="article" />
+                <meta property="og:url" content={metaUrl} />
                 <meta property="og:image" content={data.attributes.main.data.attributes.formats.thumbnail.url} />
+                <meta property="og:summary_large_image" content={data.attributes.main.data.attributes.formats.small} />
+                <meta property="og:image:alt" content={metaDescription} />
+
+                <meta name="twitter:title" content={data.attributes.title} />
+                <meta name="twitter:card" content="summary"></meta>
+                <meta naem="twitter:description" content={metaDescription} />
+                <meta name="twitter:image" content={data.attributes.main.data.attributes.formats.thumbnail.url} />
+                <meta name="twitter:summary_large_image" content={data.attributes.main.data.attributes.formats.small} />
+                <meta name="twtter:image:alt" content={metaDescription} />
+
                 <title>{data.attributes.title}</title>
                 {/* https://youtu.be/-B58GgsehKQ?t=406 */}
-                <meta name="description" content={data.attributes.title + " Marcereads blog"} />
                 <link rel="icon" href="/favicon.ico" />
             </Head>
 
