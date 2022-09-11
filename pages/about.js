@@ -38,7 +38,7 @@ export default function about({ data }) {
 export const getStaticProps = async () => {
 
     try {
-        const { loading, data, error } = await fetchData("about")
+        const { data } = await fetchData("about")
 
         return {
             props: {
