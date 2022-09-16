@@ -9,9 +9,13 @@ import Latest from '../components/Latest';
 import About from '../components/About';
 import BookScroller from '../components/BookScroller';
 import PostsHomepage from '../components/PostsHome';
+import Error from '../components/Error'
 
 export default function Home({ width, dataPostsHomepage, dataAbout, dataLatest, dataTBR }) {
 
+  if (!dataPostsHomepage || dataPostsHomepage === {}) {
+    return <Error isRootPath />
+  }
   return (
     <>
       <Head>

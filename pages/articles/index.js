@@ -5,9 +5,13 @@ import fetchData from "../../utils/fetchData.js";
 import PostsNavigation from '../../components/PostsNavigation';
 import PostsBrowse from '../../components/PostsBrowse';
 import About from '../../components/About'
+import Error from '../../components/Error'
 import headerStyles from '../../styles/Header.module.css'
 
 export default function browse({ data, dataAbout, width }) {
+    if (!data) {
+        return <Error />;
+    }
 
     return (
         <>

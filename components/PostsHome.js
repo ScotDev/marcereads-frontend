@@ -11,6 +11,10 @@ export default function PostsHomepage({ width, data }) {
     const isDesktop = width > 768 ? true : false;
     let dataToRender;
 
+    if (!data || data === {}) {
+        return null;
+    }
+
     if (!isDesktop) {
         dataToRender = data.slice(0, 1)
     } else if (isDesktop) {

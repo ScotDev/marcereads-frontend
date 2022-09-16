@@ -4,9 +4,14 @@ import fetchData from "../../utils/fetchData.js";
 import PostsNavigation from '../../components/PostsNavigation';
 import PostsBrowse from '../../components/PostsBrowse';
 import About from '../../components/About'
+import Error from '../../components/Error'
 import headerStyles from '../../styles/Header.module.css'
 
 export default function guides({ width, data, dataAbout }) {
+
+    if (!data || data === {}) {
+        return <Error />
+    }
     return (
         <>        <Head>
             <meta name="viewport" content="width=device-width, initial-scale=1.0" />

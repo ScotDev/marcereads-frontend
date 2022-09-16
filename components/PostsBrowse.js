@@ -36,26 +36,31 @@ export default function PostsBrowse({ data }) {
     };
 
     useEffect(() => {
+        if (data) {
+            if (!isDesktop) {
+                setdataToRender(data[0].slice(0, 1))
 
-        if (!isDesktop) {
-            setdataToRender(data[0].slice(0, 1))
-
-            setminicardDataToRender(data[0].slice(1, 6))
-        } else if (isDesktop) {
-            setdataToRender(data[counter.current])
+                setminicardDataToRender(data[0].slice(1, 6))
+            } else if (isDesktop) {
+                setdataToRender(data[counter.current])
+            }
         }
+
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
 
     useEffect(() => {
-
-        if (isDesktop) {
-            setdataToRender(data[0])
-            setminicardDataToRender(null)
-        } else if (!isDesktop) {
-            setdataToRender(data[0].slice(0, 1))
-            setminicardDataToRender(data[0].slice(1, 6))
+        if (data) {
+            if (isDesktop) {
+                setdataToRender(data[0])
+                setminicardDataToRender(null)
+            } else if (!isDesktop) {
+                setdataToRender(data[0].slice(0, 1))
+                setminicardDataToRender(data[0].slice(1, 6))
+            }
         }
+
+
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [isDesktop])
 
@@ -106,6 +111,11 @@ export default function PostsBrowse({ data }) {
     const miniCards = mincardDataToRender?.map(item => {
         return <MiniCard key={item.id} url={`/articles/${item.id}`} type={item.attributes.type} title={item.attributes.title} author={item.attributes.author} date={item.attributes.date} imgURL={item.attributes.main.data.attributes.url} thumbnailURL={item.attributes.main.data.attributes.formats.thumbnail.url} />
     })
+
+
+    if (!data || data === {}) {
+        return null;
+    }
 
 
 
