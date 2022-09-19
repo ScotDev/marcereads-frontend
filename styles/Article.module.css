@@ -137,6 +137,10 @@
 
 .article article ul {
     list-style-type:circle;
+    margin: 18px 0;
+}
+.article article p {
+    margin-bottom: 18px;
 }
 
 
