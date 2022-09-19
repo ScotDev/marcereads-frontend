@@ -7,8 +7,8 @@ const fetchData = async (endpoint, ...args) => {
 
     let loading = true;
     let data = null;
-    let metaData = {};
     let error = null;
+    let metaData = {};
     let query;
     let startPage;
 
@@ -69,20 +69,18 @@ const fetchData = async (endpoint, ...args) => {
         loading = true;
         const response = await fetch(`${CMS_ENDPOINT}/${endpoint}?populate=*&sort[0]=createdAt:desc${query}`);
         let rawData = await response.json()
+        error = await rawData.error
 
         data = rawData.data;
-        // remove metadata
-        metaData = rawData.meta.pagination
-
 
     } catch (err) {
-        error = err;
+        // error = err;
         console.log(err)
     } finally {
         loading = false;
     }
 
-    return { loading, data, metaData, error }
+    return { loading, data, error }
 }
 
 export default fetchData;

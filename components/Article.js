@@ -15,12 +15,14 @@ import { ShareTo } from '../utils/share';
 import { FaRegEnvelope, FaRegClipboard, FaWhatsapp, FaTwitter } from 'react-icons/fa'
 
 
+
 export default function Article({ data }) {
     const router = useRouter()
     const [readTimeEstimate, setReadTimeEstimate] = useState("3 min")
     const [linkCopied, setlinkCopied] = useState("")
 
     useEffect(() => {
+        // if (data) {
         const avgWordsPerMinute = 265;
         let readTimeEstimate;
         const words = data.attributes.body.split(" ");
@@ -45,6 +47,8 @@ export default function Article({ data }) {
         }
 
         setReadTimeEstimate(readTimeEstimate + " min");
+
+        // }
 
 
 
@@ -72,8 +76,9 @@ export default function Article({ data }) {
     }
 
     // This is vital to stop issue in build where next tries to access data from the api that isn't ready yet
-    if (router.isFallback || !data || data === undefined) {
-        return null;
+    if (router.isFallback || !data || data === {}) {
+
+        return null
     }
 
     const dayjs = require('dayjs')

@@ -4,9 +4,14 @@ import fetchData from "../../utils/fetchData.js";
 import PostsNavigation from '../../components/PostsNavigation';
 import PostsBrowse from '../../components/PostsBrowse';
 import About from '../../components/About'
+import Error from '../../components/Error'
 import headerStyles from '../../styles/Header.module.css'
 
 export default function reviews({ width, data, dataAbout }) {
+
+    if (!data || data === {}) {
+        return <Error />
+    }
     return (
         <>
             <Head>

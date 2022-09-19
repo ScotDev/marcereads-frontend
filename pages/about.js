@@ -1,5 +1,6 @@
 import Image from "next/image";
 import Head from "next/head";
+
 import ReactMarkdown from "react-markdown";
 
 import headerStyles from '../styles/Header.module.css'
@@ -7,7 +8,15 @@ import aboutStyles from '../styles/About.module.css'
 
 import fetchData from "../utils/fetchData.js";
 
+import Error from '../components/Error'
+
 export default function about({ data }) {
+
+    if (!data || data === {}) {
+        return <Error />
+    }
+
+
     return (<>
         <Head>
             <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -38,7 +47,7 @@ export default function about({ data }) {
 export const getStaticProps = async () => {
 
     try {
-        const { loading, data, error } = await fetchData("about")
+        const { data } = await fetchData("about")
 
         return {
             props: {
