@@ -4,6 +4,10 @@
 // }
 
 module.exports = {
+  i18n: {
+    locales: ["en"],
+    defaultLocale: "en",
+  },
   images: {
     domains: ['i.imgur.com', 'res.cloudinary.com']
   }

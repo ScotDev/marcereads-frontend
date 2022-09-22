@@ -24,13 +24,13 @@ export default function Home({ width, dataPostsHomepage, dataAbout, dataLatest, 
         <meta name="HandheldFriendly" content="true" />
         <meta charSet="utf-8" />
         <meta property="og:type" content="website" />
+        <meta name="description" content="Marcereads book reviews and bookstagram guides" />
         <meta name="og:description" content="Marcereads book reviews and bookstagram guides" />
         <meta property="og:url" content="https://www.marcereads.com" />
 
         <link rel="icon" href="/favicon.ico" />
-        <link
-          rel="canonical"
-          href="/"></link>
+        <link rel="canonical"
+          href="https://www.marcereads.com" />
       </Head>
 
       <div className={homeStyles.home}>
