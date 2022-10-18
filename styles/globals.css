@@ -89,10 +89,11 @@ ul {
   max-width: 100%;
   z-index: -99;
   background-image: url("/bg_svgs.svg");
-  background-position: center 0;
+  background-position: 40px 0;
   /* background-position: center 50px; */
   background-size: contain;
-  background-repeat: no-repeat;
+  /* background-repeat: no-repeat; */
+  background-repeat: repeat-y;
 }
 
 /* The container wrap all content apart from navbar and footer */
@@ -117,8 +118,10 @@ a svg {
     z-index: -99;
     background-image: url("/bg_svgs_desktop.svg");
     background-size: 1300px;
+    /* background-size: 70%; */
     background-position: 57.5% 120px;
-    background-repeat: no-repeat;
+    /* background-repeat: no-repeat; */
+    background-repeat: repeat-y;
   }
 
   .container {
